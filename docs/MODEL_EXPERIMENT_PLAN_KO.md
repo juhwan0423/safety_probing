@@ -84,11 +84,19 @@ profile과 launcher를 먼저 정의한다.
 분석을 위해 생성하되 binary metric에서는 제외한다. Batch runner는 pipeline을 한 번만 load하고
 rollout별 atomic output과 sidecar를 기록한다. 같은 command를 재실행하면 완료된 rollout을 건너뛴다.
 
+`prompt_v1` 800 rollouts은 이미 완료됐으며 `outputs/ltx_v2/part_01`에 보존한다. 이 prompt는 실제
+blue grid를 checkerboard라고 잘못 기술했다. 수정한 action-aware neutral prompt는 6-rollout balanced
+pilot에서 의미상 정합성은 좋아졌지만 문자, 부품 복제, 배경 변형이 계속됐고 visible tip은 0건이었다.
+따라서 두 번째 800-rollout batch는 oracle forced-tip/forced-stable smoke가 끝날 때까지 실행하지 않는다.
+또한 action-aware prompt를 main으로 채택하면 Qwen과 V-JEPA에도 동일한 future command를 제공한다.
+그렇지 않으면 해당 LTX 결과는 video-only main table이 아니라 action-conditioned ablation으로 분리한다.
+
 ```bash
 PYTHONUNBUFFERED=1 PYTHONPATH=src external/LTX-2/.venv/bin/python \
   -m safety_probing.ltx_batch \
   --shard part_01 --split val --split test \
-  --output-root outputs/ltx_v2/part_01
+  --max-per-outcome 2 --seed 17 \
+  --output-root outputs/ltx_prompt_v2_pilot
 ```
 
 Qwen server와 smoke client는 서로 다른 host에서 실행한다.

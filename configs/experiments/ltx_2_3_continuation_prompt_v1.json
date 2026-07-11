@@ -1,0 +1,42 @@
+{
+  "experiment": "ltx_2_3_cctv_continuation_v2",
+  "comparison_group": "pixel-generative",
+  "model_registry_key": "ltx_2_3",
+  "execution": {
+    "hardware_profile": "rtx_5090_local",
+    "cpu_offload_allowed": false
+  },
+  "input": {
+    "type": "video_prefix",
+    "camera": "main_fixed_northwest",
+    "start_time_s": 0.0,
+    "end_time_s": 2.7083333333333335,
+    "fps": 24,
+    "frame_count": 65,
+    "resize": [576, 320]
+  },
+  "generation": {
+    "continuation_duration_s": 2.2916666666666665,
+    "evaluation_frame_count": 55,
+    "internal_total_frame_count": 121,
+    "discard_generated_tail_frames": 1,
+    "rollouts_per_run": 4,
+    "seeds": [17, 29, 43, 71],
+    "audio": false,
+    "prompt": "A fixed northwest CCTV camera observes the same loaded forklift continuing its current motion on a flat square checkerboard test ground. Preserve the forklift, payload, camera, geometry, lighting, speed, steering motion, and physical continuity exactly. Continue the scene naturally without cuts, camera motion, new objects, or changes in appearance."
+  },
+  "evaluation": {
+    "aggregate": "mean_probability_across_rollouts",
+    "generated_future_only": true,
+    "report_generation_failures": true
+  },
+  "safety_readout": {
+    "input": "generated_final_ltx_vae_future_latents",
+    "foundation_parameters_frozen": true,
+    "probe": "two_layer_temporal_transformer",
+    "probe_model_dim": 512,
+    "probe_heads": 4,
+    "training_reference": "ground_truth_future_rgb_encoded_by_the_same_frozen_ltx_vae",
+    "right_censored_binary_loss": "excluded"
+  }
+}

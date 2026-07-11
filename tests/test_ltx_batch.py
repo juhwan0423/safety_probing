@@ -45,6 +45,30 @@ class LTXBatchSelectionTest(unittest.TestCase):
                 [row, dict(row)], shard="part_01", splits={"test"}
             )
 
+    def test_limits_each_outcome_for_balanced_pilot(self) -> None:
+        rows = []
+        for outcome in ("observed_tip", "confirmed_recovered"):
+            for index in range(3):
+                rows.append(
+                    {
+                        "condition_id": f"{outcome}_{index}",
+                        "dataset_root": "/data/eccv_workshop_grid_part_01",
+                        "splits": {"main": "val"},
+                        "safety_outcome": outcome,
+                    }
+                )
+        selected = select_batch_rows(
+            rows,
+            shard="part_01",
+            splits={"val"},
+            max_per_outcome=1,
+        )
+        self.assertEqual(len(selected), 2)
+        self.assertEqual(
+            {row["safety_outcome"] for row in selected},
+            {"observed_tip", "confirmed_recovered"},
+        )
+
 
 if __name__ == "__main__":
     unittest.main()

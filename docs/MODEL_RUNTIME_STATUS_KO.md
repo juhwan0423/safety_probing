@@ -63,6 +63,10 @@ Transformers 5.13 + Accelerate CPU offload는 모든 layer의 일부 FP8 scale�
 - Output: `outputs/smoke/ltx_confirmed_recovered_65f.mp4`
 - Representative frames at 64, 80, 96, 120 were nonblank and decodable
 - The vehicle remained fully visible at frame 120; the old 57-frame rollout had nearly exited the lower-right frame
+- Shard 01 `prompt_v1` batch: 800/800 complete, no runtime failures
+- Visual audit of 40 sampled `observed_tip` final frames: zero visible rollovers; frequent duplication, text, and ground artifacts
+- Corrected action-aware neutral prompt pilot: 6/6 complete, zero visible rollovers; artifact modes persisted
+- Full rerun with the corrected prompt is deferred until forced-tip/forced-stable controllability smoke
 
 ## Commands
 

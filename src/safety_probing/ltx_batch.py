@@ -35,6 +35,7 @@ def select_batch_rows(
     splits: set[str],
     split_protocol: str = "main",
     max_conditions: int | None = None,
+    max_per_outcome: int | None = None,
 ) -> list[dict[str, Any]]:
     dataset_name = (
         f"eccv_workshop_grid_{shard}" if shard.startswith("part_") else shard
@@ -54,6 +55,17 @@ def select_batch_rows(
     condition_ids = [str(row["condition_id"]) for row in selected]
     if len(condition_ids) != len(set(condition_ids)):
         raise RuntimeError("Canonical manifest contains duplicate condition_id values")
+    if max_per_outcome is not None:
+        if max_per_outcome <= 0:
+            raise ValueError("max_per_outcome must be positive")
+        counts: Counter[str] = Counter()
+        balanced: list[dict[str, Any]] = []
+        for row in selected:
+            outcome = str(row["safety_outcome"])
+            if counts[outcome] < max_per_outcome:
+                balanced.append(row)
+                counts[outcome] += 1
+        selected = balanced
     if max_conditions is not None:
         if max_conditions <= 0:
             raise ValueError("max_conditions must be positive")
@@ -139,6 +151,7 @@ def _parser() -> argparse.ArgumentParser:
     parser.add_argument("--seed", action="append", type=int)
     parser.add_argument("--output-root", type=Path)
     parser.add_argument("--max-conditions", type=int)
+    parser.add_argument("--max-per-outcome", type=int)
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--prefix-only", action="store_true")
     parser.add_argument("--overwrite", action="store_true")
@@ -148,6 +161,8 @@ def _parser() -> argparse.ArgumentParser:
 
 def main() -> None:
     args = _parser().parse_args()
+    if args.max_conditions is not None and args.max_per_outcome is not None:
+        raise ValueError("Use only one of --max-conditions and --max-per-outcome")
     registry_path = args.registry.resolve()
     experiment_path = args.experiment.resolve()
     manifest_path = args.manifest.resolve()
@@ -166,13 +181,16 @@ def main() -> None:
     output_root = (
         args.output_root.resolve()
         if args.output_root is not None
-        else (project_root / "outputs" / "ltx_v2" / args.shard).resolve()
+        else (
+            project_root / "outputs" / str(experiment["experiment"]) / args.shard
+        ).resolve()
     )
     rows = select_batch_rows(
         _read_jsonl(manifest_path),
         shard=args.shard,
         splits=splits,
         max_conditions=args.max_conditions,
+        max_per_outcome=args.max_per_outcome,
     )
     if not rows:
         raise RuntimeError(
@@ -212,6 +230,8 @@ def main() -> None:
                     f"Existing batch contract differs at {key}; use a new output root"
                 )
     write_json(contract_path, plan)
+    write_json(output_root / "experiment.snapshot.json", experiment)
+    write_json(output_root / "model_registry.snapshot.json", registry)
 
     prefix_frames = int(input_spec["frame_count"])
     fps = int(input_spec["fps"])

@@ -1,5 +1,5 @@
 {
-  "experiment": "ltx_2_3_cctv_continuation_v2",
+  "experiment": "ltx_2_3_cctv_continuation_v3_action_prompt",
   "comparison_group": "pixel-generative",
   "model_registry_key": "ltx_2_3",
   "execution": {
@@ -23,7 +23,7 @@
     "rollouts_per_run": 4,
     "seeds": [17, 29, 43, 71],
     "audio": false,
-    "prompt": "A fixed northwest CCTV camera observes the same loaded forklift continuing its current motion on a flat square checkerboard test ground. Preserve the forklift, payload, camera, geometry, lighting, speed, steering motion, and physical continuity exactly. Continue the scene naturally without cuts, camera motion, new objects, or changes in appearance."
+    "prompt": "Fixed CCTV footage of a loaded forklift moving on a flat blue floor marked with thin white square grid lines. Continue the observed forklift motion with physical and temporal continuity. The ongoing steering command continues briefly, then the wheels return to straight while the commanded speed is maintained. Determine the resulting vehicle and payload motion only from the observed dynamics. Do not force either a stable or tip-over outcome. Preserve the forklift, payload, fixed camera, lighting, and scene geometry. Do not introduce cuts, camera motion, new objects, text, symbols, duplicated objects, or changes in vehicle identity."
   },
   "evaluation": {
     "aggregate": "mean_probability_across_rollouts",

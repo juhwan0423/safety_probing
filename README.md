@@ -62,6 +62,7 @@ not treated as empty completed shards.
 - [Model Experiment Plan](docs/MODEL_EXPERIMENT_PLAN_KO.md)
 - [Model Runtime Status](docs/MODEL_RUNTIME_STATUS_KO.md)
 - [DGX Spark Runbook](docs/DGX_SPARK_RUNBOOK_KO.md)
+- [LTX Prompt Audit](docs/LTX_PROMPT_AUDIT_KO.md)
 
 ## Model Preparation
 
@@ -100,21 +101,23 @@ assignment and the DGX Spark runbook for setup details.
 
 The batch runner loads LTX once, generates all main-split validation/test
 rollouts for the local shard, and resumes from per-rollout JSON sidecars.
+The completed 800-rollout `prompt_v1` baseline is preserved at
+`outputs/ltx_v2/part_01`. The active action-aware prompt is still a candidate;
+do not launch another full batch until the oracle prompt smoke is reviewed.
 
 ```bash
-# Verify selection without loading the model: 200 conditions, 800 jobs.
+# Reproduce the archived prompt_v1 selection without loading the model.
 PYTHONPATH=src external/LTX-2/.venv/bin/python \
   -m safety_probing.ltx_batch \
+  --experiment configs/experiments/ltx_2_3_continuation_prompt_v1.json \
   --shard part_01 --split val --split test --dry-run
 
-# Full four-seed batch. Re-run the same command to resume.
-mkdir -p run_logs
-set -o pipefail
+# Balanced six-rollout pilot for the active prompt candidate.
 PYTHONUNBUFFERED=1 PYTHONPATH=src external/LTX-2/.venv/bin/python \
   -m safety_probing.ltx_batch \
   --shard part_01 --split val --split test \
-  --output-root outputs/ltx_v2/part_01 \
-  2>&1 | tee -a run_logs/ltx_part_01.log
+  --max-per-outcome 2 --seed 17 \
+  --output-root outputs/ltx_prompt_v2_pilot
 ```
 
 Outputs are keyed by `split/condition_id/seed`, with a consolidated

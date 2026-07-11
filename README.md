@@ -96,6 +96,30 @@ Video requests use base64 data URIs, so the client and DGX Spark do not need a
 shared filesystem. See `configs/hardware_profiles.json` for the enforced model
 assignment and the DGX Spark runbook for setup details.
 
+## LTX Shard 01 Batch
+
+The batch runner loads LTX once, generates all main-split validation/test
+rollouts for the local shard, and resumes from per-rollout JSON sidecars.
+
+```bash
+# Verify selection without loading the model: 200 conditions, 800 jobs.
+PYTHONPATH=src external/LTX-2/.venv/bin/python \
+  -m safety_probing.ltx_batch \
+  --shard part_01 --split val --split test --dry-run
+
+# Full four-seed batch. Re-run the same command to resume.
+mkdir -p run_logs
+set -o pipefail
+PYTHONUNBUFFERED=1 PYTHONPATH=src external/LTX-2/.venv/bin/python \
+  -m safety_probing.ltx_batch \
+  --shard part_01 --split val --split test \
+  --output-root outputs/ltx_v2/part_01 \
+  2>&1 | tee -a run_logs/ltx_part_01.log
+```
+
+Outputs are keyed by `split/condition_id/seed`, with a consolidated
+`batch_manifest.jsonl` and `batch_summary.json` under the output root.
+
 The shared CCTV observation contract is 65 frames at 24 FPS (2.7083 seconds).
 LTX uses an internal 121-frame sequence because its temporal VAE requires `8n+1`
 frames; only the matching 55 future frames are scored.

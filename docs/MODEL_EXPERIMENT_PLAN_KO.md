@@ -77,6 +77,20 @@ profile과 launcher를 먼저 정의한다.
 4. AUROC/AUPRC/ECE와 Gold pair accuracy를 계산한다.
 5. left-to-right, right-to-left mirror generalization을 각각 평가한다.
 
+### Shard 01 LTX rollout batch
+
+현재 Computer 1의 canonical manifest에서는 main split validation 98 conditions, test 102 conditions가
+선택된다. 네 seed를 적용하면 800 rollouts이며 right-censored 3 conditions도 provenance와 survival 보조
+분석을 위해 생성하되 binary metric에서는 제외한다. Batch runner는 pipeline을 한 번만 load하고
+rollout별 atomic output과 sidecar를 기록한다. 같은 command를 재실행하면 완료된 rollout을 건너뛴다.
+
+```bash
+PYTHONUNBUFFERED=1 PYTHONPATH=src external/LTX-2/.venv/bin/python \
+  -m safety_probing.ltx_batch \
+  --shard part_01 --split val --split test \
+  --output-root outputs/ltx_v2/part_01
+```
+
 Qwen server와 smoke client는 서로 다른 host에서 실행한다.
 
 ```bash

@@ -39,7 +39,7 @@ def _select_examples(
     return selected
 
 
-def _encode_prefix(
+def encode_prefix_video(
     frame_directory: Path, output_path: Path, *, frame_count: int, fps: int
 ) -> None:
     output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -89,7 +89,7 @@ def prepare_smoke_inputs(
         outcome = str(row["safety_outcome"])
         frame_directory = Path(row["rgb_dirs"][camera])
         output_path = output_directory / f"{outcome}.mp4"
-        _encode_prefix(
+        encode_prefix_video(
             frame_directory,
             output_path,
             frame_count=prefix_frame_count,

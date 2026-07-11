@@ -162,7 +162,12 @@ def run_continuation(
     internal_total_frames: int = 121,
     quantization: str = "fp8-scaled-mm",
     offload: str = "none",
+    progress: Callable[[str], None] | None = None,
 ) -> dict[str, Any]:
+    def report(message: str) -> None:
+        if progress is not None:
+            progress(message)
+
     geometry = validate_prefix_geometry(
         prefix_frames=prefix_frames,
         source_total_frames=source_total_frames,
@@ -171,6 +176,7 @@ def run_continuation(
     if width % 64 or height % 64:
         raise ValueError("The LTX two-stage output width and height must be divisible by 64")
 
+    report("Importing the official LTX runtime")
     activate_ltx_code(code_root)
     import torch
     from ltx_core.model.video_vae import TilingConfig, get_video_chunks_number
@@ -178,6 +184,8 @@ def run_continuation(
     from ltx_pipelines.utils.media_io import encode_video
     from ltx_pipelines.utils.quantization_factory import QuantizationKind
     from ltx_pipelines.utils.types import OffloadMode
+
+    report("LTX runtime import complete")
 
     checkpoint = Path(checkpoint).expanduser().resolve()
     prefix_video = Path(prefix_video).expanduser().resolve()
@@ -192,6 +200,10 @@ def run_continuation(
             raise FileNotFoundError(path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
+    report(
+        f"Loading LTX-2.3 pipeline ({quantization}, offload={offload}); "
+        "large checkpoint reads can be quiet for a while"
+    )
     quantization_policy = QuantizationKind(quantization).to_policy(
         checkpoint_path=str(checkpoint)
     )
@@ -203,6 +215,7 @@ def run_continuation(
         quantization=quantization_policy,
         offload_mode=OffloadMode(offload),
     )
+    report(f"Pipeline loaded on {pipeline.device} with dtype={pipeline.dtype}")
     original_conditioner = pipeline.image_conditioner
     original_decoder = pipeline.video_decoder
     capturing_decoder = _CapturingVideoDecoder(original_decoder)
@@ -220,6 +233,10 @@ def run_continuation(
     tiling_config = TilingConfig.default()
     torch.cuda.reset_peak_memory_stats()
     try:
+        report(
+            f"Generating {internal_total_frames} frames at {width}x{height}, "
+            f"{fps:g} FPS, seed={seed}"
+        )
         with torch.inference_mode():
             video, _audio = pipeline(
                 prompt=prompt,
@@ -232,6 +249,7 @@ def run_continuation(
                 tiling_config=tiling_config,
                 enhance_prompt=False,
             )
+            report("Generation complete; encoding MP4")
             encode_video(
                 video=video,
                 fps=int(fps),
@@ -241,6 +259,7 @@ def run_continuation(
                     internal_total_frames, tiling_config
                 ),
             )
+            report(f"Video written to {output_path}")
             if latent_output_path is not None:
                 if capturing_decoder.latent is None:
                     raise RuntimeError("LTX decoder did not receive a final video latent")
@@ -256,9 +275,12 @@ def run_continuation(
                     },
                     latent_output_path,
                 )
+                report(f"Latent written to {latent_output_path}")
     finally:
         pipeline.image_conditioner = original_conditioner
         pipeline.video_decoder = original_decoder
+
+    report("LTX continuation smoke complete")
 
     return {
         "output_path": str(output_path),

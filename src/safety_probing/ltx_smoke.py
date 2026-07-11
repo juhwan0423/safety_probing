@@ -98,6 +98,7 @@ def main() -> None:
         internal_total_frames=int(generation["internal_total_frame_count"]),
         quantization=runtime["quantization"],
         offload=runtime["offload"],
+        progress=lambda message: print(f"[LTX] {message}", flush=True),
     )
     print(json.dumps(result, indent=2))
 

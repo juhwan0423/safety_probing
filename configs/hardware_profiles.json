@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "policy": {
+    "production_cpu_offload_allowed": false,
+    "on_out_of_memory": "move_experiment_to_a_larger_hardware_profile",
+    "do_not_fallback_to_cpu_offload": true
+  },
+  "profiles": {
+    "rtx_5090_local": {
+      "host_role": "feature_extraction_and_pixel_generation",
+      "architecture": "x86_64",
+      "accelerator": "NVIDIA GeForce RTX 5090",
+      "gpu_memory_gb": 32,
+      "memory_model": "discrete_gpu",
+      "cpu_offload_gb": 0,
+      "assigned_models": ["ltx_2_3", "vjepa_2", "vjepa_2_1"],
+      "disallowed_models": ["qwen_3_6"]
+    },
+    "dgx_spark": {
+      "host_role": "large_model_inference",
+      "architecture": "aarch64",
+      "accelerator": "NVIDIA GB10 Grace Blackwell",
+      "unified_memory_gb": 128,
+      "memory_model": "unified_cpu_gpu",
+      "runtime": "nvidia_vllm_container",
+      "container_image": "nvcr.io/nvidia/vllm:26.06-py3",
+      "cpu_offload_gb": 0,
+      "assigned_models": ["qwen_3_6"],
+      "launcher": "scripts/start_qwen_vllm_dgx_spark.sh",
+      "server_url_env": "QWEN_VLLM_SERVER_URL"
+    }
+  },
+  "model_assignment": {
+    "ltx_2_3": "rtx_5090_local",
+    "qwen_3_6": "dgx_spark",
+    "vjepa_2": "rtx_5090_local",
+    "vjepa_2_1": "rtx_5090_local"
+  }
+}

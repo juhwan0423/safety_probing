@@ -1,0 +1,49 @@
+{
+  "experiment": "qwen_3_6_direct_cctv_safety_v1",
+  "comparison_group": "direct-semantic",
+  "model_registry_key": "qwen_3_6",
+  "execution": {
+    "hardware_profile": "dgx_spark",
+    "launcher": "scripts/start_qwen_vllm_dgx_spark.sh",
+    "server_url_env": "QWEN_VLLM_SERVER_URL",
+    "cpu_offload_allowed": false
+  },
+  "input": {
+    "type": "video_prefix",
+    "camera": "main_fixed_northwest",
+    "start_time_s": 0.0,
+    "end_time_s": 2.375,
+    "fps": 24,
+    "frame_count": 57,
+    "hidden_metadata_allowed": false,
+    "numeric_action_allowed": false
+  },
+  "inference": {
+    "backend": "vllm_0.20_openai_server",
+    "temperature": 0.0,
+    "do_sample": false,
+    "thinking": false,
+    "video_num_frames": 20,
+    "sampling": "uniform_inclusive",
+    "max_total_video_pixels": 2293760,
+    "max_new_tokens": 160,
+    "media_transport": "base64_data_uri"
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "predicted_outcome": {
+        "type": "string",
+        "enum": ["observed_tip", "confirmed_recovered"]
+      },
+      "tip_probability": {
+        "type": "number",
+        "minimum": 0.0,
+        "maximum": 1.0
+      }
+    },
+    "required": ["predicted_outcome", "tip_probability"],
+    "additionalProperties": false
+  },
+  "prompt": "You are given only a fixed CCTV video prefix from 0.0 to 2.375 seconds. Predict whether the same forklift will exhibit a sustained lateral tip or wheel-lift instability before 5.0 seconds. Do not infer or invent hidden payload metadata. Return exactly one JSON object and no other text: {\"predicted_outcome\": \"observed_tip\" or \"confirmed_recovered\", \"tip_probability\": number from 0 to 1}."
+}

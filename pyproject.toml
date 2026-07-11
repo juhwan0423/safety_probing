@@ -1,0 +1,50 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "safety-probing"
+version = "0.1.0"
+description = "Dataset audit and frozen-encoder probing tools for ExoFork-CF."
+requires-python = ">=3.12,<3.13"
+dependencies = []
+
+[project.optional-dependencies]
+vision-audit = ["Pillow>=10"]
+model-prep = [
+  "huggingface-hub[hf-xet]==1.23.0",
+  "safetensors==0.8.0",
+]
+inference-core = [
+  "accelerate==1.14.0",
+  "av==18.0.0",
+  "einops==0.8.2",
+  "kernels==0.15.2",
+  "timm==1.0.27",
+  "numpy==2.5.1",
+  "Pillow==12.3.0",
+  "torch==2.11.0",
+  "torchvision==0.26.0",
+  "transformers==5.13.1",
+]
+
+[project.scripts]
+safety-probing = "safety_probing.cli:main"
+safety-models = "safety_probing.model_manager:main"
+safety-smoke-inputs = "safety_probing.smoke_inputs:main"
+safety-model-smoke = "safety_probing.model_smoke:main"
+safety-qwen-smoke = "safety_probing.qwen_smoke:main"
+safety-qwen-vllm-smoke = "safety_probing.qwen_vllm_smoke:main"
+safety-ltx-smoke = "safety_probing.ltx_smoke:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[[tool.uv.index]]
+name = "pytorch-cu128"
+url = "https://download.pytorch.org/whl/cu128"
+explicit = true
+
+[tool.uv.sources]
+torch = { index = "pytorch-cu128" }
+torchvision = { index = "pytorch-cu128" }

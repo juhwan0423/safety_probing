@@ -1,0 +1,23 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+.venv-*/
+.env
+.env.*
+!.env.example
+.cache/
+*.log
+run_logs/
+dist/
+build/
+*.egg-info/
+models/
+external/
+outputs/
+
+# Generated analysis and future feature caches can be regenerated.
+artifacts/current/
+artifacts/features/
+artifacts/checkpoints/
+artifacts/smoke_inputs/

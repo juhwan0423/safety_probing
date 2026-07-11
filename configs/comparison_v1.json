@@ -1,0 +1,46 @@
+{
+  "protocol": "cctv_future_safety_comparison_v1",
+  "label_schema_version": "censor-aware-lateral-tip-v2",
+  "hardware_profiles": "configs/hardware_profiles.json",
+  "manifest": "artifacts/current/manifests/canonical_runs.jsonl",
+  "camera": "main_fixed_northwest",
+  "observation": {
+    "start_time_s": 0.0,
+    "end_time_s": 2.375,
+    "source_fps": 24.0,
+    "source_frame_count": 57
+  },
+  "target": {
+    "start_time_s": 2.375,
+    "end_time_s": 5.0,
+    "binary_positive": "observed_tip",
+    "binary_negative": "confirmed_recovered",
+    "binary_excluded": "right_censored"
+  },
+  "comparison_groups": [
+    {
+      "name": "pixel-generative",
+      "model": "ltx_2_3",
+      "experiment_config": "configs/experiments/ltx_2_3_continuation.json"
+    },
+    {
+      "name": "direct-semantic",
+      "model": "qwen_3_6",
+      "experiment_config": "configs/experiments/qwen_3_6_direct.json"
+    },
+    {
+      "name": "latent-predictive",
+      "model": "vjepa_2_1",
+      "secondary_model": "vjepa_2",
+      "experiment_config": "configs/experiments/vjepa_latent_predictive.json"
+    }
+  ],
+  "shared_metrics": [
+    "auroc",
+    "auprc",
+    "balanced_accuracy",
+    "brier_score",
+    "ece",
+    "pairwise_accuracy"
+  ]
+}

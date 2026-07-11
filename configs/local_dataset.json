@@ -1,0 +1,40 @@
+{
+  "dataset_name": "ExoFork-CF ECCV Workshop Lateral Tip-Over",
+  "dataset_version": "v0.1-finite-steering-pulse",
+  "workspace_root": "../..",
+  "dataset_roots": [
+    "ExoFork-CF/project_march/sim_project/dataset_root/eccv_workshop_grid_part_01",
+    "ExoFork-CF/project_march/sim_project/dataset_root/eccv_workshop_grid_part_02",
+    "ExoFork-CF/project_march/sim_project/dataset_root/eccv_workshop_grid_part_03"
+  ],
+  "source_config": "ExoFork-CF/project_march/sim_project/forklift_dataset/eccv_workshop_grid_config.json",
+  "reference_split_manifest": "ExoFork-CF/project_march/sim_project/forklift_dataset/eccv_workshop_splits.json",
+  "generated_split_manifest": "artifacts/splits/leakage_safe_splits.json",
+  "output_dir": "artifacts/current",
+  "statistics_document": "docs/DATASET_STATISTICS_KO.md",
+  "labeling": {
+    "schema_version": "censor-aware-lateral-tip-v2",
+    "observation_end_s": 2.375,
+    "roll_tip_threshold_deg": 20.0,
+    "support_loss_contact_count_lt": 3,
+    "support_loss_grace_steps": 6,
+    "terminal_window_s": 0.5,
+    "right_censor_min_abs_roll_deg": 0.5,
+    "right_censor_min_abs_roll_rate_deg_s": 2.0
+  },
+  "expected": {
+    "pair_count": 1008,
+    "run_count": 2016,
+    "physics_rows_per_run": 360,
+    "rgb_frames_per_camera_per_run": 120,
+    "physics_hz": 72.0,
+    "rgb_fps": 24.0,
+    "duration_s": 5.0,
+    "camera_resolution": [1280, 720],
+    "pixel_audit_run_sample_count": 64,
+    "camera_names": [
+      "main_fixed_northwest",
+      "top_fixed_debug"
+    ]
+  }
+}

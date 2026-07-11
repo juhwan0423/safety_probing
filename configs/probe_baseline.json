@@ -1,0 +1,46 @@
+{
+  "protocol": "early_turn_visual_safety_v1",
+  "split_protocol": "main",
+  "run_level_data": {
+    "manifest": "artifacts/current/manifests/canonical_runs.jsonl",
+    "deduplicate_by_condition_id": true,
+    "quality_filter": null,
+    "label_schema_version": "censor-aware-lateral-tip-v2",
+    "binary_outcomes": ["observed_tip", "confirmed_recovered"],
+    "censored_outcome": "right_censored"
+  },
+  "pair_level_data": {
+    "manifest": "artifacts/current/manifests/pairs.jsonl",
+    "quality_tiers": ["gold", "silver", "bronze"]
+  },
+  "camera": "main_fixed_northwest",
+  "input": {
+    "start_time_s": 0.0,
+    "end_time_s": 2.375,
+    "source_fps": 24.0,
+    "sample_fps": 8.0,
+    "frame_count": 20,
+    "sampling": "uniform_inclusive"
+  },
+  "future_target_window": {
+    "start_time_s": 2.375,
+    "end_time_s": 5.0
+  },
+  "encoder": {
+    "name": "TO_BE_SELECTED",
+    "frozen": true,
+    "cache_dtype": "float16"
+  },
+  "probe": {
+    "type": "temporal_transformer",
+    "layers": 2,
+    "heads": 4,
+    "dropout": 0.1
+  },
+  "tasks": [
+    "future_tip_over",
+    "future_min_outward_zmp_margin_m",
+    "pairwise_counterfactual_risk",
+    "time_to_tip_survival"
+  ]
+}

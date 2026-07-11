@@ -60,6 +60,11 @@ class SplitBuilderTest(unittest.TestCase):
             ],
             0,
         )
+        reference_examples = generated["audit"]["reference_manifest"]["main"][
+            "cross_split_condition_examples"
+        ]
+        condition_ids = [row["condition_id"] for row in reference_examples]
+        self.assertEqual(condition_ids, sorted(condition_ids))
         for protocol in ("main", "left_to_right", "right_to_left"):
             audit = generated["audit"]["generated_manifest"][protocol]
             self.assertEqual(audit["cross_split_physical_condition_count"], 0)
@@ -68,4 +73,3 @@ class SplitBuilderTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-

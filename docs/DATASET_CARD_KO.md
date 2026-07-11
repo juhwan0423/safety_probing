@@ -76,7 +76,8 @@ roll dynamics를 바꾸는 것은 관측하려는 causal consequence에 포함�
 ### Censor-aware lateral safety outcome
 
 Raw `metadata_run.json`의 detector 결과는 provenance로 보존하고, probing manifest에서는 dense log를
-재판정한 `censor-aware-lateral-tip-v2`를 사용한다.
+재판정한 `censor-aware-lateral-tip-v3`를 사용한다. v3는 65-frame observation boundary를 사용해
+조향 onset 이후의 명확한 초기 회전까지 입력에 포함한다.
 
 - `observed_tip`: `abs(roll) >= 20 deg` 또는 contact count가 6 physics steps 동안 3 미만
 - `confirmed_recovered`: 위 event가 없고 종료 0.5초의 absolute roll이 계속 증가하지 않음

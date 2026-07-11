@@ -23,7 +23,9 @@
 | V-JEPA 2 | `[1,3,20,256,256]` | `[1,2560,1024]` | yes | 1.40 GB |
 | V-JEPA 2.1 | `[1,3,20,384,384]` | `[1,5760,1024]` | yes | 1.58 GB |
 
-두 모델 모두 57-frame CCTV prefix에서 `[0, 3, ..., 56]`에 해당하는 20개 균등 프레임을 사용했다.
+두 모델 모두 65-frame CCTV prefix에서
+`[0,3,7,10,13,17,20,24,27,30,34,37,40,44,47,51,54,57,61,64]`에 해당하는
+20개 균등 프레임을 사용해 다시 검증했다.
 
 ### Qwen3.6
 
@@ -50,14 +52,17 @@ Transformers 5.13 + Accelerate CPU offload는 모든 layer의 일부 FP8 scale�
 ### LTX-2.3
 
 - Prefix contract preflight: passed
-- Prefix: 57 frames; internal sequence: 121 frames
-- Evaluated future: 63 frames; one generated tail frame discarded
+- Prefix: 65 frames; internal sequence: 121 frames
+- Evaluated future: 55 frames; one generated tail frame discarded
 - Resolution: 576x320, valid for the two-stage 64-pixel divisibility constraint
 - Full continuation smoke: passed with official locked environment
 - Output: 121 frames, 24 FPS, 5.0417 seconds, H.264 yuv420p
 - Final VAE latent: `[1,128,16,10,18]`
 - Runtime: `fp8-scaled-mm`, no offload, peak VRAM 25.43 GB
-- Representative frames at 0, 56, 90, 120 were nonblank and decodable
+- 65-frame full continuation smoke: passed, seed 17
+- Output: `outputs/smoke/ltx_confirmed_recovered_65f.mp4`
+- Representative frames at 64, 80, 96, 120 were nonblank and decodable
+- The vehicle remained fully visible at frame 120; the old 57-frame rollout had nearly exited the lower-right frame
 
 ## Commands
 

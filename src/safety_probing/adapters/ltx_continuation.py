@@ -157,7 +157,7 @@ def run_continuation(
     width: int = 576,
     height: int = 320,
     fps: float = 24.0,
-    prefix_frames: int = 57,
+    prefix_frames: int = 65,
     source_total_frames: int = 120,
     internal_total_frames: int = 121,
     quantization: str = "fp8-scaled-mm",

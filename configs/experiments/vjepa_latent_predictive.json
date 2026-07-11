@@ -1,5 +1,5 @@
 {
-  "experiment": "vjepa_frozen_latent_future_v1",
+  "experiment": "vjepa_frozen_latent_future_v2",
   "comparison_group": "latent-predictive",
   "primary_model_registry_key": "vjepa_2_1",
   "secondary_model_registry_key": "vjepa_2",
@@ -10,13 +10,13 @@
   "input": {
     "camera": "main_fixed_northwest",
     "start_time_s": 0.0,
-    "end_time_s": 2.375,
+    "end_time_s": 2.7083333333333335,
     "source_fps": 24,
     "frame_count": 20,
     "sampling": "uniform_inclusive"
   },
   "future_latent_target": {
-    "start_time_s": 2.375,
+    "start_time_s": 2.7083333333333335,
     "end_time_s": 5.0,
     "source_fps": 24,
     "frame_count": 20,

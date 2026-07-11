@@ -21,8 +21,10 @@ class LabelingConfig:
     @classmethod
     def from_dict(cls, raw: dict[str, Any]) -> "LabelingConfig":
         return cls(
-            schema_version=str(raw.get("schema_version", "censor-aware-lateral-tip-v2")),
-            observation_end_s=float(raw.get("observation_end_s", 2.375)),
+            schema_version=str(raw.get("schema_version", "censor-aware-lateral-tip-v3")),
+            observation_end_s=float(
+                raw.get("observation_end_s", 65 / 24)
+            ),
             roll_tip_threshold_deg=float(raw.get("roll_tip_threshold_deg", 20.0)),
             support_loss_contact_count_lt=int(
                 raw.get("support_loss_contact_count_lt", 3)

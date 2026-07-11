@@ -40,6 +40,7 @@ def main() -> None:
         checkpoint=project_root / runtime["checkpoint"],
         version="2.1" if args.model == "vjepa_2_1" else "2",
         frame_directory=example["source_frame_directory"],
+        source_frame_count=int(example["prefix_frame_count"]),
         device=args.device,
     )
     print(json.dumps(payload, indent=2))

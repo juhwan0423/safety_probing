@@ -6,12 +6,12 @@
 
 - Dataset: `ExoFork-CF ECCV Workshop Lateral Tip-Over`
 - Version: `v0.1-finite-steering-pulse`
-- Generated at: `2026-07-11T11:13:29.607387+00:00`
+- Generated at: `2026-07-11T11:57:54.295072+00:00`
 - Generator commit: `2a8f790e8d07795cdd7de9cf00a9918911eaad54`
 - Generator worktree dirty at audit: `True`
 - Source config SHA-256: `e4d2da4417feafffedd4b4d10b3c5e10043bdecc9dc8f3edf041827b0c538468`
-- Split manifest SHA-256: `00c7321b3c056a8ac42542928808c6c1f3f00461620d8b08c13be471439150dc`
-- Label schema: `censor-aware-lateral-tip-v2`
+- Split manifest SHA-256: `882d26fa1d8b4eb200a62c753ae080a42ede2a8c65ccfc182ca02bb869be486c`
+- Label schema: `censor-aware-lateral-tip-v3`
 - Definitive event: `abs(roll) >= 20 deg` or fewer than 3 support contacts for 6 physics steps
 - Right censoring: no definitive event, but terminal absolute roll remains outward-growing
 
@@ -142,7 +142,7 @@ Accepted (`gold/silver/bronze`): **248 (41.06%)**. Primary pairwise experiments 
 
 | Target | Stable median | Tip median | Stable negative | Tip negative | Tip AUROC from `-margin` |
 |---|---:|---:|---:|---:|---:|
-| `future_min_outward_zmp_margin_m` | -0.347 | -0.489 | 100.000% | 100.000% | 0.851 |
+| `future_min_outward_zmp_margin_m` | -0.347 | -0.487 | 100.000% | 100.000% | 0.853 |
 | `min_outward_com_margin_m` | 0.112 | 0.016 | 3.792% | 29.840% | 0.961 |
 
 현재 ZMP minimum은 stable과 tip 모두 음수이므로 `margin < 0`을 binary tip criterion으로 쓰면 안 된다. ZMP는 continuous regression/ranking target으로 사용하고, near-boundary threshold가 필요하면 train split에서만 calibration한다. Projected CoM outward margin의 부호가 더 직접적인 support-boundary diagnostic이지만 이것도 binary detector를 대체하지 않는다.
@@ -193,8 +193,8 @@ Pixel audit은 전수 검사가 아니라 deterministic sample audit이다. 최�
 - Run manifest: `/home/jude/isaac_ws/safety_probing/artifacts/current/manifests/runs.jsonl`
 - Canonical deduplicated run manifest: `/home/jude/isaac_ws/safety_probing/artifacts/current/manifests/canonical_runs.jsonl` (670 conditions)
 - Primary visual input: `main_fixed_northwest`
-- Primary observation window: `0.0-2.375 s` (57 frames at 24 FPS)
-- Primary future target window: `2.375-5.0 s`
+- Primary observation window: `0.0-2.7083 s` (65 frames at 24 FPS)
+- Primary future target window: `2.7083-5.0 s`
 - Primary pairwise subset: `gold`, with `silver/bronze` used for margin regression/control
 - `reject` pairs are retained in raw storage but excluded from primary probing
 

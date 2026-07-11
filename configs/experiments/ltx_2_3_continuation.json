@@ -1,5 +1,5 @@
 {
-  "experiment": "ltx_2_3_cctv_continuation_v1",
+  "experiment": "ltx_2_3_cctv_continuation_v2",
   "comparison_group": "pixel-generative",
   "model_registry_key": "ltx_2_3",
   "execution": {
@@ -10,14 +10,14 @@
     "type": "video_prefix",
     "camera": "main_fixed_northwest",
     "start_time_s": 0.0,
-    "end_time_s": 2.375,
+    "end_time_s": 2.7083333333333335,
     "fps": 24,
-    "frame_count": 57,
+    "frame_count": 65,
     "resize": [576, 320]
   },
   "generation": {
-    "continuation_duration_s": 2.625,
-    "evaluation_frame_count": 63,
+    "continuation_duration_s": 2.2916666666666665,
+    "evaluation_frame_count": 55,
     "internal_total_frame_count": 121,
     "discard_generated_tail_frames": 1,
     "rollouts_per_run": 4,

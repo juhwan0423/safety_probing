@@ -64,7 +64,7 @@ def load_video_tensor(
     frame_directory: str | Path,
     *,
     frame_count: int = 20,
-    source_frame_count: int = 57,
+    source_frame_count: int = 65,
     resolution: int = 384,
 ):
     try:
@@ -103,13 +103,17 @@ def encoder_smoke_test(
     checkpoint: str | Path,
     version: str,
     frame_directory: str | Path,
+    source_frame_count: int = 65,
     device: str = "cuda",
 ) -> dict[str, Any]:
     import torch
 
     resolution = 384 if version == "2.1" else 256
     video, indices = load_video_tensor(
-        frame_directory, frame_count=20, source_frame_count=57, resolution=resolution
+        frame_directory,
+        frame_count=20,
+        source_frame_count=source_frame_count,
+        resolution=resolution,
     )
     encoder, _ = load_vjepa(
         code_root=code_root,

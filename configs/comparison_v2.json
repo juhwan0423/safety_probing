@@ -1,17 +1,17 @@
 {
-  "protocol": "cctv_future_safety_comparison_v1",
-  "label_schema_version": "censor-aware-lateral-tip-v2",
+  "protocol": "cctv_future_safety_comparison_v2",
+  "label_schema_version": "censor-aware-lateral-tip-v3",
   "hardware_profiles": "configs/hardware_profiles.json",
   "manifest": "artifacts/current/manifests/canonical_runs.jsonl",
   "camera": "main_fixed_northwest",
   "observation": {
     "start_time_s": 0.0,
-    "end_time_s": 2.375,
+    "end_time_s": 2.7083333333333335,
     "source_fps": 24.0,
-    "source_frame_count": 57
+    "source_frame_count": 65
   },
   "target": {
-    "start_time_s": 2.375,
+    "start_time_s": 2.7083333333333335,
     "end_time_s": 5.0,
     "binary_positive": "observed_tip",
     "binary_negative": "confirmed_recovered",

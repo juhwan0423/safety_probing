@@ -1,5 +1,5 @@
 {
-  "experiment": "qwen_3_6_direct_cctv_safety_v1",
+  "experiment": "qwen_3_6_direct_cctv_safety_v2",
   "comparison_group": "direct-semantic",
   "model_registry_key": "qwen_3_6",
   "execution": {
@@ -12,9 +12,9 @@
     "type": "video_prefix",
     "camera": "main_fixed_northwest",
     "start_time_s": 0.0,
-    "end_time_s": 2.375,
+    "end_time_s": 2.7083333333333335,
     "fps": 24,
-    "frame_count": 57,
+    "frame_count": 65,
     "hidden_metadata_allowed": false,
     "numeric_action_allowed": false
   },
@@ -45,5 +45,5 @@
     "required": ["predicted_outcome", "tip_probability"],
     "additionalProperties": false
   },
-  "prompt": "You are given only a fixed CCTV video prefix from 0.0 to 2.375 seconds. Predict whether the same forklift will exhibit a sustained lateral tip or wheel-lift instability before 5.0 seconds. Do not infer or invent hidden payload metadata. Return exactly one JSON object and no other text: {\"predicted_outcome\": \"observed_tip\" or \"confirmed_recovered\", \"tip_probability\": number from 0 to 1}."
+  "prompt": "You are given only a fixed CCTV video prefix from 0.0 to 2.7083 seconds. Predict whether the same forklift will exhibit a sustained lateral tip or wheel-lift instability before 5.0 seconds. Do not infer or invent hidden payload metadata. Return exactly one JSON object and no other text: {\"predicted_outcome\": \"observed_tip\" or \"confirmed_recovered\", \"tip_probability\": number from 0 to 1}."
 }

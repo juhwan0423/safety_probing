@@ -349,6 +349,7 @@ def audit_protocol(source: SplitSource, protocol: dict[str, Any]) -> dict[str, A
                     "pair_ids": sorted(pair_ids),
                 }
             )
+    condition_leaks.sort(key=lambda row: row["condition_id"])
 
     mirror_mismatches = 0
     for pair_ids in source.mirror_to_pairs.values():

@@ -28,8 +28,8 @@ encode해 작은 temporal safety readout을 학습하고, 같은 readout을 LTX 
 ## 공통 데이터 계약
 
 - Camera: `main_fixed_northwest`
-- Observation: 0.0-2.375 s, source 24 FPS, 57 frames
-- Target: 2.375-5.0 s
+- Observation: 0.0-2.7083 s, source 24 FPS, 65 frames
+- Target: 2.7083-5.0 s
 - Positive: `observed_tip`
 - Negative: `confirmed_recovered`
 - Binary excluded: `right_censored`
@@ -39,9 +39,10 @@ encode해 작은 temporal safety readout을 학습하고, 같은 readout을 LTX 
 Qwen과 LTX prompt에는 mass, CoM, route label, 정답 label을 넣지 않는다. V-JEPA predictor에도 RGB와
 공통 action ablation 이외의 physics metadata를 넣지 않는다.
 
-57프레임은 LTX video VAE의 시간축 조건 `(frames - 1) % 8 == 0`을 만족한다. LTX는 내부적으로
-121프레임을 만들고, prefix 뒤의 64 generated frames 중 마지막 1프레임을 버려 실제 데이터의 남은
-63프레임과 비교한다. Qwen과 V-JEPA도 같은 57프레임까지만 볼 수 있다.
+65프레임은 LTX video VAE의 시간축 조건 `(frames - 1) % 8 == 0`을 만족한다. LTX는 내부적으로
+121프레임을 만들고, prefix 뒤의 56 generated frames 중 마지막 1프레임을 버려 실제 데이터의 남은
+55프레임과 비교한다. Qwen과 V-JEPA도 같은 65프레임까지만 볼 수 있다. 이 boundary는 2.0초 steering
+onset 이후 약 0.7초를 포함하지만 가장 빠른 definitive event 2.958초보다 앞선다.
 
 ## 실행 단계
 

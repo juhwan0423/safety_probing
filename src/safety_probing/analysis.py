@@ -1079,6 +1079,7 @@ def analyze_dataset(config: DatasetConfig, *, scan_dense: bool = True) -> dict[s
             "expected_run_count": int(config.expected["run_count"]),
             "expected_physics_rows_per_run": expected_rows,
             "expected_rgb_frames_per_camera_per_run": expected_rgb_frames,
+            "expected_rgb_fps": float(config.expected["rgb_fps"]),
             "expected_camera_names": list(expected_cameras),
             "labeling": {
                 "schema_version": config.labeling.schema_version,

@@ -42,6 +42,9 @@ def render_statistics_markdown(stats: dict[str, Any]) -> str:
     rgb = stats["rgb"]
     splits = stats["splits"]
     provenance = stats["provenance"]
+    observation_end_s = float(dataset["labeling"]["observation_end_s"])
+    rgb_fps = float(dataset["expected_rgb_fps"])
+    observation_frames = round(observation_end_s * rgb_fps)
 
     def outcome_rate(outcomes: dict[str, int]) -> float | None:
         tip = outcomes.get("observed_tip", 0)
@@ -373,8 +376,9 @@ def render_statistics_markdown(stats: dict[str, Any]) -> str:
             f"- Canonical deduplicated run manifest: `{stats['artifacts']['canonical_run_manifest']}` "
             f"({runs['unique_physical_condition_count']:,} conditions)",
             "- Primary visual input: `main_fixed_northwest`",
-            "- Primary observation window: `0.0-2.375 s` (57 frames at 24 FPS)",
-            "- Primary future target window: `2.375-5.0 s`",
+            f"- Primary observation window: `0.0-{observation_end_s:.4f} s` "
+            f"({observation_frames} frames at {rgb_fps:g} FPS)",
+            f"- Primary future target window: `{observation_end_s:.4f}-5.0 s`",
             "- Primary pairwise subset: `gold`, with `silver/bronze` used for margin regression/control",
             "- `reject` pairs are retained in raw storage but excluded from primary probing",
             "",

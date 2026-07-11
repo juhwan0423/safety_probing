@@ -32,7 +32,7 @@ class DenseAnalysisTest(unittest.TestCase):
         rows = [
             {
                 "episode_step": 0,
-                "sim_time": 2.4,
+                "sim_time": 2.6,
                 "roll_deg": 1.0,
                 "pitch_deg": 0.5,
                 "wheel_contact_count": 3,
@@ -50,7 +50,7 @@ class DenseAnalysisTest(unittest.TestCase):
             },
             {
                 "episode_step": 1,
-                "sim_time": 2.6,
+                "sim_time": 3.0,
                 "roll_deg": 3.0,
                 "pitch_deg": 1.0,
                 "wheel_contact_count": 3,

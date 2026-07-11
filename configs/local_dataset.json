@@ -13,8 +13,8 @@
   "output_dir": "artifacts/current",
   "statistics_document": "docs/DATASET_STATISTICS_KO.md",
   "labeling": {
-    "schema_version": "censor-aware-lateral-tip-v2",
-    "observation_end_s": 2.375,
+    "schema_version": "censor-aware-lateral-tip-v3",
+    "observation_end_s": 2.7083333333333335,
     "roll_tip_threshold_deg": 20.0,
     "support_loss_contact_count_lt": 3,
     "support_loss_grace_steps": 6,

@@ -96,6 +96,6 @@ Video requests use base64 data URIs, so the client and DGX Spark do not need a
 shared filesystem. See `configs/hardware_profiles.json` for the enforced model
 assignment and the DGX Spark runbook for setup details.
 
-The shared CCTV observation contract is 57 frames at 24 FPS (2.375 seconds).
+The shared CCTV observation contract is 65 frames at 24 FPS (2.7083 seconds).
 LTX uses an internal 121-frame sequence because its temporal VAE requires `8n+1`
-frames; only the matching 63 future frames are scored.
+frames; only the matching 55 future frames are scored.

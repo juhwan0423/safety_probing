@@ -44,13 +44,17 @@ left-to-right와 right-to-left를 각각 따로 제공한다.
 | 항목 | 값 |
 |---|---|
 | Camera | `main_fixed_northwest` |
-| Observation | 0.0-2.375 s, 57 source frames |
+| Observation | 0.0-2.7083 s, 65 source frames |
 | Source FPS | 24 |
 | Probe sampling | 20 uniformly spaced frames |
 | Input tokens before encoder pooling | 20 frames |
-| Future target | 2.375-5.0 s |
+| Future target | 2.7083-5.0 s |
 
-2.375초는 steering pulse 중간이다. 모델은 turn response 일부를 보지만 전도 결과는 보지 않는다.
+Steering pulse는 2.0초에 시작한다. 65-frame boundary의 마지막 영상 timestamp는 약 2.667초이므로
+모델은 약 17개의 조향 구간 RGB frame과 명확한 초기 yaw response를 본다. 현재 데이터의 가장 빠른
+definitive event는 2.958초이므로 event 자체는 observation에 들어가지 않는다. 57-frame 계약은 마지막
+timestamp가 약 2.333초라 yaw 변화가 2-3도에 그쳐 LTX가 직진 continuation을 생성하는 문제가 있어
+폐기했다.
 현재 합쳐진 데이터의 가장 빠른 post-hoc failure는 2.958초이므로 최소 약 0.583초의 prediction lead
 time이 있다. 57프레임 경계는 LTX temporal VAE의 `8n+1` 조건도 만족한다.
 
@@ -126,7 +130,7 @@ Linear pooling probe와 temporal mean-pooling MLP를 반드시 하위 baseline�
 
 ### T2. Future minimum outward ZMP margin
 
-- Target: `[2.375, 5.0]`에서 `outward_lateral_margin_valid=true`인 row의 최소값
+- Target: `[2.7083, 5.0]`에서 `outward_lateral_margin_valid=true`인 row의 최소값
 - Metrics: MAE, RMSE, Spearman correlation
 - Missing target: valid row가 하나도 없으면 regression loss에서 제외하고 count 보고
 - `margin < 0`을 tip-over threshold로 사용하지 않음. Threshold calibration이 필요하면 train split만 사용

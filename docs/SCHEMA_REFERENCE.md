@@ -158,14 +158,14 @@ roller_front_right
 
 | Derived field | Type | 의미 |
 |---|---|---|
-| `label_schema_version` | string | 현재 `censor-aware-lateral-tip-v2` |
+| `label_schema_version` | string | 현재 `censor-aware-lateral-tip-v3` |
 | `safety_outcome` | enum | `observed_tip`, `confirmed_recovered`, `right_censored` |
 | `binary_tip_label` | 0/1/null | censored는 `null` |
 | `event_observed`, `failure_time_s` | bool, s | event 관측 여부와 최초 확인 시간 |
 | `censor_time_s`, `followup_time_s` | s/null | survival target용 시간 |
 | `source_tip_over` | bool | raw metadata detector 결과 |
 | `upgraded_from_source` | bool | dense support-loss rule로 승격됐는지 여부 |
-| `future_prediction_eligible` | bool | 2.375초(57-frame) 관측 prefix 기반 binary target 사용 가능 여부 |
+| `future_prediction_eligible` | bool | 2.7083초(65-frame) 관측 prefix 기반 binary target 사용 가능 여부 |
 
 `pairs.jsonl`의 `quality_tier`와 `tip_state_transition`은 파생 label로 다시 계산된다.
 `source_quality_tier`, `source_tip_state_transition`에는 simulator metadata 값을 보존한다.

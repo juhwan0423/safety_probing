@@ -1,6 +1,6 @@
 # LTX Decode-Re-encode Round-trip Experiment
 
-작성일: 2026-07-14  
+작성일: 2026-07-14
 상태: 실험 완료, 현재 논문 `main`에는 미반영
 
 ## 1. 목적

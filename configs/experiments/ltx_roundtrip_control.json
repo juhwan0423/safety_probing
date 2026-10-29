@@ -1,0 +1,39 @@
+{
+  "experiment": "ltx_2_3_decode_reencode_control_v1",
+  "protocol_version": "roundtrip_v1",
+  "primary_model_registry_key": "ltx_2_3",
+  "safety_query_experiment": "configs/experiments/ltx_safety_query.json",
+  "splits": ["val", "test"],
+  "decoder_seeds": [17, 29, 43, 71],
+  "pathways": {
+    "gt_roundtrip": "simulator_rgb_to_vae_mean_to_decode_to_reencode",
+    "generated_roundtrip": "native_final_denoised_latent_to_decode_to_reencode"
+  },
+  "intermediate_pixels": {
+    "transport": "in_memory_tensor",
+    "codec": "none",
+    "decoder_range": [0.0, 1.0],
+    "encoder_range": [-1.0, 1.0],
+    "dtype": "bfloat16"
+  },
+  "temporal_contract": {
+    "source_frames": 120,
+    "internal_frames": 121,
+    "latent_frames": 16,
+    "evaluated_latent_start": 9,
+    "evaluated_latent_stop": 16,
+    "decode_scope": "full_16_latent_tokens",
+    "reencode_scope": "full_121_pixel_frames"
+  },
+  "tiling": "official_default",
+  "gt_decoder_seed_policy": "same_four_seeds_as_generated_rollouts",
+  "generated_decoder_seed_policy": "reuse_original_rollout_seed",
+  "condition_aggregation": "mean_predictions_across_decoder_seeds",
+  "probability_aggregation": "mean_probability",
+  "fixed_query_checkpoints": [17, 29, 43],
+  "control_validity_gate": {
+    "max_tip_auroc_drop": 0.02,
+    "max_primary_mae_ratio": 1.25,
+    "max_intervention_direction_accuracy_drop": 0.05
+  }
+}

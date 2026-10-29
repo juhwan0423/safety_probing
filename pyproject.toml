@@ -36,9 +36,28 @@ safety-model-smoke = "safety_probing.model_smoke:main"
 safety-qwen-smoke = "safety_probing.qwen_smoke:main"
 safety-qwen-vllm-smoke = "safety_probing.qwen_vllm_smoke:main"
 safety-ltx-smoke = "safety_probing.ltx_smoke:main"
+safety-vjepa-native = "safety_probing.vjepa_native:main"
+safety-vjepa-native-batch = "safety_probing.vjepa_native_batch:main"
+safety-vjepa-features = "safety_probing.vjepa_features:main"
+safety-vjepa-linear-probe = "safety_probing.vjepa_linear_probe:main"
+safety-vjepa-transformer-probe = "safety_probing.vjepa_transformer_probe:main"
+safety-vjepa-spatial-features = "safety_probing.vjepa_spatial_features:main"
+safety-query-targets = "safety_probing.safety_query_targets:main"
+safety-query-probe = "safety_probing.safety_query_probe:main"
+safety-query-controls = "safety_probing.safety_query_controls:main"
+safety-ltx-real-latents = "safety_probing.ltx_real_latents:main"
+safety-ltx-rollout-cache = "safety_probing.ltx_rollout_cache:main"
+safety-ltx-query = "safety_probing.ltx_safety_query:main"
+safety-ltx-roundtrip = "safety_probing.ltx_roundtrip:main"
+safety-ltx-roundtrip-evaluate = "safety_probing.ltx_roundtrip_evaluate:main"
+safety-full-shard-preflight = "safety_probing.full_shard_preflight:main"
+safety-freeze-protocol = "safety_probing.protocol_lock:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
 
 [[tool.uv.index]]
 name = "pytorch-cu128"

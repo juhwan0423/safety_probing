@@ -13,6 +13,7 @@ from typing import Any
 from .adapters.ltx_continuation import LTXContinuationRunner
 from .io_utils import load_json, write_json, write_jsonl
 from .smoke_inputs import encode_prefix_video
+from .vjepa_features import select_canonical_rows
 
 
 def _read_jsonl(path: Path) -> list[dict[str, Any]]:
@@ -37,14 +38,10 @@ def select_batch_rows(
     max_conditions: int | None = None,
     max_per_outcome: int | None = None,
 ) -> list[dict[str, Any]]:
-    dataset_name = (
-        f"eccv_workshop_grid_{shard}" if shard.startswith("part_") else shard
-    )
     selected = [
         row
-        for row in rows
-        if Path(str(row["dataset_root"])).name == dataset_name
-        and str(row["splits"][split_protocol]) in splits
+        for row in select_canonical_rows(rows, shard=shard)
+        if str(row["splits"][split_protocol]) in splits
     ]
     selected.sort(
         key=lambda row: (

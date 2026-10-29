@@ -30,9 +30,12 @@
     },
     {
       "name": "latent-predictive",
-      "model": "vjepa_2_1",
-      "secondary_model": "vjepa_2",
-      "experiment_config": "configs/experiments/vjepa_latent_predictive.json"
+      "native_model": "vjepa_2",
+      "probe_primary_model": "vjepa_2_1",
+      "probe_secondary_model": "vjepa_2",
+      "native_experiment_config": "configs/experiments/vjepa_native_future.json",
+      "linear_probe_config": "configs/experiments/vjepa_linear_probe.json",
+      "transformer_probe_config": "configs/experiments/vjepa_transformer_probe.json"
     }
   ],
   "shared_metrics": [
@@ -42,5 +45,10 @@
     "brier_score",
     "ece",
     "pairwise_accuracy"
+  ],
+  "latent_native_metrics": [
+    "mean_token_cosine_distance",
+    "smooth_l1",
+    "paired_candidate_retrieval_accuracy"
   ]
 }

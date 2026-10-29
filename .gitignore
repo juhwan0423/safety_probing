@@ -19,5 +19,7 @@ outputs/
 # Generated analysis and future feature caches can be regenerated.
 artifacts/current/
 artifacts/features/
+artifacts/targets/
 artifacts/checkpoints/
 artifacts/smoke_inputs/
+artifacts/preflight/

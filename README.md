@@ -1,128 +1,53 @@
-# Safety Probing
+# Physical Safety Queries
 
-`safety_probing` is the analysis and frozen-encoder probing workspace for the
-ExoFork-CF lateral tip-over dataset. It treats simulator outputs as read-only inputs.
+### Physical Safety Queries Reveal What Video World Models Forget
 
-## Current Scope
+[Project page](https://juhwanhan.shb06083.workers.dev/) · [Paper](https://juhwanhan.shb06083.workers.dev/assets/paper.pdf) · [Supplementary material](https://juhwanhan.shb06083.workers.dev/assets/supplementary.pdf)
 
-- audit all dataset shards and generate reproducible statistics
-- build split manifests without repeated physical-condition leakage
-- emit pair-level and run-level JSONL manifests for feature extraction
-- freeze the dataset specification and temporal probing protocol in Markdown
-- manage pinned LTX-2.3, Qwen3.6, and V-JEPA checkpoints
-- prepare deterministic CCTV prefix videos for model smoke tests
+A plausible video does not necessarily preserve the physical variables needed for a safety decision. This project probes frozen video representations with queries about load mass, center of mass, future roll, support geometry and tipping risk in simulated forklift maneuvers.
 
-## Quick Start
+**Physical Safety Queries (PSQ)** use a small query decoder over frozen features. The evaluation compares three views of the same physical task: an observed-prefix representation, a real-future representation, and a generated-future representation. Matched counterfactual pairs test whether changing a physical property changes the readout in the expected direction.
 
-```bash
-cd ~/isaac_ws/safety_probing
-uv sync --locked \
-  --extra vision-audit --extra model-prep --extra inference-core
+![Physical Safety Query architecture](docs/assets/psq-architecture.svg)
 
-.venv/bin/safety-probing all --config configs/local_dataset.json
-```
+## Main results
 
-Without installation:
+The paper's final evaluation uses **1,008 matched pairs / 2,016 runs**, grouped into **810 canonical conditions** with 570/120/120 train/validation/test conditions. These are the paper snapshot results; older development notes contain smaller pilot experiments.
 
-```bash
-PYTHONPATH=src python3 -m safety_probing all \
-  --config configs/local_dataset.json
-```
+| Query | V-JEPA observed prefix | LTX real future (oracle) | LTX generated future |
+|---|---:|---:|---:|
+| Load mass MAE ↓ | 19.9 kg | 14.5 kg | 95.5 kg |
+| Center-of-mass MAE ↓ | 0.055 m | 0.032 m | 0.183 m |
+| Future roll MAE ↓ | 3.60° | 2.25° | 16.16° |
+| ZMP margin MAE ↓ | 0.054 m | 0.032 m | 0.111 m |
+| Tipping AUROC ↑ | 0.997 | 1.000 | 0.761 |
 
-For a fast inventory that does not scan every dense CSV row:
+The real-future branch has access to the true future and measures a representation ceiling; it is not a deployable predictive baseline. Binary evaluation covers 117 test conditions after excluding three censored cases. The generated-future AUROC has a wide 95% interval, **[0.483, 0.904]**. See the paper for the hierarchical bootstrap, three probe initializations and four generation seeds per condition.
 
-```bash
-safety-probing analyze --config configs/local_dataset.json --metadata-only
-```
+High classification scores alone do not establish physical understanding. Route and speed can provide shortcuts, so the study also measures continuous physical errors, matched-pair ordering, feature interventions and an encode/decode round-trip control.
 
-## Outputs
+## Repository contents
 
-- `artifacts/splits/leakage_safe_splits.json`: condition-connected probing splits
-- `artifacts/current/dataset_statistics.json`: machine-readable statistics
-- `artifacts/current/manifests/pairs.jsonl`: counterfactual pair manifest
-- `artifacts/current/manifests/runs.jsonl`: run/clip manifest and targets
-- `artifacts/current/manifests/canonical_runs.jsonl`: one deterministic run per physical condition
-- `docs/DATASET_STATISTICS_KO.md`: generated human-readable report
+- **Dataset and protocol tools:** condition splits, target construction, validity masks and protocol locking.
+- **V-JEPA probes:** frozen feature extraction, linear and transformer controls, and spatial-token PSQ readouts.
+- **LTX probes:** real-future latent extraction, generated-rollout caching, PSQ evaluation and round-trip controls.
+- **Tests:** target geometry, data alignment, masking, protocol checks and probe behavior.
 
-`artifacts/current` is intentionally ignored because it can be regenerated. The split
-manifest is retained because it is part of the experimental protocol.
+The repository contains the experiment implementation. Model weights, simulation datasets, rollout caches and final trained checkpoints are separate assets; a fresh clone alone cannot reproduce the result table.
 
-## Adding Shards
+## Setup and checks
 
-Place or mount `eccv_workshop_grid_part_02` and `part_03` at the paths listed in
-`configs/local_dataset.json`, then rerun `safety-probing all`. Missing roots are reported,
-not treated as empty completed shards.
-
-## Documents
-
-- [Dataset Card](docs/DATASET_CARD_KO.md)
-- [Schema Reference](docs/SCHEMA_REFERENCE.md)
-- [Generated Statistics](docs/DATASET_STATISTICS_KO.md)
-- [Probing Protocol](docs/PROBING_PROTOCOL_KO.md)
-- [Model Experiment Plan](docs/MODEL_EXPERIMENT_PLAN_KO.md)
-- [Model Runtime Status](docs/MODEL_RUNTIME_STATUS_KO.md)
-- [DGX Spark Runbook](docs/DGX_SPARK_RUNBOOK_KO.md)
-- [LTX Prompt Audit](docs/LTX_PROMPT_AUDIT_KO.md)
-
-## Model Preparation
+Python 3.12 and `uv` are used for the experiment environment:
 
 ```bash
-.venv/bin/safety-models status --registry configs/model_registry.json
-.venv/bin/safety-models download --registry configs/model_registry.json
-.venv/bin/safety-smoke-inputs
-
-# LTX uses the official repository's separately locked runtime.
-cd external/LTX-2
-uv sync --frozen
-cd ../..
-
-.venv/bin/safety-model-smoke vjepa_2
-.venv/bin/safety-model-smoke vjepa_2_1
-PYTHONPATH=src external/LTX-2/.venv/bin/python -m safety_probing.ltx_smoke
+uv sync --locked --extra vision-audit --extra model-prep --extra inference-core
+PYTHONPATH=src uv run --with pytest python -m pytest tests -q
 ```
 
-Production workloads do not use CPU offload. LTX-2.3 and V-JEPA run on the RTX
-5090; Qwen3.6 runs on the DGX Spark through NVIDIA's ARM64 vLLM container.
+The inference extras install GPU model dependencies. For experiment configurations, commands and required data paths, start with the [development runbook](docs/DEVELOPMENT_RUNBOOK.md), [PSQ protocol](docs/PROBING_PROTOCOL_KO.md) and [LTX query protocol](docs/LTX_SAFETY_QUERY_PROTOCOL_KO.md). Development runbook measurements are historical pilots, not the final table above.
 
-```bash
-# Run on the DGX Spark after cloning this repository and downloading Qwen.
-scripts/start_qwen_vllm.sh
+## Authors
 
-# Run on this workstation. Replace the hostname with the DGX Spark address.
-export QWEN_VLLM_SERVER_URL=http://dgx-spark.local:8016
-.venv/bin/safety-qwen-vllm-smoke
-```
+Juhwan Han, Taehun Kim, Donghyu Lee, Sayhee Kim, Soo-Ho Jo and Byeng D. Youn.
 
-Video requests use base64 data URIs, so the client and DGX Spark do not need a
-shared filesystem. See `configs/hardware_profiles.json` for the enforced model
-assignment and the DGX Spark runbook for setup details.
-
-## LTX Shard 01 Batch
-
-The batch runner loads LTX once, generates all main-split validation/test
-rollouts for the local shard, and resumes from per-rollout JSON sidecars.
-The completed 800-rollout `prompt_v1` baseline is preserved at
-`outputs/ltx_v2/part_01`. The active action-aware prompt is still a candidate;
-do not launch another full batch until the oracle prompt smoke is reviewed.
-
-```bash
-# Reproduce the archived prompt_v1 selection without loading the model.
-PYTHONPATH=src external/LTX-2/.venv/bin/python \
-  -m safety_probing.ltx_batch \
-  --experiment configs/experiments/ltx_2_3_continuation_prompt_v1.json \
-  --shard part_01 --split val --split test --dry-run
-
-# Balanced six-rollout pilot for the active prompt candidate.
-PYTHONUNBUFFERED=1 PYTHONPATH=src external/LTX-2/.venv/bin/python \
-  -m safety_probing.ltx_batch \
-  --shard part_01 --split val --split test \
-  --max-per-outcome 2 --seed 17 \
-  --output-root outputs/ltx_prompt_v2_pilot
-```
-
-Outputs are keyed by `split/condition_id/seed`, with a consolidated
-`batch_manifest.jsonl` and `batch_summary.json` under the output root.
-
-The shared CCTV observation contract is 65 frames at 24 FPS (2.7083 seconds).
-LTX uses an internal 121-frame sequence because its temporal VAE requires `8n+1`
-frames; only the matching 55 future frames are scored.
+The project page provides the paper and presentation materials. No repository-wide license is declared here; upstream models and simulation assets have their own terms.

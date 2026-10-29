@@ -1,10 +1,14 @@
-# Frozen Encoder Transformer Probing Protocol
+# J1/J2/SQ Frozen Encoder Probing Protocol
 
 ## 1. 목적
 
 Frozen visual encoder가 forklift의 미래 횡방향 안전성을 표현하고 있는지 작은 temporal transformer로
 측정한다. Encoder fine-tuning 성능이 아니라 **고정된 representation의 linearly/temporally accessible
 safety information**을 평가한다.
+
+이 문서는 J1 linear probe, J2 transformer probe와 physical Safety Query(SQ)를 정의한다. Released
+V-JEPA predictor 자체를 학습 없이 평가하는 J0 native future retrieval은
+`MODEL_EXPERIMENT_PLAN_KO.md`의 별도 protocol을 따른다.
 
 ## 2. Data Unit
 
@@ -22,6 +26,10 @@ safety information**을 평가한다.
 - primary subset: `gold`
 - secondary subset: `silver`, `bronze`
 - 제외: `reject`
+
+위 filter는 outcome-risk ordering task에만 적용한다. Mass나 CoM의 실제 intervention delta를 묻는 SQ
+property task는 endpoint target이 존재하면 quality tier 및 stable/tip 조합과 무관하게 모든 pair를 사용한다.
+즉 `reject`는 binary near-boundary benchmark에는 부적합해도 물성 변화 방향 supervision에는 유효하다.
 
 ## 3. Leakage-Safe Splits
 
@@ -153,6 +161,28 @@ Linear pooling probe와 temporal mean-pooling MLP를 반드시 하위 baseline�
 - Metrics: concordance index와 time-dependent AUROC
 - 5초 종료 시 unresolved인 run을 stable negative로 강제하지 않음
 
+### T6. Physical Safety Query
+
+- V-JEPA input: frozen observation token grid `[B,10,12,12,1024]`
+- LTX oracle input: frozen real-future VAE latent `[B,7,10,18,128]`
+- LTX rollout input: frozen generated-future latent with the same geometry
+- Static targets: load mass, lateral load CoM
+- Time-indexed targets: roll/pitch, IMU, body velocity, system CoM, ZMP, outward margins
+- Contact targets: five contact presences and chassis-local positions
+- Derived geometry: support polygon area and centroid
+- Future summaries: minimum ZMP/CoM margin, maximum absolute roll, minimum contact count
+- Metrics: physical-unit MAE/RMSE, Spearman, contact F1/position error, polygon geometry error
+- Pair metrics: all eligible intervention pairs에서 mass/CoM delta direction, tier별 future-margin ordering
+
+ZMP 좌표와 margin은 `outward_lateral_margin_valid=true`인 dense row만 supervise한다. Missing target과
+right-censored binary label은 mask하고, observed contact F1처럼 label variation이 없는 metric은 primary
+evidence로 사용하지 않는다. 상세 query/coordinate 계약은 `Summary_to_Safety_Query.md`를 따른다.
+
+LTX query는 real future latent에서만 학습하고 generated latent에는 freeze해 적용한다. Oracle은 prediction이
+아니라 representation/readout ceiling으로 보고하며, LTX generated output과의 gap을 rollout information
+loss로 측정한다. LTX 전용 계약은 `LTX_SAFETY_QUERY_PROTOCOL_KO.md`, 결과는
+`Summary_to_LTX_Safety_Query.md`를 따른다.
+
 ## 8. Training Rules
 
 - 모든 normalization은 train split에서만 계산
@@ -162,6 +192,8 @@ Linear pooling probe와 temporal mean-pooling MLP를 반드시 하위 baseline�
 - hyperparameter budget을 encoder마다 동일하게 유지
 - run-level task에서 duplicate `condition_id`를 반복 sampling하지 않음
 - `reject` 포함/제외는 사전에 정한 ablation으로만 변경
+- Physical-property delta는 사전에 정의한 all-tier protocol을 사용하고 outcome-risk Gold metric과 섞지 않음
+- SQ는 zero/permuted/spatial-mean/temporal-mean/reverse-time feature intervention을 함께 보고
 
 ## 9. Reporting Table
 
@@ -181,3 +213,5 @@ seed 3개 이상에서 계산한다.
 4. mean-pool MLP와 linear baseline
 5. temporal transformer probe
 6. main 및 cross-direction evaluation runner
+7. spatial Safety Query target/cache/query decoder 및 intervention controls
+8. LTX real-future oracle과 generated-rollout frozen-query comparison

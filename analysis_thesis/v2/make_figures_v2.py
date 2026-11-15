@@ -49,9 +49,10 @@ sm = t["future_summary_mask"][te, 0].astype(bool)
 r["zmp"] = scatter(ax[3], t["future_summary"][te, 0][sm] * 100, P["future_summary"][:, 0][sm] * 100, "cm", "minimum ZMP margin", None, f"MAE {res['zmp_mae_m']['point'] * 100:.1f} cm") if False else None
 y, p = t["future_summary"][te, 0] * 100, P["future_summary"][:, 0] * 100
 ax[3].scatter(y[sm & ~tip], p[sm & ~tip], s=11, color=ts.REC, alpha=0.75, linewidths=0); ax[3].scatter(y[sm & tip], p[sm & tip], s=13, color=ts.TIP, alpha=0.75, linewidths=0, marker="^")
-lo, hi = min(y[sm].min(), p[sm].min()), max(y[sm].max(), p[sm].max()); pad = 0.04 * (hi - lo)
+lo, hi = np.quantile(np.r_[y[sm], p[sm]], [0.01, 0.99]); pad = 0.06 * (hi - lo)          # robust range: a few runs have extreme margins
 ax[3].plot([lo - pad, hi + pad], [lo - pad, hi + pad], color=ts.INK, lw=0.8, ls="--"); ax[3].set_xlim(lo - pad, hi + pad); ax[3].set_ylim(lo - pad, hi + pad); ax[3].set_aspect("equal", adjustable="box")
-r["zmp"] = 1 - np.sum((p[sm] - y[sm]) ** 2) / np.sum((y[sm] - y[sm].mean()) ** 2)
+inr = sm & (y >= lo) & (y <= hi)
+r["zmp"] = 1 - np.sum((p[inr] - y[inr]) ** 2) / np.sum((y[inr] - y[inr].mean()) ** 2)                 # R2 within the plotted range
 ax[3].set_xlabel("true (cm)"); ax[3].set_title("minimum ZMP margin", fontsize=9); ax[3].text(0.04, 0.96, f"MAE {res['zmp_mae_m']['point'] * 100:.1f} cm\n$R^2$ = {r['zmp']:.2f}", transform=ax[3].transAxes, va="top", fontsize=8.5)
 ax[0].set_ylabel("predicted from the observed video")
 handles, labels = ax[0].get_legend_handles_labels()

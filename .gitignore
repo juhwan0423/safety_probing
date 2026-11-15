@@ -19,5 +19,15 @@ outputs/
 # Generated analysis and future feature caches can be regenerated.
 artifacts/current/
 artifacts/features/
+artifacts/targets/
 artifacts/checkpoints/
 artifacts/smoke_inputs/
+artifacts/preflight/
+
+# Thesis-extension analysis: scripts, figures and JSON summaries are tracked;
+# prediction arrays, checkpoints and the v2 feature/target caches are not.
+artifacts/v2/
+artifacts/v2_test/
+analysis_thesis/out/*.npz
+analysis_thesis/out/*.npy
+analysis_thesis/out/*.pt

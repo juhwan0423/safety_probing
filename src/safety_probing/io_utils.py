@@ -28,3 +28,17 @@ def write_jsonl(path: Path, rows: Iterable[dict[str, Any]]) -> None:
     text = "".join(json.dumps(row, sort_keys=True) + "\n" for row in rows)
     write_text_atomic(path, text)
 
+
+def write_torch_atomic(path: Path, payload: Any) -> None:
+    import torch
+
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with tempfile.NamedTemporaryFile(
+        suffix=".pt", dir=path.parent, delete=False
+    ) as handle:
+        temporary_path = Path(handle.name)
+    try:
+        torch.save(payload, temporary_path)
+        temporary_path.replace(path)
+    finally:
+        temporary_path.unlink(missing_ok=True)

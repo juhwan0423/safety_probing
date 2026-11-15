@@ -1,0 +1,113 @@
+{
+  "experiment": "vjepa_physical_safety_query_v1",
+  "comparison_group": "latent-predictive",
+  "stage": "SQ1_SQ2_SQ3_physical_query",
+  "primary_model_registry_key": "vjepa_2_1",
+  "input": {
+    "camera": "main_fixed_northwest",
+    "start_time_s": 0.0,
+    "end_time_s": 2.7083333333333335,
+    "source_fps": 24,
+    "source_frame_count": 65,
+    "sampled_frame_count": 20,
+    "sampling": "uniform_inclusive"
+  },
+  "feature_cache": {
+    "source_spatial_grid": 24,
+    "cached_spatial_grid": 12,
+    "spatial_reduction": "fixed_2x2_mean",
+    "temporal_tokens": 10,
+    "feature_dim": 1024,
+    "dtype": "float16",
+    "encoder_frozen": true
+  },
+  "targets": {
+    "coordinate_frame": "forklift_yaw_local",
+    "rgb_frame_time_s": "(frame_index + 1) / source_fps",
+    "tubelet_target_time": "mean_of_two_sampled_frame_times",
+    "future_source_start_index": 65,
+    "future_source_end_index": 119,
+    "future_sampled_frame_count": 20,
+    "static": [
+      "load_mass_kg",
+      "load_com_lateral_m"
+    ],
+    "state": [
+      "roll_deg",
+      "pitch_deg",
+      "imu_ang_vel_x",
+      "imu_ang_vel_y",
+      "imu_ang_vel_z",
+      "linear_vel_body_x",
+      "linear_vel_body_y",
+      "linear_vel_body_z",
+      "imu_lin_acc_x",
+      "imu_lin_acc_y",
+      "imu_lin_acc_z",
+      "system_com_body_x",
+      "system_com_body_y",
+      "system_com_body_z",
+      "zmp_body_x",
+      "zmp_body_y",
+      "zmp_outward_margin_m",
+      "com_outward_margin_m"
+    ],
+    "contacts": [
+      "back_wheel",
+      "roller_back_left",
+      "roller_back_right",
+      "roller_front_left",
+      "roller_front_right"
+    ],
+    "contact_values": [
+      "is_active",
+      "position_body_x",
+      "position_body_y"
+    ],
+    "future_summary": [
+      "min_zmp_outward_margin_m",
+      "min_com_outward_margin_m",
+      "max_abs_roll_deg",
+      "min_contact_count"
+    ],
+    "binary": "future_tip_over",
+    "right_censored_binary_loss": "masked"
+  },
+  "query_decoder": {
+    "model_dim": 128,
+    "layers": 2,
+    "heads": 4,
+    "feedforward_dim": 256,
+    "dropout": 0.1,
+    "activation": "gelu",
+    "query_layout": {
+      "static": 2,
+      "observed_state": 10,
+      "future_state": 10,
+      "observed_contacts": 50,
+      "future_contacts": 50,
+      "future_summary": 1
+    }
+  },
+  "training": {
+    "seeds": [17, 29, 43],
+    "batch_size": 8,
+    "learning_rate": 0.0003,
+    "weight_decay": 0.01,
+    "max_epochs": 120,
+    "patience": 20,
+    "gradient_clip_norm": 1.0,
+    "model_selection": "validation_total_normalized_loss",
+    "loss_weights": {
+      "static": 1.0,
+      "observed_state": 1.0,
+      "future_state": 1.0,
+      "observed_contact_presence": 0.5,
+      "observed_contact_position": 0.5,
+      "future_contact_presence": 0.5,
+      "future_contact_position": 0.5,
+      "future_summary": 1.0,
+      "future_tip": 0.5
+    }
+  }
+}

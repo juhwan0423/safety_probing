@@ -1,0 +1,68 @@
+{
+  "experiment": "vjepa_frozen_transformer_probe_v1",
+  "comparison_group": "latent-predictive",
+  "stage": "J2_transformer_probe",
+  "primary_model_registry_key": "vjepa_2_1",
+  "secondary_model_registry_key": "vjepa_2",
+  "input": {
+    "camera": "main_fixed_northwest",
+    "start_time_s": 0.0,
+    "end_time_s": 2.7083333333333335,
+    "source_fps": 24,
+    "source_frame_count": 65,
+    "sampled_frame_count": 20,
+    "sampling": "uniform_inclusive"
+  },
+  "representation": {
+    "source": "observed_prefix_encoder_tokens",
+    "encoder_frozen": true,
+    "cache_dtype": "float16",
+    "cache_temporal_tokens": 10,
+    "spatial_pooling": "fixed_mean_per_temporal_tubelet",
+    "normalization": "train_split_token_channel_zscore",
+    "temporal_order": "chronological"
+  },
+  "probe": {
+    "type": "temporal_transformer",
+    "layers": 2,
+    "heads": 4,
+    "model_dim": 256,
+    "feedforward_dim": 512,
+    "dropout": 0.1,
+    "activation": "gelu",
+    "norm_first": true,
+    "pooling": "fixed_mean_over_encoded_temporal_tokens",
+    "tasks": [
+      "future_tip_over",
+      "future_min_outward_zmp_margin_m",
+      "pairwise_counterfactual_risk"
+    ]
+  },
+  "controls": {
+    "mean_pool_mlp": {
+      "pooling": "fixed_mean_before_trainable_layers",
+      "hidden_dim": 256,
+      "layers": 1,
+      "activation": "gelu",
+      "dropout": 0.1
+    },
+    "reversed_order": {
+      "operation": "reverse_tubelets_at_inference",
+      "retraining": false
+    }
+  },
+  "training": {
+    "seeds": [17, 29, 43],
+    "learning_rate": 0.0003,
+    "weight_decay": 0.01,
+    "batch_size": 64,
+    "max_epochs": 300,
+    "patience": 40,
+    "gradient_clip_norm": 1.0,
+    "classification_early_stopping_metric": "validation_pairwise_accuracy_then_auroc",
+    "regression_early_stopping_metric": "validation_rmse",
+    "binary_class_weight": "train_split_neg_over_pos",
+    "decision_threshold": "maximize_validation_balanced_accuracy",
+    "temporal_order_control": "reverse_tubelets_at_inference"
+  }
+}

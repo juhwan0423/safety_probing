@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "protocol_id": "physical-safety-query-workshop-v1",
+  "created_at_utc": "2026-07-12T00:23:58.305822+00:00",
+  "scope": "Architecture, targets, prompts, seeds, metrics, and split are frozen after the shard-01 exploratory analysis. Part 02/03 complete the same generation grid and are not independent confirmatory test shards.",
+  "paper_scope": "V-JEPA prefix Safety Query versus prompt-v1 LTX generated Safety Query",
+  "label_schema": "censor-aware-lateral-tip-v3",
+  "query_seeds": {
+    "vjepa": [
+      17,
+      29,
+      43
+    ],
+    "ltx": [
+      17,
+      29,
+      43
+    ],
+    "ltx_rollout": [
+      17,
+      29,
+      43,
+      71
+    ]
+  },
+  "source_git": {
+    "commit": "bff2af839887a93e911db9aa3f81a933d20182d5",
+    "branch": "main",
+    "dirty": true,
+    "status_sha256": "4f7e997a8b834e3db53c02099c3062685a792a54ef52e28ab31f669769560343"
+  },
+  "files": [
+    {
+      "path": "configs/local_dataset.json",
+      "sha256": "6d64bdd1392d53828af859be5afc46c406d15b0b2eebeed38919375f8b7709b6",
+      "bytes": 1534
+    },
+    {
+      "path": "configs/model_registry.json",
+      "sha256": "d75a5f9f8811cb192d4453a3c263ce33b257f0bb552dcd88ee570a7133a701ac",
+      "bytes": 4183
+    },
+    {
+      "path": "configs/experiments/vjepa_safety_query.json",
+      "sha256": "80b6317193cb71eca69f65da0950711ca1ffe4d4e088fda668175d2a6b61e60c",
+      "bytes": 2872
+    },
+    {
+      "path": "configs/experiments/ltx_safety_query.json",
+      "sha256": "586cc7e8bebeff2172d907cce466ef835062e5d85a7232c4198997313268c875",
+      "bytes": 3184
+    },
+    {
+      "path": "configs/experiments/ltx_2_3_continuation_prompt_v1.json",
+      "sha256": "984ce840693d1c352b53c0cb600048f95c02cd8914476c24c7c079f7f0febd47",
+      "bytes": 1571
+    },
+    {
+      "path": "artifacts/splits/leakage_safe_splits.json",
+      "sha256": "882d26fa1d8b4eb200a62c753ae080a42ede2a8c65ccfc182ca02bb869be486c",
+      "bytes": 206214
+    },
+    {
+      "path": "src/safety_probing/vjepa_features.py",
+      "sha256": "58094ba9a46e92bf6cb97a7800e35b1122858af539aadf8a207a5f93a3eda5e3",
+      "bytes": 10982
+    },
+    {
+      "path": "src/safety_probing/vjepa_spatial_features.py",
+      "sha256": "975ce49682e1283e25e694d18fa8a3275daf71d18c9c2db3463a8e3ce68bdf52",
+      "bytes": 10058
+    },
+    {
+      "path": "src/safety_probing/safety_query_targets.py",
+      "sha256": "3c196701a309dad926cfc4090ab428533322eb9b039b1a6c21a6b5322c8f3757",
+      "bytes": 18737
+    },
+    {
+      "path": "src/safety_probing/safety_query_probe.py",
+      "sha256": "2286ff2878ae7165878bf27e8607a06357512339a75158dd976aac0d2556b7b5",
+      "bytes": 39276
+    },
+    {
+      "path": "src/safety_probing/safety_query_controls.py",
+      "sha256": "b67568c17d66e0e84ae878e3ad5d96bbaea82e665777f3f2c6a12e7bc7e81f50",
+      "bytes": 10478
+    },
+    {
+      "path": "src/safety_probing/ltx_batch.py",
+      "sha256": "ccca339bd2e0f316cc47f99877d409983fb28e2bfb129e354f687d9ec1547cf9",
+      "bytes": 14047
+    },
+    {
+      "path": "src/safety_probing/ltx_real_latents.py",
+      "sha256": "c246a798484a8710767d53d5e804cbd9d8c8221dea3aec8119514adedf4fd034",
+      "bytes": 15398
+    },
+    {
+      "path": "src/safety_probing/ltx_rollout_cache.py",
+      "sha256": "c6de01d3fec2c871dd32f88792d3162c00c14b6d27369f8623ab0cb43c0e07ab",
+      "bytes": 7830
+    },
+    {
+      "path": "src/safety_probing/ltx_safety_query.py",
+      "sha256": "42e501fe094969030766493ca1086c0fff5d9fd685fc6715b585493a374a7a3c",
+      "bytes": 32888
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+ "n": 800,
+ "n_pairs": 400,
+ "mass_mae_kg": {
+  "point": 118.45841668446859,
+  "seed_sd": 0.1449206939407335,
+  "ci_low": 112.90472285350164,
+  "ci_high": 124.04403729136783,
+  "n": 800,
+  "n_clusters": 400
+ },
+ "com_mae_m": {
+  "point": 0.12139370020629332,
+  "seed_sd": 0.000501221598721345,
+  "ci_low": 0.11571722440067728,
+  "ci_high": 0.1271689278754784,
+  "n": 800,
+  "n_clusters": 400
+ },
+ "roll_mae_deg": {
+  "point": 7.173434220234554,
+  "seed_sd": 0.16248871217252875,
+  "ci_low": 6.605974105072023,
+  "ci_high": 7.766433113727965,
+  "n": 800,
+  "n_clusters": 400
+ },
+ "zmp_mae_m": {
+  "point": 0.04977595730199633,
+  "seed_sd": 0.0011028037597536715,
+  "ci_low": 0.04245944928127574,
+  "ci_high": 0.058158407329901816,
+  "n": 800,
+  "n_clusters": 400
+ },
+ "tip_auroc": {
+  "point": 0.953731634527089,
+  "seed_sd": 0.0013801854508057557,
+  "ci_low": 0.9361069830633872,
+  "ci_high": 0.9695422512064904,
+  "n": 770,
+  "positive_n": 440,
+  "negative_n": 330,
+  "n_clusters": 396
+ },
+ "tip_rate": 0.5714285714285714,
+ "mass_r2": -0.0034439563751220703,
+ "mass_slope": 0.002308723917748672,
+ "mass_pearson": 0.025822543867711916,
+ "com_r2": -0.013087749481201172,
+ "com_slope": -0.0017496475623257537,
+ "com_pearson": -0.01787660750084416,
+ "mass_direction": {
+  "point": 0.5,
+  "seed_sd": 0.0,
+  "ci_low": 0.5,
+  "ci_high": 0.5,
+  "n": 200,
+  "n_clusters": 200
+ },
+ "com_direction": {
+  "point": 0.5,
+  "seed_sd": 0.0,
+  "ci_low": 0.5,
+  "ci_high": 0.5,
+  "n": 200,
+  "n_clusters": 200
+ },
+ "gold_zmp_ordering": {
+  "point": 0.5,
+  "seed_sd": 0.0,
+  "ci_low": 0.5,
+  "ci_high": 0.5,
+  "n": 53,
+  "n_clusters": 53
+ },
+ "n_outcome_flip_pairs": 53,
+ "outcome_flip": {
+  "point": 0.5,
+  "seed_sd": 0.0,
+  "ci_low": 0.5,
+  "ci_high": 0.5,
+  "n": 53,
+  "n_clusters": 53
+ },
+ "train_mean_baseline": {
+  "mass_mae_kg": 118.21079084396362,
+  "com_mae_m": 0.12047005194064696,
+  "zmp_mae_m": 0.06942446214612573,
+  "roll_mae_deg": 16.0362831441164
+ },
+ "counts": {
+  "runs": 800,
+  "pairs": 400,
+  "folds": 5
+ }
+}

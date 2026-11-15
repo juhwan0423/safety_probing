@@ -1,0 +1,337 @@
+{
+ "seed": 7,
+ "headless": true,
+ "physics_dt": 0.013888888888888888,
+ "settle_steps": 12,
+ "assets": {
+  "forklift_usd": "/home/jude/isaac_ws/ExoFork-CF/project_march/assets_custom/forklift_b_sensors.usd",
+  "forklift_prim_path": "/World/forklift/forklift_b_sensors",
+  "physics_scene_path": "/World/physicsScene",
+  "load_prim_path": "/World/forklift_load",
+  "base_link_prim_path": "/World/forklift/forklift_b_sensors/forklift_b_sensor/body",
+  "fork_attachment_hint": "fork",
+  "wheel_prim_paths": [],
+  "wheel_joint_names": [],
+  "rgb_camera_parent": "/World/forklift"
+ },
+ "logging": {
+  "log_every_n_steps": 1,
+  "enable_rgb": false,
+  "rgb_fps": 24.0,
+  "camera_resolution": [
+   1280,
+   720
+  ],
+  "camera_position": [
+   -4.5,
+   -10.0,
+   2.4
+  ],
+  "camera_look_at": [
+   0.0,
+   1.2,
+   0.9
+  ],
+  "cameras": [
+   {
+    "name": "main_fixed_northwest",
+    "position": [
+     -15.346830973625183,
+     13.003208050727844,
+     7.017415461540223
+    ],
+    "look_at": [
+     -2.384030759334564,
+     0.04040783643722534,
+     1.25
+    ],
+    "resolution": [
+     1280,
+     720
+    ],
+    "horizontal_fov_deg": 64.0,
+    "parent": null
+   },
+   {
+    "name": "top_fixed_debug",
+    "position": [
+     -2.384030759334564,
+     0.04040783643722534,
+     32.0
+    ],
+    "look_at": [
+     -2.384030759334564,
+     0.04040783643722534,
+     0.0
+    ],
+    "resolution": [
+     1280,
+     720
+    ],
+    "horizontal_fov_deg": 55.0,
+    "parent": null
+   }
+  ],
+  "lateral_margin_turn_grace_steps": 6
+ },
+ "detector": {
+  "roll_tip_threshold_deg": 20.0,
+  "pitch_tip_threshold_deg": 89.0,
+  "min_wheel_contact_count": 2,
+  "wheel_lift_grace_steps": 6,
+  "stop_after_tip": false
+ },
+ "dataset_root": "/tmp/claude-1000/-home-jude-CWM-paper-Safety-Probing-paper/5cac92e9-e766-4a1e-8e3f-878bac5861e4/scratchpad/probe_dataset_root",
+ "scenes": [
+  {
+   "scenario_id": "probe_0",
+   "description": "probe mass 240.0 offset 0.0",
+   "stage_units_in_meters": 1.0,
+   "light_intensity": 5000.0,
+   "spawn_load": true,
+   "load_size_m": [
+    1.2,
+    0.9,
+    0.9
+   ],
+   "load_base_mass_kg": 240.0,
+   "load_base_offset_m": [
+    0.0,
+    0.3,
+    0.01
+   ],
+   "load_spawn_lift_m": 2.05,
+   "fallback_load_spawn_offset_m": [
+    0.0,
+    1.6,
+    2.51
+   ],
+   "load_density": 1.0,
+   "load_attachment_mode": "fixed_to_fork",
+   "notes": "ForkSafe-CF v2. Only mass or hidden load-local lateral CoM changes within a pair.",
+   "load_base_com_offset_local_xyz_m": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "scenario_id": "probe_1",
+   "description": "probe mass 480.0 offset 0.0",
+   "stage_units_in_meters": 1.0,
+   "light_intensity": 5000.0,
+   "spawn_load": true,
+   "load_size_m": [
+    1.2,
+    0.9,
+    0.9
+   ],
+   "load_base_mass_kg": 480.0,
+   "load_base_offset_m": [
+    0.0,
+    0.3,
+    0.01
+   ],
+   "load_spawn_lift_m": 2.05,
+   "fallback_load_spawn_offset_m": [
+    0.0,
+    1.6,
+    2.51
+   ],
+   "load_density": 1.0,
+   "load_attachment_mode": "fixed_to_fork",
+   "notes": "ForkSafe-CF v2. Only mass or hidden load-local lateral CoM changes within a pair.",
+   "load_base_com_offset_local_xyz_m": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "scenario_id": "probe_2",
+   "description": "probe mass 480.0 offset 0.25",
+   "stage_units_in_meters": 1.0,
+   "light_intensity": 5000.0,
+   "spawn_load": true,
+   "load_size_m": [
+    1.2,
+    0.9,
+    0.9
+   ],
+   "load_base_mass_kg": 480.0,
+   "load_base_offset_m": [
+    0.0,
+    0.3,
+    0.01
+   ],
+   "load_spawn_lift_m": 2.05,
+   "fallback_load_spawn_offset_m": [
+    0.0,
+    1.6,
+    2.51
+   ],
+   "load_density": 1.0,
+   "load_attachment_mode": "fixed_to_fork",
+   "notes": "ForkSafe-CF v2. Only mass or hidden load-local lateral CoM changes within a pair.",
+   "load_base_com_offset_local_xyz_m": [
+    0.0,
+    0.25,
+    0.0
+   ]
+  },
+  {
+   "scenario_id": "probe_3",
+   "description": "probe mass 720.0 offset 0.0",
+   "stage_units_in_meters": 1.0,
+   "light_intensity": 5000.0,
+   "spawn_load": true,
+   "load_size_m": [
+    1.2,
+    0.9,
+    0.9
+   ],
+   "load_base_mass_kg": 720.0,
+   "load_base_offset_m": [
+    0.0,
+    0.3,
+    0.01
+   ],
+   "load_spawn_lift_m": 2.05,
+   "fallback_load_spawn_offset_m": [
+    0.0,
+    1.6,
+    2.51
+   ],
+   "load_density": 1.0,
+   "load_attachment_mode": "fixed_to_fork",
+   "notes": "ForkSafe-CF v2. Only mass or hidden load-local lateral CoM changes within a pair.",
+   "load_base_com_offset_local_xyz_m": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "scenario_id": "probe_4",
+   "description": "probe mass 720.0 offset -0.25",
+   "stage_units_in_meters": 1.0,
+   "light_intensity": 5000.0,
+   "spawn_load": true,
+   "load_size_m": [
+    1.2,
+    0.9,
+    0.9
+   ],
+   "load_base_mass_kg": 720.0,
+   "load_base_offset_m": [
+    0.0,
+    0.3,
+    0.01
+   ],
+   "load_spawn_lift_m": 2.05,
+   "fallback_load_spawn_offset_m": [
+    0.0,
+    1.6,
+    2.51
+   ],
+   "load_density": 1.0,
+   "load_attachment_mode": "fixed_to_fork",
+   "notes": "ForkSafe-CF v2. Only mass or hidden load-local lateral CoM changes within a pair.",
+   "load_base_com_offset_local_xyz_m": [
+    0.0,
+    -0.25,
+    0.0
+   ]
+  }
+ ],
+ "routes": [
+  {
+   "route_id": "forksafe_v2_part_01_route_0000",
+   "description": "left turn, drive command -22.848, 1-second steering pulse +1.296, straight recovery.",
+   "total_steps": 360,
+   "turn_direction": "left",
+   "mirror_group_id": "forksafe_v2_part_01_route_0000",
+   "speed_label": "continuous",
+   "steering_label": "continuous",
+   "drive_velocity_command": -22.84805411969977,
+   "steering_position_command": 1.295639092614706,
+   "speed_scaled_slots": [
+    2
+   ],
+   "steering_scaled_slots": [
+    1
+   ],
+   "phases": [
+    {
+     "phase_name": "approach",
+     "start_step": 0,
+     "joint_indices": [
+      0,
+      1,
+      6
+     ],
+     "joint_positions": [
+      0.0,
+      0.0,
+      "NaN"
+     ],
+     "joint_velocities": [
+      "NaN",
+      "NaN",
+      -22.84805411969977
+     ]
+    },
+    {
+     "phase_name": "turn",
+     "start_step": 144,
+     "joint_indices": [
+      0,
+      1,
+      6
+     ],
+     "joint_positions": [
+      0.0,
+      1.295639092614706,
+      "NaN"
+     ],
+     "joint_velocities": [
+      "NaN",
+      "NaN",
+      -22.84805411969977
+     ]
+    },
+    {
+     "phase_name": "recover_straight",
+     "start_step": 216,
+     "joint_indices": [
+      0,
+      1,
+      6
+     ],
+     "joint_positions": [
+      0.0,
+      0.0,
+      "NaN"
+     ],
+     "joint_velocities": [
+      "NaN",
+      "NaN",
+      -22.84805411969977
+     ]
+    }
+   ]
+  }
+ ],
+ "pair_requests": [
+  {
+   "intervention_type": "load_mass",
+   "base_value": 240.0,
+   "modified_value": 480.0,
+   "route_id": "forksafe_v2_part_01_route_0000",
+   "scenario_id": "probe_0",
+   "pair_id": "probe_pair",
+   "seed": 7,
+   "notes": "v2 counterfactual: manoeuvre commands, visible load pose and the other payload property fixed."
+  }
+ ]
+}

@@ -1,0 +1,43 @@
+{
+ "demand only (a_y, GT kinematics)": {
+  "train": 0.9426901039641181,
+  "test": 0.9003039513677812
+ },
+ "criterion, GT mass+CoM, GT obs kinematics": {
+  "train": 0.9129138471908947,
+  "test": 0.8808510638297873
+ },
+ "criterion without CoM term (GT mass)": {
+  "train": 0.9164138860802157,
+  "test": 0.8781155015197568
+ },
+ "criterion with nominal payload (no identification)": {
+  "train": 0.9426901039641181,
+  "test": 0.9003039513677812
+ },
+ "criterion, GT mass+CoM, GT sampled obs kinematics": {
+  "train": 0.922752845401986,
+  "test": 0.8924012158054712
+ },
+ "criterion, PSQ mass+CoM+kinematics (seed 17)": {
+  "train": 0.9014285343911229,
+  "test": 0.8683890577507599
+ },
+ "criterion, PSQ mass+CoM+kinematics (seed 29)": {
+  "train": 0.9059915480542376,
+  "test": 0.8550151975683891
+ },
+ "criterion, PSQ mass+CoM+kinematics (seed 43)": {
+  "train": 0.9147675714915351,
+  "test": 0.8896656534954407
+ },
+ "criterion, PSQ mass+CoM, GT sampled obs kinematics": {
+  "train": 0.9194991055456172,
+  "test": 0.880243161094225
+ },
+ "psq_pipeline_test_mean": 0.8710233029381965,
+ "PSQ direct tip logit (seed mean)": {
+  "train": 1.0,
+  "test": 0.9984802431610942
+ }
+}

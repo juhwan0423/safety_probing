@@ -1,0 +1,97 @@
+{
+ "n": 480,
+ "n_pairs": 240,
+ "mass_mae_kg": {
+  "point": 35.93907527923584,
+  "seed_sd": 0.0,
+  "ci_low": 33.246301438808445,
+  "ci_high": 38.73682825167974,
+  "n": 480,
+  "n_clusters": 240
+ },
+ "com_mae_m": {
+  "point": 0.13341537043646287,
+  "seed_sd": 0.0,
+  "ci_low": 0.1244786352259204,
+  "ci_high": 0.14294342916696526,
+  "n": 480,
+  "n_clusters": 240
+ },
+ "roll_mae_deg": {
+  "point": 7.672156501412391,
+  "seed_sd": 0.0,
+  "ci_low": 6.98762102427582,
+  "ci_high": 8.39060006627937,
+  "n": 480,
+  "n_clusters": 240
+ },
+ "zmp_mae_m": {
+  "point": 0.050504044027184135,
+  "seed_sd": 0.0,
+  "ci_low": 0.0407882886553125,
+  "ci_high": 0.0625599395741786,
+  "n": 480,
+  "n_clusters": 240
+ },
+ "tip_auroc": {
+  "point": 0.9554793215170574,
+  "seed_sd": 0.0,
+  "ci_low": 0.9345027819578107,
+  "ci_high": 0.9735713455607754,
+  "n": 463,
+  "positive_n": 265,
+  "negative_n": 198,
+  "n_clusters": 238
+ },
+ "tip_rate": 0.572354211663067,
+ "mass_r2": 0.8881824016571045,
+ "mass_slope": 0.8828162826654345,
+ "mass_pearson": 0.9424916674010657,
+ "com_r2": -0.40125763416290283,
+ "com_slope": 0.03778803624368263,
+ "com_pearson": 0.056015752741492494,
+ "mass_direction": {
+  "point": 1.0,
+  "seed_sd": 0.0,
+  "ci_low": 1.0,
+  "ci_high": 1.0,
+  "n": 120,
+  "n_clusters": 120
+ },
+ "com_direction": {
+  "point": 0.55,
+  "seed_sd": 0.0,
+  "ci_low": 0.4583333333333333,
+  "ci_high": 0.6416666666666667,
+  "n": 120,
+  "n_clusters": 120
+ },
+ "gold_zmp_ordering": {
+  "point": 0.6666666666666666,
+  "seed_sd": 0.0,
+  "ci_low": 0.5151515151515151,
+  "ci_high": 0.8181818181818182,
+  "n": 33,
+  "n_clusters": 33
+ },
+ "n_outcome_flip_pairs": 33,
+ "outcome_flip": {
+  "point": 0.5757575757575758,
+  "seed_sd": 0.0,
+  "ci_low": 0.3939393939393939,
+  "ci_high": 0.7575757575757576,
+  "n": 33,
+  "n_clusters": 33
+ },
+ "train_mean_baseline": {
+  "mass_mae_kg": 119.66199556986491,
+  "com_mae_m": 0.11925076739668536,
+  "zmp_mae_m": 0.0728716677132373,
+  "roll_mae_deg": 16.45029189348221
+ },
+ "counts": {
+  "runs": 480,
+  "pairs": 240,
+  "folds": 2
+ }
+}

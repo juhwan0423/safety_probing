@@ -1,0 +1,9 @@
+held_out,n,mass_mae_kg,mass_bias_kg,com_mae_m,com_direction,mass_direction,roll_mae_deg,tip_auroc,indist_mass_mae_kg,indist_com_direction,indist_roll_mae_deg
+payload mass 360 kg,162,52.501,-2.312,0.188,0.579,,13.424,0.929,16.878,0.913,3.141
+payload mass 480 kg,162,62.78,-0.791,0.203,0.5,,9.984,0.997,18.096,0.932,3.009
+payload mass 600 kg,162,86.094,41.512,0.169,0.653,,6.092,0.967,15.399,0.917,3.811
+lateral CoM 0 m,270,39.653,6.434,0.231,,0.975,7.035,0.986,18.293,,4.324
+medium speed,270,54.174,37.758,0.195,0.603,0.96,20.525,0.755,24.183,0.94,2.778
+fast speed,270,78.464,-46.068,0.157,0.65,0.869,26.239,0.9,29.481,0.917,3.296
+right turns (trained on left),405,144.012,-141.307,0.209,0.539,0.873,21.414,0.821,,,
+left turns (trained on right),405,91.051,79.74,0.215,0.548,0.862,22.743,0.765,,,

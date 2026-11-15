@@ -1,0 +1,178 @@
+{
+ "n": 810,
+ "n_clusters": 9,
+ "mass_mae_kg": {
+  "point": 29.034233212569124,
+  "seed_sd": 0.4207748119001014,
+  "ci_low": 22.602988764444987,
+  "ci_high": 37.16066106474449,
+  "n": 810,
+  "n_clusters": 9
+ },
+ "com_mae_m": {
+  "point": 0.08190147977757341,
+  "seed_sd": 0.0018411640761107526,
+  "ci_low": 0.06266648542076907,
+  "ci_high": 0.10202191223636763,
+  "n": 810,
+  "n_clusters": 9
+ },
+ "roll_mae_deg": {
+  "point": 4.723219055638882,
+  "seed_sd": 0.08000125120411115,
+  "ci_low": 3.4004696328718476,
+  "ci_high": 6.040779201676323,
+  "n": 810,
+  "n_clusters": 9
+ },
+ "zmp_mae_m": {
+  "point": 0.04641218022615821,
+  "seed_sd": 0.0004775657913386756,
+  "ci_low": 0.038045840237534954,
+  "ci_high": 0.05470306450616062,
+  "n": 810,
+  "n_clusters": 9
+ },
+ "tip_auroc": {
+  "point": 0.988500663423264,
+  "seed_sd": 0.003716667607759515,
+  "ci_low": 0.9656254075329245,
+  "ci_high": 0.9992084408237832,
+  "n": 794,
+  "positive_n": 437,
+  "negative_n": 357,
+  "n_clusters": 9
+ },
+ "mass_direction": {
+  "point": 0.9969135802469137,
+  "seed_sd": 0.004082949554112041,
+  "ci_low": 0.9876543209876543,
+  "ci_high": 1.0,
+  "n": 648,
+  "n_clusters": 9
+ },
+ "com_direction": {
+  "point": 0.887962962962963,
+  "seed_sd": 0.011226255234242748,
+  "ci_low": 0.8224043715846995,
+  "ci_high": 0.9472222222222222,
+  "n": 360,
+  "n_clusters": 9
+ },
+ "gold_zmp_ordering": {
+  "point": 0.7948717948717947,
+  "seed_sd": 0.05551444896054093,
+  "ci_low": 0.6781609195402298,
+  "ci_high": 0.8780487804878049,
+  "n": 104,
+  "n_clusters": 5
+ },
+ "train_mean_baseline": {
+  "mass": 144.50980428059896,
+  "com": 0.16811910063390517,
+  "roll": 17.033443882259323,
+  "zmp": 0.06863076501054528
+ },
+ "per_fold": {
+  "fast_medium": {
+   "n": 90,
+   "n_clusters": 30,
+   "mass_mae_kg": 25.362680166739008,
+   "com_mae_m": 0.04218706233875343,
+   "roll_mae_deg": 5.833532716963027,
+   "zmp_mae_m": 0.039283827223159644,
+   "tip_auroc": 1.0,
+   "mass_direction": 1.0,
+   "com_direction": 0.9722222222222222,
+   "gold_zmp_ordering": 0.6666666666666666
+  },
+  "fast_tight": {
+   "n": 90,
+   "n_clusters": 30,
+   "mass_mae_kg": 24.30640094898365,
+   "com_mae_m": 0.045053250635801644,
+   "roll_mae_deg": 5.639494093435782,
+   "zmp_mae_m": 0.04466404335366355,
+   "tip_auroc": 1.0,
+   "mass_direction": 1.0,
+   "com_direction": 0.9920634920634921,
+   "gold_zmp_ordering": 1.0
+  },
+  "fast_wide": {
+   "n": 90,
+   "n_clusters": 30,
+   "mass_mae_kg": 56.96862905996817,
+   "com_mae_m": 0.06215156167271305,
+   "roll_mae_deg": 6.233902765909831,
+   "zmp_mae_m": 0.0529868777151461,
+   "mass_direction": 0.9953703703703703,
+   "com_direction": 0.9761904761904763
+  },
+  "medium_medium": {
+   "n": 90,
+   "n_clusters": 30,
+   "mass_mae_kg": 16.535915516040944,
+   "com_mae_m": 0.06447928924139383,
+   "roll_mae_deg": 4.594617851222002,
+   "zmp_mae_m": 0.06337149877239157,
+   "tip_auroc": 0.9369129895445685,
+   "mass_direction": 1.0,
+   "com_direction": 0.9537037037037036,
+   "gold_zmp_ordering": 0.8703703703703703
+  },
+  "medium_tight": {
+   "n": 90,
+   "n_clusters": 30,
+   "mass_mae_kg": 21.297158191822195,
+   "com_mae_m": 0.08386643877020106,
+   "roll_mae_deg": 5.547246975192317,
+   "zmp_mae_m": 0.05829760404648604,
+   "tip_auroc": 0.9878600823045267,
+   "mass_direction": 0.9768518518518517,
+   "com_direction": 0.873015873015873,
+   "gold_zmp_ordering": 0.7870370370370371
+  },
+  "medium_wide": {
+   "n": 90,
+   "n_clusters": 30,
+   "mass_mae_kg": 29.222677781846787,
+   "com_mae_m": 0.10386833475247302,
+   "roll_mae_deg": 8.132226176791722,
+   "zmp_mae_m": 0.06278905907162913,
+   "tip_auroc": 0.9130434782608695,
+   "mass_direction": 1.0,
+   "com_direction": 0.8333333333333334,
+   "gold_zmp_ordering": 0.6470588235294118
+  },
+  "slow_medium": {
+   "n": 90,
+   "n_clusters": 30,
+   "mass_mae_kg": 31.36251203748915,
+   "com_mae_m": 0.11838831614047564,
+   "roll_mae_deg": 2.2707211817635433,
+   "zmp_mae_m": 0.03649887219071388,
+   "mass_direction": 1.0,
+   "com_direction": 0.8333333333333334
+  },
+  "slow_tight": {
+   "n": 90,
+   "n_clusters": 30,
+   "mass_mae_kg": 22.539836064091435,
+   "com_mae_m": 0.08535772698491606,
+   "roll_mae_deg": 2.4675077157550387,
+   "zmp_mae_m": 0.02775407839152548,
+   "mass_direction": 1.0,
+   "com_direction": 0.873015873015873
+  },
+  "slow_wide": {
+   "n": 90,
+   "n_clusters": 30,
+   "mass_mae_kg": 33.71228914614077,
+   "com_mae_m": 0.13176133746143293,
+   "roll_mae_deg": 1.7897220237166793,
+   "zmp_mae_m": 0.03206376127070851,
+   "mass_direction": 1.0,
+   "com_direction": 0.6984126984126985
+  }
+ }
+}

@@ -1,0 +1,10 @@
+{
+ "n_runs": 160,
+ "n_definite": 153,
+ "tip_rate": 0.5882352941176471,
+ "auroc_command_only": 0.8982363315696649,
+ "auroc_command_plus_payload": 0.9684303350970017,
+ "band_runs": 45,
+ "band_auroc_command_only": 0.6890756302521008,
+ "band_auroc_command_plus_payload": 0.8613445378151261
+}

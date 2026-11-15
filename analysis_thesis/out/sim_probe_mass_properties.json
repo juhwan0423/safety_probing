@@ -1,0 +1,2187 @@
+[
+ {
+  "scenario": "probe_0",
+  "load_mass_kg": 240.0,
+  "load_com_offset_local": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "masses": [
+   1100.7845458984375,
+   465.32952880859375,
+   1.1182209253311157,
+   1.6084953546524048,
+   1.6084953546524048,
+   1.6084953546524048,
+   1.6084953546524048,
+   239.99998474121094,
+   17.157283782958984
+  ],
+  "local_coms": [
+   [
+    0.3190002143383026,
+    -0.0038013914600014687,
+    0.7256413102149963
+   ],
+   [
+    -0.007492641918361187,
+    -0.5628319978713989,
+    1.0712909698486328
+   ],
+   [
+    0.0010212957859039307,
+    0.0019862279295921326,
+    -0.1222730278968811
+   ],
+   [
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    0.014999998733401299,
+    0.0,
+    0.0
+   ]
+  ],
+  "com_orientations": [
+   [
+    0.9951891899108887,
+    0.0048446133732795715,
+    -0.09294779598712921,
+    0.030590692535042763
+   ],
+   [
+    0.9997504353523254,
+    -0.015347667969763279,
+    -0.0032105084974318743,
+    -0.015915028750896454
+   ],
+   [
+    0.9969736933708191,
+    0.010539727285504341,
+    0.07596521079540253,
+    0.012716935947537422
+   ],
+   [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  ],
+  "body_names_attr": [
+   "body",
+   "lift",
+   "back_wheel_swivel",
+   "roller_front_right",
+   "roller_back_left",
+   "roller_back_right",
+   "roller_front_left",
+   "forklift_load",
+   "back_wheel"
+  ],
+  "link_paths": [
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/body",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/lift",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/back_wheel_swivel",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/roller_front_right",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/roller_back_left",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/roller_back_right",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/roller_front_left",
+   "/World/forklift_load",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/back_wheel"
+  ],
+  "link_names": [
+   "body",
+   "lift",
+   "back_wheel_swivel",
+   "roller_front_right",
+   "roller_back_left",
+   "roller_back_right",
+   "roller_front_left",
+   "forklift_load",
+   "back_wheel"
+  ],
+  "traversal_paths": [
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/lift",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/body",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/back_wheel",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/roller_front_right",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/roller_back_left",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/roller_back_right",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/roller_front_left",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/back_wheel_swivel"
+  ],
+  "traversal_world_origins": [
+   [
+    1.8627296686172485,
+    1.6121691465377808,
+    1.7591131925582886
+   ],
+   [
+    1.8630341291427612,
+    1.612167239189148,
+    0.0018640756607055664
+   ],
+   [
+    2.442927837371826,
+    1.6198078393936157,
+    0.15999962389469147
+   ],
+   [
+    0.952900767326355,
+    1.1185368299484253,
+    0.08000147342681885
+   ],
+   [
+    1.1454898118972778,
+    2.111166477203369,
+    0.08003354072570801
+   ],
+   [
+    1.1454907655715942,
+    1.1185369491577148,
+    0.08003485202789307
+   ],
+   [
+    0.9529002904891968,
+    2.1111669540405273,
+    0.08000010251998901
+   ],
+   [
+    2.4405126571655273,
+    1.690898060798645,
+    0.35771849751472473
+   ]
+  ],
+  "root_path": "/World/forklift/forklift_b_sensors/forklift_b_sensor/body",
+  "root_origin": [
+   1.8630341291427612,
+   1.612167239189148,
+   0.0018640756607055664
+  ],
+  "root_x_axis_point": [
+   2.8630341141091815,
+   1.6121679510462918,
+   0.002037473042445169
+  ],
+  "root_y_axis_point": [
+   1.8630334174731866,
+   2.6121672391883095,
+   0.001862993867702101
+  ],
+  "logger_system_com": {
+   "position": [
+    1.990210547407187,
+    1.6220959252369473,
+    1.2056260173487354
+   ],
+   "total_mass": 1830.823545575142,
+   "source": "physx_articulation_body_masses+body_path_traversal_order+load_massapi_skipped_fixed_joint_articulation",
+   "components": 9
+  },
+  "forklift_pose": {
+   "position": null
+  },
+  "truth_system_com": {
+   "position": [
+    1.6702396608187662,
+    1.6101805468648451,
+    1.4879675741855398
+   ],
+   "per_link": [
+    {
+     "path": "/World/forklift/forklift_b_sensors/forklift_b_sensor/body",
+     "mass": 1100.7845458984375,
+     "local_com": [
+      0.3190002143383026,
+      -0.0038013914600014687,
+      0.7256413102149963
+     ],
+     "world_com": [
+      2.1819085170868515,
+      1.6083668597158665,
+      0.7275606928807341
+     ],
+     "world_origin": [
+      1.8630341291427612,
+      1.612167239189148,
+      0.0018640756607055664
+     ]
+    },
+    {
+     "path": "/World/forklift/forklift_b_sensors/forklift_b_sensor/lift",
+     "mass": 465.32952880859375,
+     "local_com": [
+      -0.007492641918361187,
+      -0.5628319978713989,
+      1.0712909698486328
+     ],
+     "world_com": [
+      1.299711985293786,
+      1.619662516328451,
+      2.8303065818509565
+     ],
+     "world_origin": [
+      1.8627296686172485,
+      1.6121691465377808,
+      1.7591131925582886
+     ]
+    },
+    {
+     "path": "/World/forklift/forklift_b_sensors/forklift_b_sensor/back_wheel_swivel",
+     "mass": 1.1182209253311157,
+     "local_com": [
+      0.0010212957859039307,
+      0.0019862279295921326,
+      -0.1222730278968811
+     ],
+     "world_com": [
+      2.442520088484465,
+      1.6898766410132455,
+      0.23544581692472621
+     ],
+     "world_origin": [
+      2.4405126571655273,
+      1.690898060798645,
+      0.35771849751472473
+     ]
+    },
+    {
+     "path": "/World/forklift/forklift_b_sensors/forklift_b_sensor/roller_front_right",
+     "mass": 1.6084953546524048,
+     "local_com": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "world_com": [
+      0.952900767326355,
+      1.1185368299484253,
+      0.08000147342681885
+     ],
+     "world_origin": [
+      0.952900767326355,
+      1.1185368299484253,
+      0.08000147342681885
+     ]
+    },
+    {
+     "path": "/World/forklift/forklift_b_sensors/forklift_b_sensor/roller_back_left",
+     "mass": 1.6084953546524048,
+     "local_com": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "world_com": [
+      1.1454898118972778,
+      2.111166477203369,
+      0.08003354072570801
+     ],
+     "world_origin": [
+      1.1454898118972778,
+      2.111166477203369,
+      0.08003354072570801
+     ]
+    },
+    {
+     "path": "/World/forklift/forklift_b_sensors/forklift_b_sensor/roller_back_right",
+     "mass": 1.6084953546524048,
+     "local_com": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "world_com": [
+      1.1454907655715942,
+      1.1185369491577148,
+      0.08003485202789307
+     ],
+     "world_origin": [
+      1.1454907655715942,
+      1.1185369491577148,
+      0.08003485202789307
+     ]
+    },
+    {
+     "path": "/World/forklift/forklift_b_sensors/forklift_b_sensor/roller_front_left",
+     "mass": 1.6084953546524048,
+     "local_com": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "world_com": [
+      0.9529002904891968,
+      2.1111669540405273,
+      0.08000010251998901
+     ],
+     "world_origin": [
+      0.9529002904891968,
+      2.1111669540405273,
+      0.08000010251998901
+     ]
+    },
+    {
+     "path": "/World/forklift_load",
+     "mass": 239.99998474121094,
+     "local_com": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "world_com": [
+      -0.00036346912384033203,
+      1.600002408027649,
+      2.5115418434143066
+     ],
+     "world_origin": [
+      -0.00036346912384033203,
+      1.600002408027649,
+      2.5115418434143066
+     ]
+    },
+    {
+     "path": "/World/forklift/forklift_b_sensors/forklift_b_sensor/back_wheel",
+     "mass": 17.157283782958984,
+     "local_com": [
+      0.014999998733401299,
+      0.0,
+      0.0
+     ],
+     "world_com": [
+      2.4429279237596275,
+      1.6048078406604722,
+      0.159999640366666
+     ],
+     "world_origin": [
+      2.442927837371826,
+      1.6198078393936157,
+      0.15999962389469147
+     ]
+    }
+   ]
+  },
+  "load": {
+   "path": "/World/forklift_load",
+   "mass_attr": 240.0,
+   "com_attr": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "world_origin": [
+    -0.00036346912384033203,
+    1.600002408027649,
+    2.5115418434143066
+   ],
+   "world_com": [
+    -0.00036346912384033203,
+    1.600002408027649,
+    2.5115418434143066
+   ],
+   "fixed_to_articulation": true
+  }
+ },
+ {
+  "scenario": "probe_1",
+  "load_mass_kg": 480.0,
+  "load_com_offset_local": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "masses": [
+   1100.7845458984375,
+   465.32952880859375,
+   1.1182209253311157,
+   1.6084953546524048,
+   1.6084953546524048,
+   1.6084953546524048,
+   1.6084953546524048,
+   479.9999694824219,
+   17.157283782958984
+  ],
+  "local_coms": [
+   [
+    0.3190002143383026,
+    -0.0038013914600014687,
+    0.7256413102149963
+   ],
+   [
+    -0.007492641918361187,
+    -0.5628319978713989,
+    1.0712909698486328
+   ],
+   [
+    0.0010212957859039307,
+    0.0019862279295921326,
+    -0.1222730278968811
+   ],
+   [
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    0.014999998733401299,
+    0.0,
+    0.0
+   ]
+  ],
+  "com_orientations": [
+   [
+    0.9951891899108887,
+    0.0048446133732795715,
+    -0.09294779598712921,
+    0.030590692535042763
+   ],
+   [
+    0.9997504353523254,
+    -0.015347667969763279,
+    -0.0032105084974318743,
+    -0.015915028750896454
+   ],
+   [
+    0.9969736933708191,
+    0.010539727285504341,
+    0.07596521079540253,
+    0.012716935947537422
+   ],
+   [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  ],
+  "body_names_attr": [
+   "body",
+   "lift",
+   "back_wheel_swivel",
+   "roller_front_right",
+   "roller_back_left",
+   "roller_back_right",
+   "roller_front_left",
+   "forklift_load",
+   "back_wheel"
+  ],
+  "link_paths": [
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/body",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/lift",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/back_wheel_swivel",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/roller_front_right",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/roller_back_left",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/roller_back_right",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/roller_front_left",
+   "/World/forklift_load",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/back_wheel"
+  ],
+  "link_names": [
+   "body",
+   "lift",
+   "back_wheel_swivel",
+   "roller_front_right",
+   "roller_back_left",
+   "roller_back_right",
+   "roller_front_left",
+   "forklift_load",
+   "back_wheel"
+  ],
+  "traversal_paths": [
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/lift",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/body",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/back_wheel",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/roller_front_right",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/roller_back_left",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/roller_back_right",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/roller_front_left",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/back_wheel_swivel"
+  ],
+  "traversal_world_origins": [
+   [
+    1.8627448081970215,
+    1.6121646165847778,
+    1.7591439485549927
+   ],
+   [
+    1.863050937652588,
+    1.6121658086776733,
+    0.0018641352653503418
+   ],
+   [
+    2.442943572998047,
+    1.6198055744171143,
+    0.16000033915042877
+   ],
+   [
+    0.9529169797897339,
+    1.1185359954833984,
+    0.07999986410140991
+   ],
+   [
+    1.1455073356628418,
+    2.111166000366211,
+    0.08003413677215576
+   ],
+   [
+    1.1455069780349731,
+    1.1185357570648193,
+    0.08003342151641846
+   ],
+   [
+    0.9529173374176025,
+    2.111166000366211,
+    0.08000016212463379
+   ],
+   [
+    2.4405293464660645,
+    1.690895438194275,
+    0.357719361782074
+   ]
+  ],
+  "root_path": "/World/forklift/forklift_b_sensors/forklift_b_sensor/body",
+  "root_origin": [
+   1.863050937652588,
+   1.6121658086776733,
+   0.0018641352653503418
+  ],
+  "root_x_axis_point": [
+   2.863050922457908,
+   1.612165509023142,
+   0.0020384604493584512
+  ],
+  "root_y_axis_point": [
+   1.8630512371877896,
+   2.6121658086773945,
+   0.0018648198136380892
+  ],
+  "logger_system_com": {
+   "position": [
+    2.0424145350445424,
+    1.6300662566626978,
+    1.10736418675809
+   ],
+   "total_mass": 2070.823530316353,
+   "source": "physx_articulation_body_masses+body_path_traversal_order+load_massapi_skipped_fixed_joint_articulation",
+   "components": 9
+  },
+  "forklift_pose": {
+   "position": null
+  },
+  "truth_system_com": {
+   "position": [
+    1.4766388456214123,
+    1.6089970832916058,
+    1.6066023032240673
+   ],
+   "per_link": [
+    {
+     "path": "/World/forklift/forklift_b_sensors/forklift_b_sensor/body",
+     "mass": 1100.7845458984375,
+     "local_com": [
+      0.3190002143383026,
+      -0.0038013914600014687,
+      0.7256413102149963
+     ],
+     "world_com": [
+      2.181924648450058,
+      1.6083638249291947,
+      0.7275610416231489
+     ],
+     "world_origin": [
+      1.863050937652588,
+      1.6121658086776733,
+      0.0018641352653503418
+     ]
+    },
+    {
+     "path": "/World/forklift/forklift_b_sensors/forklift_b_sensor/lift",
+     "mass": 465.32952880859375,
+     "local_com": [
+      -0.007492641918361187,
+      -0.5628319978713989,
+      1.0712909698486328
+     ],
+     "world_com": [
+      1.2997261325515725,
+      1.6196566817331381,
+      2.830336825409721
+     ],
+     "world_origin": [
+      1.8627448081970215,
+      1.6121646165847778,
+      1.7591439485549927
+     ]
+    },
+    {
+     "path": "/World/forklift/forklift_b_sensors/forklift_b_sensor/back_wheel_swivel",
+     "mass": 1.1182209253311157,
+     "local_com": [
+      0.0010212957859039307,
+      0.0019862279295921326,
+      -0.1222730278968811
+     ],
+     "world_com": [
+      2.442536885020147,
+      1.6898742293215687,
+      0.23544668119096956
+     ],
+     "world_origin": [
+      2.4405293464660645,
+      1.690895438194275,
+      0.357719361782074
+     ]
+    },
+    {
+     "path": "/World/forklift/forklift_b_sensors/forklift_b_sensor/roller_front_right",
+     "mass": 1.6084953546524048,
+     "local_com": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "world_com": [
+      0.9529169797897339,
+      1.1185359954833984,
+      0.07999986410140991
+     ],
+     "world_origin": [
+      0.9529169797897339,
+      1.1185359954833984,
+      0.07999986410140991
+     ]
+    },
+    {
+     "path": "/World/forklift/forklift_b_sensors/forklift_b_sensor/roller_back_left",
+     "mass": 1.6084953546524048,
+     "local_com": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "world_com": [
+      1.1455073356628418,
+      2.111166000366211,
+      0.08003413677215576
+     ],
+     "world_origin": [
+      1.1455073356628418,
+      2.111166000366211,
+      0.08003413677215576
+     ]
+    },
+    {
+     "path": "/World/forklift/forklift_b_sensors/forklift_b_sensor/roller_back_right",
+     "mass": 1.6084953546524048,
+     "local_com": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "world_com": [
+      1.1455069780349731,
+      1.1185357570648193,
+      0.08003342151641846
+     ],
+     "world_origin": [
+      1.1455069780349731,
+      1.1185357570648193,
+      0.08003342151641846
+     ]
+    },
+    {
+     "path": "/World/forklift/forklift_b_sensors/forklift_b_sensor/roller_front_left",
+     "mass": 1.6084953546524048,
+     "local_com": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "world_com": [
+      0.9529173374176025,
+      2.111166000366211,
+      0.08000016212463379
+     ],
+     "world_origin": [
+      0.9529173374176025,
+      2.111166000366211,
+      0.08000016212463379
+     ]
+    },
+    {
+     "path": "/World/forklift_load",
+     "mass": 479.9999694824219,
+     "local_com": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "world_com": [
+      -0.0003491640090942383,
+      1.5999984741210938,
+      2.511540412902832
+     ],
+     "world_origin": [
+      -0.0003491640090942383,
+      1.5999984741210938,
+      2.511540412902832
+     ]
+    },
+    {
+     "path": "/World/forklift/forklift_b_sensors/forklift_b_sensor/back_wheel",
+     "mass": 17.157283782958984,
+     "local_com": [
+      0.014999998733401299,
+      0.0,
+      0.0
+     ],
+     "world_com": [
+      2.4429435908427344,
+      1.6048055756837272,
+      0.16000032882371157
+     ],
+     "world_origin": [
+      2.442943572998047,
+      1.6198055744171143,
+      0.16000033915042877
+     ]
+    }
+   ]
+  },
+  "load": {
+   "path": "/World/forklift_load",
+   "mass_attr": 480.0,
+   "com_attr": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "world_origin": [
+    -0.0003491640090942383,
+    1.5999984741210938,
+    2.511540412902832
+   ],
+   "world_com": [
+    -0.0003491640090942383,
+    1.5999984741210938,
+    2.511540412902832
+   ],
+   "fixed_to_articulation": true
+  }
+ },
+ {
+  "scenario": "probe_2",
+  "load_mass_kg": 480.0,
+  "load_com_offset_local": [
+   0.0,
+   0.25,
+   0.0
+  ],
+  "masses": [
+   1100.7845458984375,
+   465.32952880859375,
+   1.1182209253311157,
+   1.6084953546524048,
+   1.6084953546524048,
+   1.6084953546524048,
+   1.6084953546524048,
+   479.9999694824219,
+   17.157283782958984
+  ],
+  "local_coms": [
+   [
+    0.3190002143383026,
+    -0.0038013914600014687,
+    0.7256413102149963
+   ],
+   [
+    -0.007492641918361187,
+    -0.5628319978713989,
+    1.0712909698486328
+   ],
+   [
+    0.0010212957859039307,
+    0.0019862279295921326,
+    -0.1222730278968811
+   ],
+   [
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    0.0,
+    0.22499999403953552,
+    0.0
+   ],
+   [
+    0.014999998733401299,
+    0.0,
+    0.0
+   ]
+  ],
+  "com_orientations": [
+   [
+    0.9951891899108887,
+    0.0048446133732795715,
+    -0.09294779598712921,
+    0.030590692535042763
+   ],
+   [
+    0.9997504353523254,
+    -0.015347667969763279,
+    -0.0032105084974318743,
+    -0.015915028750896454
+   ],
+   [
+    0.9969736933708191,
+    0.010539727285504341,
+    0.07596521079540253,
+    0.012716935947537422
+   ],
+   [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  ],
+  "body_names_attr": [
+   "body",
+   "lift",
+   "back_wheel_swivel",
+   "roller_front_right",
+   "roller_back_left",
+   "roller_back_right",
+   "roller_front_left",
+   "forklift_load",
+   "back_wheel"
+  ],
+  "link_paths": [
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/body",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/lift",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/back_wheel_swivel",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/roller_front_right",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/roller_back_left",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/roller_back_right",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/roller_front_left",
+   "/World/forklift_load",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/back_wheel"
+  ],
+  "link_names": [
+   "body",
+   "lift",
+   "back_wheel_swivel",
+   "roller_front_right",
+   "roller_back_left",
+   "roller_back_right",
+   "roller_front_left",
+   "forklift_load",
+   "back_wheel"
+  ],
+  "traversal_paths": [
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/lift",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/body",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/back_wheel",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/roller_front_right",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/roller_back_left",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/roller_back_right",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/roller_front_left",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/back_wheel_swivel"
+  ],
+  "traversal_world_origins": [
+   [
+    1.8627445697784424,
+    1.6121644973754883,
+    1.7591429948806763
+   ],
+   [
+    1.863051176071167,
+    1.6121665239334106,
+    0.001864016056060791
+   ],
+   [
+    2.442943572998047,
+    1.6198066473007202,
+    0.160000279545784
+   ],
+   [
+    0.9529174566268921,
+    1.1185359954833984,
+    0.07999932765960693
+   ],
+   [
+    1.1455069780349731,
+    2.111166000366211,
+    0.08003401756286621
+   ],
+   [
+    1.1455072164535522,
+    1.1185362339019775,
+    0.0800330638885498
+   ],
+   [
+    0.9529169797897339,
+    2.111166000366211,
+    0.08000028133392334
+   ],
+   [
+    2.4405288696289062,
+    1.6908963918685913,
+    0.3577193021774292
+   ]
+  ],
+  "root_path": "/World/forklift/forklift_b_sensors/forklift_b_sensor/body",
+  "root_origin": [
+   1.863051176071167,
+   1.6121665239334106,
+   0.001864016056060791
+  ],
+  "root_x_axis_point": [
+   2.863051160867912,
+   1.6121668836217906,
+   0.0020383903102377163
+  ],
+  "root_y_axis_point": [
+   1.8630508161963533,
+   2.6121665239327743,
+   0.0018650851831410733
+  ],
+  "logger_system_com": {
+   "position": [
+    2.094567627321398,
+    1.6300667221360345,
+    1.1073729882480863
+   ],
+   "total_mass": 2070.823530316353,
+   "source": "physx_articulation_body_masses+body_path_traversal_order+load_massapi_skipped_fixed_joint_articulation",
+   "components": 9
+  },
+  "forklift_pose": {
+   "position": null
+  },
+  "truth_system_com": {
+   "position": [
+    1.4766389082922446,
+    1.6559347128787187,
+    1.6066018612362925
+   ],
+   "per_link": [
+    {
+     "path": "/World/forklift/forklift_b_sensors/forklift_b_sensor/body",
+     "mass": 1100.7845458984375,
+     "local_com": [
+      0.3190002143383026,
+      -0.0038013914600014687,
+      0.7256413102149963
+     ],
+     "world_com": [
+      2.1819248537656635,
+      1.6083644713657823,
+      0.7275609365988663
+     ],
+     "world_origin": [
+      1.863051176071167,
+      1.6121665239334106,
+      0.001864016056060791
+     ]
+    },
+    {
+     "path": "/World/forklift/forklift_b_sensors/forklift_b_sensor/lift",
+     "mass": 465.32952880859375,
+     "local_com": [
+      -0.007492641918361187,
+      -0.5628319978713989,
+      1.0712909698486328
+     ],
+     "world_com": [
+      1.2997258428087668,
+      1.6196557600602075,
+      2.8303358503716405
+     ],
+     "world_origin": [
+      1.8627445697784424,
+      1.6121644973754883,
+      1.7591429948806763
+     ]
+    },
+    {
+     "path": "/World/forklift/forklift_b_sensors/forklift_b_sensor/back_wheel_swivel",
+     "mass": 1.1182209253311157,
+     "local_com": [
+      0.0010212957859039307,
+      0.0019862279295921326,
+      -0.1222730278968811
+     ],
+     "world_com": [
+      2.4425364144689934,
+      1.6898752320764596,
+      0.2354466212796259
+     ],
+     "world_origin": [
+      2.4405288696289062,
+      1.6908963918685913,
+      0.3577193021774292
+     ]
+    },
+    {
+     "path": "/World/forklift/forklift_b_sensors/forklift_b_sensor/roller_front_right",
+     "mass": 1.6084953546524048,
+     "local_com": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "world_com": [
+      0.9529174566268921,
+      1.1185359954833984,
+      0.07999932765960693
+     ],
+     "world_origin": [
+      0.9529174566268921,
+      1.1185359954833984,
+      0.07999932765960693
+     ]
+    },
+    {
+     "path": "/World/forklift/forklift_b_sensors/forklift_b_sensor/roller_back_left",
+     "mass": 1.6084953546524048,
+     "local_com": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "world_com": [
+      1.1455069780349731,
+      2.111166000366211,
+      0.08003401756286621
+     ],
+     "world_origin": [
+      1.1455069780349731,
+      2.111166000366211,
+      0.08003401756286621
+     ]
+    },
+    {
+     "path": "/World/forklift/forklift_b_sensors/forklift_b_sensor/roller_back_right",
+     "mass": 1.6084953546524048,
+     "local_com": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "world_com": [
+      1.1455072164535522,
+      1.1185362339019775,
+      0.0800330638885498
+     ],
+     "world_origin": [
+      1.1455072164535522,
+      1.1185362339019775,
+      0.0800330638885498
+     ]
+    },
+    {
+     "path": "/World/forklift/forklift_b_sensors/forklift_b_sensor/roller_front_left",
+     "mass": 1.6084953546524048,
+     "local_com": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "world_com": [
+      0.9529169797897339,
+      2.111166000366211,
+      0.08000028133392334
+     ],
+     "world_origin": [
+      0.9529169797897339,
+      2.111166000366211,
+      0.08000028133392334
+     ]
+    },
+    {
+     "path": "/World/forklift_load",
+     "mass": 479.9999694824219,
+     "local_com": [
+      0.0,
+      0.22499999403953552,
+      0.0
+     ],
+     "world_com": [
+      -0.00034908304223790765,
+      1.8024969136714937,
+      2.5115396976470947
+     ],
+     "world_origin": [
+      -0.00034908304223790765,
+      1.5999969244003296,
+      2.5115396976470947
+     ]
+    },
+    {
+     "path": "/World/forklift/forklift_b_sensors/forklift_b_sensor/back_wheel",
+     "mass": 17.157283782958984,
+     "local_com": [
+      0.014999998733401299,
+      0.0,
+      0.0
+     ],
+     "world_com": [
+      2.442943605994522,
+      1.6048066485673642,
+      0.1600002630945584
+     ],
+     "world_origin": [
+      2.442943572998047,
+      1.6198066473007202,
+      0.160000279545784
+     ]
+    }
+   ]
+  },
+  "load": {
+   "path": "/World/forklift_load",
+   "mass_attr": 480.0,
+   "com_attr": [
+    0.0,
+    0.25,
+    0.0
+   ],
+   "world_origin": [
+    -0.00034908304223790765,
+    1.5999969244003296,
+    2.5115396976470947
+   ],
+   "world_com": [
+    -0.00034908304223790765,
+    1.8249969184398651,
+    2.5115396976470947
+   ],
+   "fixed_to_articulation": true
+  }
+ },
+ {
+  "scenario": "probe_3",
+  "load_mass_kg": 720.0,
+  "load_com_offset_local": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "masses": [
+   1100.7845458984375,
+   465.32952880859375,
+   1.1182209253311157,
+   1.6084953546524048,
+   1.6084953546524048,
+   1.6084953546524048,
+   1.6084953546524048,
+   720.0,
+   17.157283782958984
+  ],
+  "local_coms": [
+   [
+    0.3190002143383026,
+    -0.0038013914600014687,
+    0.7256413102149963
+   ],
+   [
+    -0.007492641918361187,
+    -0.5628319978713989,
+    1.0712909698486328
+   ],
+   [
+    0.0010212957859039307,
+    0.0019862279295921326,
+    -0.1222730278968811
+   ],
+   [
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    0.014999998733401299,
+    0.0,
+    0.0
+   ]
+  ],
+  "com_orientations": [
+   [
+    0.9951891899108887,
+    0.0048446133732795715,
+    -0.09294779598712921,
+    0.030590692535042763
+   ],
+   [
+    0.9997504353523254,
+    -0.015347667969763279,
+    -0.0032105084974318743,
+    -0.015915028750896454
+   ],
+   [
+    0.9969736933708191,
+    0.010539727285504341,
+    0.07596521079540253,
+    0.012716935947537422
+   ],
+   [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  ],
+  "body_names_attr": [
+   "body",
+   "lift",
+   "back_wheel_swivel",
+   "roller_front_right",
+   "roller_back_left",
+   "roller_back_right",
+   "roller_front_left",
+   "forklift_load",
+   "back_wheel"
+  ],
+  "link_paths": [
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/body",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/lift",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/back_wheel_swivel",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/roller_front_right",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/roller_back_left",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/roller_back_right",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/roller_front_left",
+   "/World/forklift_load",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/back_wheel"
+  ],
+  "link_names": [
+   "body",
+   "lift",
+   "back_wheel_swivel",
+   "roller_front_right",
+   "roller_back_left",
+   "roller_back_right",
+   "roller_front_left",
+   "forklift_load",
+   "back_wheel"
+  ],
+  "traversal_paths": [
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/lift",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/body",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/back_wheel",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/roller_front_right",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/roller_back_left",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/roller_back_right",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/roller_front_left",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/back_wheel_swivel"
+  ],
+  "traversal_world_origins": [
+   [
+    1.8627524375915527,
+    1.6121671199798584,
+    1.7591607570648193
+   ],
+   [
+    1.8630577325820923,
+    1.6121662855148315,
+    0.001864314079284668
+   ],
+   [
+    2.44295072555542,
+    1.6198060512542725,
+    0.16000060737133026
+   ],
+   [
+    0.9529237747192383,
+    1.118536353111267,
+    0.08000099658966064
+   ],
+   [
+    1.1455143690109253,
+    2.1111667156219482,
+    0.08003431558609009
+   ],
+   [
+    1.1455137729644775,
+    1.118536353111267,
+    0.08003455400466919
+   ],
+   [
+    0.9529240131378174,
+    2.111166477203369,
+    0.08000016212463379
+   ],
+   [
+    2.4405360221862793,
+    1.6908962726593018,
+    0.3577195405960083
+   ]
+  ],
+  "root_path": "/World/forklift/forklift_b_sensors/forklift_b_sensor/body",
+  "root_origin": [
+   1.8630577325820923,
+   1.6121662855148315,
+   0.001864314079284668
+  ],
+  "root_x_axis_point": [
+   2.863057717472259,
+   1.6121659493451876,
+   0.002038151802395521
+  ],
+  "root_y_axis_point": [
+   1.863058068827424,
+   2.61216628551468,
+   0.0018638787151540896
+  ],
+  "logger_system_com": {
+   "position": [
+    2.0837695830195746,
+    1.6363855398165514,
+    1.0295102710722979
+   ],
+   "total_mass": 2310.823560833931,
+   "source": "physx_articulation_body_masses+body_path_traversal_order+load_massapi_skipped_fixed_joint_articulation",
+   "components": 9
+  },
+  "forklift_pose": {
+   "position": null
+  },
+  "truth_system_com": {
+   "position": [
+    1.3232478680083122,
+    1.6080648585546278,
+    1.7005921057004616
+   ],
+   "per_link": [
+    {
+     "path": "/World/forklift/forklift_b_sensors/forklift_b_sensor/body",
+     "mass": 1100.7845458984375,
+     "local_com": [
+      0.3190002143383026,
+      -0.0038013914600014687,
+      0.7256413102149963
+     ],
+     "world_com": [
+      2.181931796989098,
+      1.6083651027772508,
+      0.7275610692558557
+     ],
+     "world_origin": [
+      1.8630577325820923,
+      1.6121662855148315,
+      0.001864314079284668
+     ]
+    },
+    {
+     "path": "/World/forklift/forklift_b_sensors/forklift_b_sensor/lift",
+     "mass": 465.32952880859375,
+     "local_com": [
+      -0.007492641918361187,
+      -0.5628319978713989,
+      1.0712909698486328
+     ],
+     "world_com": [
+      1.299734303384939,
+      1.6196603847168904,
+      2.830353910108721
+     ],
+     "world_origin": [
+      1.8627524375915527,
+      1.6121671199798584,
+      1.7591607570648193
+     ]
+    },
+    {
+     "path": "/World/forklift/forklift_b_sensors/forklift_b_sensor/back_wheel_swivel",
+     "mass": 1.1182209253311157,
+     "local_com": [
+      0.0010212957859039307,
+      0.0019862279295921326,
+      -0.1222730278968811
+     ],
+     "world_com": [
+      2.4425435088801493,
+      1.6898749313146035,
+      0.2354468602599103
+     ],
+     "world_origin": [
+      2.4405360221862793,
+      1.6908962726593018,
+      0.3577195405960083
+     ]
+    },
+    {
+     "path": "/World/forklift/forklift_b_sensors/forklift_b_sensor/roller_front_right",
+     "mass": 1.6084953546524048,
+     "local_com": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "world_com": [
+      0.9529237747192383,
+      1.118536353111267,
+      0.08000099658966064
+     ],
+     "world_origin": [
+      0.9529237747192383,
+      1.118536353111267,
+      0.08000099658966064
+     ]
+    },
+    {
+     "path": "/World/forklift/forklift_b_sensors/forklift_b_sensor/roller_back_left",
+     "mass": 1.6084953546524048,
+     "local_com": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "world_com": [
+      1.1455143690109253,
+      2.1111667156219482,
+      0.08003431558609009
+     ],
+     "world_origin": [
+      1.1455143690109253,
+      2.1111667156219482,
+      0.08003431558609009
+     ]
+    },
+    {
+     "path": "/World/forklift/forklift_b_sensors/forklift_b_sensor/roller_back_right",
+     "mass": 1.6084953546524048,
+     "local_com": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "world_com": [
+      1.1455137729644775,
+      1.118536353111267,
+      0.08003455400466919
+     ],
+     "world_origin": [
+      1.1455137729644775,
+      1.118536353111267,
+      0.08003455400466919
+     ]
+    },
+    {
+     "path": "/World/forklift/forklift_b_sensors/forklift_b_sensor/roller_front_left",
+     "mass": 1.6084953546524048,
+     "local_com": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "world_com": [
+      0.9529240131378174,
+      2.111166477203369,
+      0.08000016212463379
+     ],
+     "world_origin": [
+      0.9529240131378174,
+      2.111166477203369,
+      0.08000016212463379
+     ]
+    },
+    {
+     "path": "/World/forklift_load",
+     "mass": 720.0,
+     "local_com": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "world_com": [
+      -0.00034105777740478516,
+      1.6000016927719116,
+      2.5115413665771484
+     ],
+     "world_origin": [
+      -0.00034105777740478516,
+      1.6000016927719116,
+      2.5115413665771484
+     ]
+    },
+    {
+     "path": "/World/forklift/forklift_b_sensors/forklift_b_sensor/back_wheel",
+     "mass": 17.157283782958984,
+     "local_com": [
+      0.014999998733401299,
+      0.0,
+      0.0
+     ],
+     "world_com": [
+      2.442950780933233,
+      1.6048060525209749,
+      0.16000061394998313
+     ],
+     "world_origin": [
+      2.44295072555542,
+      1.6198060512542725,
+      0.16000060737133026
+     ]
+    }
+   ]
+  },
+  "load": {
+   "path": "/World/forklift_load",
+   "mass_attr": 720.0,
+   "com_attr": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "world_origin": [
+    -0.00034105777740478516,
+    1.6000016927719116,
+    2.5115413665771484
+   ],
+   "world_com": [
+    -0.00034105777740478516,
+    1.6000016927719116,
+    2.5115413665771484
+   ],
+   "fixed_to_articulation": true
+  }
+ },
+ {
+  "scenario": "probe_4",
+  "load_mass_kg": 720.0,
+  "load_com_offset_local": [
+   0.0,
+   -0.25,
+   0.0
+  ],
+  "masses": [
+   1100.7845458984375,
+   465.32952880859375,
+   1.1182209253311157,
+   1.6084953546524048,
+   1.6084953546524048,
+   1.6084953546524048,
+   1.6084953546524048,
+   720.0,
+   17.157283782958984
+  ],
+  "local_coms": [
+   [
+    0.3190002143383026,
+    -0.0038013914600014687,
+    0.7256413102149963
+   ],
+   [
+    -0.007492641918361187,
+    -0.5628319978713989,
+    1.0712909698486328
+   ],
+   [
+    0.0010212957859039307,
+    0.0019862279295921326,
+    -0.1222730278968811
+   ],
+   [
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    0.0,
+    -0.22499999403953552,
+    0.0
+   ],
+   [
+    0.014999998733401299,
+    0.0,
+    0.0
+   ]
+  ],
+  "com_orientations": [
+   [
+    0.9951891899108887,
+    0.0048446133732795715,
+    -0.09294779598712921,
+    0.030590692535042763
+   ],
+   [
+    0.9997504353523254,
+    -0.015347667969763279,
+    -0.0032105084974318743,
+    -0.015915028750896454
+   ],
+   [
+    0.9969736933708191,
+    0.010539727285504341,
+    0.07596521079540253,
+    0.012716935947537422
+   ],
+   [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  ],
+  "body_names_attr": [
+   "body",
+   "lift",
+   "back_wheel_swivel",
+   "roller_front_right",
+   "roller_back_left",
+   "roller_back_right",
+   "roller_front_left",
+   "forklift_load",
+   "back_wheel"
+  ],
+  "link_paths": [
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/body",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/lift",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/back_wheel_swivel",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/roller_front_right",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/roller_back_left",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/roller_back_right",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/roller_front_left",
+   "/World/forklift_load",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/back_wheel"
+  ],
+  "link_names": [
+   "body",
+   "lift",
+   "back_wheel_swivel",
+   "roller_front_right",
+   "roller_back_left",
+   "roller_back_right",
+   "roller_front_left",
+   "forklift_load",
+   "back_wheel"
+  ],
+  "traversal_paths": [
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/lift",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/body",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/back_wheel",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/roller_front_right",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/roller_back_left",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/roller_back_right",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/roller_front_left",
+   "/World/forklift/forklift_b_sensors/forklift_b_sensor/back_wheel_swivel"
+  ],
+  "traversal_world_origins": [
+   [
+    1.8627533912658691,
+    1.6121630668640137,
+    1.7591603994369507
+   ],
+   [
+    1.8630595207214355,
+    1.6121649742126465,
+    0.0018636584281921387
+   ],
+   [
+    2.4429521560668945,
+    1.6198042631149292,
+    0.1600000262260437
+   ],
+   [
+    0.952925443649292,
+    1.1185357570648193,
+    0.07999920845031738
+   ],
+   [
+    1.145516276359558,
+    2.111165761947632,
+    0.08003383874893188
+   ],
+   [
+    1.1455153226852417,
+    1.1185355186462402,
+    0.0800328254699707
+   ],
+   [
+    0.9529261589050293,
+    2.111166000366211,
+    0.07999986410140991
+   ],
+   [
+    2.440537929534912,
+    1.6908941268920898,
+    0.3577190637588501
+   ]
+  ],
+  "root_path": "/World/forklift/forklift_b_sensors/forklift_b_sensor/body",
+  "root_origin": [
+   1.8630595207214355,
+   1.6121649742126465,
+   0.0018636584281921387
+  ],
+  "root_x_axis_point": [
+   2.8630595055312478,
+   1.6121640936709427,
+   0.002037955874476658
+  ],
+  "root_y_axis_point": [
+   1.8630604010780862,
+   2.6121649742116952,
+   0.0018647202127757547
+  ],
+  "logger_system_com": {
+   "position": [
+    2.0136661029562073,
+    1.636382619194185,
+    1.0294975303077405
+   ],
+   "total_mass": 2310.823560833931,
+   "source": "physx_articulation_body_masses+body_path_traversal_order+load_massapi_skipped_fixed_joint_articulation",
+   "components": 9
+  },
+  "forklift_pose": {
+   "position": null
+  },
+  "truth_system_com": {
+   "position": [
+    1.3232489145194073,
+    1.544966926364355,
+    1.7005912095619646
+   ],
+   "per_link": [
+    {
+     "path": "/World/forklift/forklift_b_sensors/forklift_b_sensor/body",
+     "mass": 1100.7845458984375,
+     "local_com": [
+      0.3190002143383026,
+      -0.0038013914600014687,
+      0.7256413102149963
+     ],
+     "world_com": [
+      2.1819332494395174,
+      1.6083625314962569,
+      0.7275605545068975
+     ],
+     "world_origin": [
+      1.8630595207214355,
+      1.6121649742126465,
+      0.0018636584281921387
+     ]
+    },
+    {
+     "path": "/World/forklift/forklift_b_sensors/forklift_b_sensor/lift",
+     "mass": 465.32952880859375,
+     "local_com": [
+      -0.007492641918361187,
+      -0.5628319978713989,
+      1.0712909698486328
+     ],
+     "world_com": [
+      1.2997347557169703,
+      1.6196550213285899,
+      2.830353298140545
+     ],
+     "world_origin": [
+      1.8627533912658691,
+      1.6121630668640137,
+      1.7591603994369507
+     ]
+    },
+    {
+     "path": "/World/forklift/forklift_b_sensors/forklift_b_sensor/back_wheel_swivel",
+     "mass": 1.1182209253311157,
+     "local_com": [
+      0.0010212957859039307,
+      0.0019862279295921326,
+      -0.1222730278968811
+     ],
+     "world_com": [
+      2.4425454629933654,
+      1.6898729582365677,
+      0.23544638274819985
+     ],
+     "world_origin": [
+      2.440537929534912,
+      1.6908941268920898,
+      0.3577190637588501
+     ]
+    },
+    {
+     "path": "/World/forklift/forklift_b_sensors/forklift_b_sensor/roller_front_right",
+     "mass": 1.6084953546524048,
+     "local_com": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "world_com": [
+      0.952925443649292,
+      1.1185357570648193,
+      0.07999920845031738
+     ],
+     "world_origin": [
+      0.952925443649292,
+      1.1185357570648193,
+      0.07999920845031738
+     ]
+    },
+    {
+     "path": "/World/forklift/forklift_b_sensors/forklift_b_sensor/roller_back_left",
+     "mass": 1.6084953546524048,
+     "local_com": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "world_com": [
+      1.145516276359558,
+      2.111165761947632,
+      0.08003383874893188
+     ],
+     "world_origin": [
+      1.145516276359558,
+      2.111165761947632,
+      0.08003383874893188
+     ]
+    },
+    {
+     "path": "/World/forklift/forklift_b_sensors/forklift_b_sensor/roller_back_right",
+     "mass": 1.6084953546524048,
+     "local_com": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "world_com": [
+      1.1455153226852417,
+      1.1185355186462402,
+      0.0800328254699707
+     ],
+     "world_origin": [
+      1.1455153226852417,
+      1.1185355186462402,
+      0.0800328254699707
+     ]
+    },
+    {
+     "path": "/World/forklift/forklift_b_sensors/forklift_b_sensor/roller_front_left",
+     "mass": 1.6084953546524048,
+     "local_com": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "world_com": [
+      0.9529261589050293,
+      2.111166000366211,
+      0.07999986410140991
+     ],
+     "world_origin": [
+      0.9529261589050293,
+      2.111166000366211,
+      0.07999986410140991
+     ]
+    },
+    {
+     "path": "/World/forklift_load",
+     "mass": 720.0,
+     "local_com": [
+      0.0,
+      -0.22499999403953552,
+      0.0
+     ],
+     "world_com": [
+      -0.0003402636502869427,
+      1.3974977695941924,
+      2.5115396976470947
+     ],
+     "world_origin": [
+      -0.0003402636502869427,
+      1.5999977588653564,
+      2.5115396976470947
+     ]
+    },
+    {
+     "path": "/World/forklift/forklift_b_sensors/forklift_b_sensor/back_wheel",
+     "mass": 17.157283782958984,
+     "local_com": [
+      0.014999998733401299,
+      0.0,
+      0.0
+     ],
+     "world_com": [
+      2.442952140752781,
+      1.604804264381544,
+      0.16000001030686448
+     ],
+     "world_origin": [
+      2.4429521560668945,
+      1.6198042631149292,
+      0.1600000262260437
+     ]
+    }
+   ]
+  },
+  "load": {
+   "path": "/World/forklift_load",
+   "mass_attr": 720.0,
+   "com_attr": [
+    0.0,
+    -0.25,
+    0.0
+   ],
+   "world_origin": [
+    -0.0003402636502869427,
+    1.5999977588653564,
+    2.5115396976470947
+   ],
+   "world_com": [
+    -0.0003402636502869427,
+    1.374997764825821,
+    2.5115396976470947
+   ],
+   "fixed_to_articulation": true
+  }
+ }
+]

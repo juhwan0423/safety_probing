@@ -1,0 +1,98 @@
+{
+ "n": 80,
+ "n_pairs": 40,
+ "mass_mae_kg": {
+  "point": 35.12992630004883,
+  "seed_sd": 0.0,
+  "ci_low": 29.61334273338318,
+  "ci_high": 40.96113101005554,
+  "n": 80,
+  "n_clusters": 40
+ },
+ "com_mae_m": {
+  "point": 0.12473356252303347,
+  "seed_sd": 0.0,
+  "ci_low": 0.1083768425884773,
+  "ci_high": 0.14162702970876126,
+  "n": 80,
+  "n_clusters": 40
+ },
+ "roll_mae_deg": {
+  "point": 3.939544776082039,
+  "seed_sd": 0.0,
+  "ci_low": 2.9524419603645806,
+  "ci_high": 5.01910749129951,
+  "n": 80,
+  "n_clusters": 40
+ },
+ "zmp_mae_m": {
+  "point": 0.05411946824169718,
+  "seed_sd": 0.0,
+  "ci_low": 0.026495181523059727,
+  "ci_high": 0.1003378412805614,
+  "n": 80,
+  "n_clusters": 40
+ },
+ "tip_auroc": {
+  "point": 0.9836647727272727,
+  "seed_sd": 0.0,
+  "ci_low": 0.9483461865046207,
+  "ci_high": 1.0,
+  "n": 76,
+  "positive_n": 32,
+  "negative_n": 44,
+  "n_clusters": 40
+ },
+ "tip_rate": 0.42105263157894735,
+ "mass_r2": 0.9054869413375854,
+ "mass_slope": 0.8340401419797712,
+ "mass_pearson": 0.9606948776451201,
+ "com_r2": -0.1377941370010376,
+ "com_slope": 0.009835095791277622,
+ "com_pearson": 0.024989508993107177,
+ "mass_direction": {
+  "point": 0.9545454545454546,
+  "seed_sd": 0.0,
+  "ci_low": 0.8636363636363636,
+  "ci_high": 1.0,
+  "n": 22,
+  "n_clusters": 22
+ },
+ "com_direction": {
+  "point": 0.6666666666666666,
+  "seed_sd": 0.0,
+  "ci_low": 0.4444444444444444,
+  "ci_high": 0.8888888888888888,
+  "n": 18,
+  "n_clusters": 18
+ },
+ "gold_zmp_ordering": {
+  "point": 0.5,
+  "seed_sd": 0.0,
+  "ci_low": 0.0,
+  "ci_high": 1.0,
+  "n": 2,
+  "n_clusters": 2
+ },
+ "n_outcome_flip_pairs": 2,
+ "outcome_flip": {
+  "point": 0.5,
+  "seed_sd": 0.0,
+  "ci_low": 0.0,
+  "ci_high": 1.0,
+  "n": 2,
+  "n_clusters": 2
+ },
+ "train_mean_baseline": {
+  "mass_mae_kg": 123.40372467041016,
+  "com_mae_m": 0.11920656263828278,
+  "zmp_mae_m": 0.09049085527658463,
+  "roll_mae_deg": 15.273553690910342
+ },
+ "counts": {
+  "train": 336,
+  "val": 64,
+  "test": 80,
+  "unused": 0
+ }
+}

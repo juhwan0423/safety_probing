@@ -83,6 +83,24 @@
    "ci_high": 0.5,
    "n": 53,
    "n_clusters": 53
+  },
+  "n_outcome_flip_mass": 32,
+  "outcome_flip_mass": {
+   "point": 0.5,
+   "seed_sd": 0.0,
+   "ci_low": 0.5,
+   "ci_high": 0.5,
+   "n": 32,
+   "n_clusters": 32
+  },
+  "n_outcome_flip_com": 21,
+  "outcome_flip_com": {
+   "point": 0.5,
+   "seed_sd": 0.0,
+   "ci_low": 0.5,
+   "ci_high": 0.5,
+   "n": 21,
+   "n_clusters": 21
   }
  },
  "command+mass": {
@@ -169,6 +187,24 @@
    "ci_high": 0.8584905660377359,
    "n": 53,
    "n_clusters": 53
+  },
+  "n_outcome_flip_mass": 32,
+  "outcome_flip_mass": {
+   "point": 0.9791666666666666,
+   "seed_sd": 0.018042195912175808,
+   "ci_low": 0.90625,
+   "ci_high": 1.0,
+   "n": 32,
+   "n_clusters": 32
+  },
+  "n_outcome_flip_com": 21,
+  "outcome_flip_com": {
+   "point": 0.5,
+   "seed_sd": 0.0,
+   "ci_low": 0.5,
+   "ci_high": 0.5,
+   "n": 21,
+   "n_clusters": 21
   }
  },
  "command+com": {
@@ -255,6 +291,24 @@
    "ci_high": 0.7641509433962265,
    "n": 53,
    "n_clusters": 53
+  },
+  "n_outcome_flip_mass": 32,
+  "outcome_flip_mass": {
+   "point": 0.5,
+   "seed_sd": 0.0,
+   "ci_low": 0.5,
+   "ci_high": 0.5,
+   "n": 32,
+   "n_clusters": 32
+  },
+  "n_outcome_flip_com": 21,
+  "outcome_flip_com": {
+   "point": 0.9841269841269842,
+   "seed_sd": 0.027492869961410784,
+   "ci_low": 0.9047619047619048,
+   "ci_high": 1.0,
+   "n": 21,
+   "n_clusters": 21
   }
  },
  "command+mass+com": {
@@ -341,6 +395,24 @@
    "ci_high": 1.0,
    "n": 53,
    "n_clusters": 53
+  },
+  "n_outcome_flip_mass": 32,
+  "outcome_flip_mass": {
+   "point": 0.9895833333333334,
+   "seed_sd": 0.018042195912175808,
+   "ci_low": 0.9375,
+   "ci_high": 1.0,
+   "n": 32,
+   "n_clusters": 32
+  },
+  "n_outcome_flip_com": 21,
+  "outcome_flip_com": {
+   "point": 1.0,
+   "seed_sd": 0.0,
+   "ci_low": 1.0,
+   "ci_high": 1.0,
+   "n": 21,
+   "n_clusters": 21
   }
  }
 }

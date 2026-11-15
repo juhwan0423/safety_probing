@@ -37,6 +37,8 @@ class ContextV2:
         # continuous-regression diagnostics (seed-mean prediction)
         for name, ch in (("mass", 0), ("com", 1)):
             p, y = pred["static"][:, :, ch].mean(0), t["static"][:, ch]
+            if np.ptp(y) < 1e-9:                      # the quantity does not vary in this subset (e.g. a sweep at one CoM offset)
+                out[f"{name}_r2"] = out[f"{name}_slope"] = out[f"{name}_pearson"] = float("nan"); continue
             slope, icpt = np.polyfit(y, p, 1)
             out[f"{name}_r2"] = float(1 - np.sum((p - y) ** 2) / np.sum((y - y.mean()) ** 2)); out[f"{name}_slope"] = float(slope)
             out[f"{name}_pearson"] = float(np.corrcoef(p, y)[0, 1])
@@ -62,7 +64,11 @@ class ContextV2:
         out["n_outcome_flip_pairs"] = len(flip)
         if flip:
             hi, lo = np.array([f[0] for f in flip]), np.array([f[1] for f in flip]); d = pred["tip_score"][:, hi] - pred["tip_score"][:, lo]
-            out["outcome_flip"] = bs.hierarchical_mean((d > 0) + 0.5 * (d == 0), np.asarray(fcl), bootstrap=bootstrap, rng=rng)
+            correct, fcl, fkind = (d > 0) + 0.5 * (d == 0), np.asarray(fcl), np.asarray(fkind)
+            out["outcome_flip"] = bs.hierarchical_mean(correct, fcl, bootstrap=bootstrap, rng=rng)
+            for key, short in (("mass_direction", "mass"), ("com_direction", "com")):      # by the kind of payload change within the pair
+                sel = fkind == key; out[f"n_outcome_flip_{short}"] = int(sel.sum())
+                if sel.any(): out[f"outcome_flip_{short}"] = bs.hierarchical_mean(correct[:, sel], np.unique(fcl[sel], return_inverse=True)[1], bootstrap=bootstrap, rng=rng)
         return out
 
     def train_mean_baseline(self, train_idx: np.ndarray, idx: np.ndarray) -> dict:

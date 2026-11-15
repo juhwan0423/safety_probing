@@ -93,5 +93,23 @@
   "runs": 800,
   "pairs": 400,
   "folds": 5
+ },
+ "n_outcome_flip_mass": 32,
+ "outcome_flip_mass": {
+  "point": 0.9270833333333334,
+  "seed_sd": 0.04773516348912333,
+  "ci_low": 0.8125,
+  "ci_high": 1.0,
+  "n": 32,
+  "n_clusters": 32
+ },
+ "n_outcome_flip_com": 21,
+ "outcome_flip_com": {
+  "point": 0.5079365079365079,
+  "seed_sd": 0.07273929674533079,
+  "ci_low": 0.31746031746031744,
+  "ci_high": 0.7142857142857143,
+  "n": 21,
+  "n_clusters": 21
  }
 }

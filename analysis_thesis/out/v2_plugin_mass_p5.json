@@ -1,0 +1,418 @@
+{
+ "true mass": {
+  "n": 800,
+  "n_pairs": 400,
+  "mass_mae_kg": {
+   "point": 0.0,
+   "seed_sd": 0.0,
+   "ci_low": 0.0,
+   "ci_high": 0.0,
+   "n": 800,
+   "n_clusters": 400
+  },
+  "com_mae_m": {
+   "point": 0.0,
+   "seed_sd": 0.0,
+   "ci_low": 0.0,
+   "ci_high": 0.0,
+   "n": 800,
+   "n_clusters": 400
+  },
+  "roll_mae_deg": {
+   "point": 4.988559797326723,
+   "seed_sd": 0.037120580140881244,
+   "ci_low": 4.616907325568547,
+   "ci_high": 5.351094089726359,
+   "n": 800,
+   "n_clusters": 400
+  },
+  "zmp_mae_m": {
+   "point": 0.0438857735262718,
+   "seed_sd": 0.0008177789635334913,
+   "ci_low": 0.036881477777729745,
+   "ci_high": 0.05198995290197005,
+   "n": 800,
+   "n_clusters": 400
+  },
+  "tip_auroc": {
+   "point": 0.9835158402203857,
+   "seed_sd": 0.0002932461274936997,
+   "ci_low": 0.975568362322834,
+   "ci_high": 0.9898742094415433,
+   "n": 770,
+   "positive_n": 440,
+   "negative_n": 330,
+   "n_clusters": 396
+  },
+  "tip_rate": 0.5714285714285714,
+  "mass_r2": 1.0,
+  "mass_slope": 0.9999999988099448,
+  "mass_pearson": 0.9999999999999957,
+  "com_r2": 1.0,
+  "com_slope": 1.000000001616487,
+  "com_pearson": 0.9999999999999994,
+  "mass_direction": {
+   "point": 1.0,
+   "seed_sd": 0.0,
+   "ci_low": 1.0,
+   "ci_high": 1.0,
+   "n": 200,
+   "n_clusters": 200
+  },
+  "com_direction": {
+   "point": 1.0,
+   "seed_sd": 0.0,
+   "ci_low": 1.0,
+   "ci_high": 1.0,
+   "n": 200,
+   "n_clusters": 200
+  },
+  "gold_zmp_ordering": {
+   "point": 0.6194968553459119,
+   "seed_sd": 0.010893401305464635,
+   "ci_low": 0.5157232704402516,
+   "ci_high": 0.7169811320754716,
+   "n": 53,
+   "n_clusters": 53
+  },
+  "n_outcome_flip_pairs": 53,
+  "outcome_flip": {
+   "point": 0.789308176100629,
+   "seed_sd": 0.010893401305464635,
+   "ci_low": 0.7169811320754716,
+   "ci_high": 0.8584905660377359,
+   "n": 53,
+   "n_clusters": 53
+  },
+  "n_outcome_flip_mass": 32,
+  "outcome_flip_mass": {
+   "point": 0.9791666666666666,
+   "seed_sd": 0.018042195912175808,
+   "ci_low": 0.90625,
+   "ci_high": 1.0,
+   "n": 32,
+   "n_clusters": 32
+  },
+  "n_outcome_flip_com": 21,
+  "outcome_flip_com": {
+   "point": 0.5,
+   "seed_sd": 0.0,
+   "ci_low": 0.5,
+   "ci_high": 0.5,
+   "n": 21,
+   "n_clusters": 21
+  }
+ },
+ "video mass (p5)": {
+  "n": 800,
+  "n_pairs": 400,
+  "mass_mae_kg": {
+   "point": 0.0,
+   "seed_sd": 0.0,
+   "ci_low": 0.0,
+   "ci_high": 0.0,
+   "n": 800,
+   "n_clusters": 400
+  },
+  "com_mae_m": {
+   "point": 0.0,
+   "seed_sd": 0.0,
+   "ci_low": 0.0,
+   "ci_high": 0.0,
+   "n": 800,
+   "n_clusters": 400
+  },
+  "roll_mae_deg": {
+   "point": 5.118269845177729,
+   "seed_sd": 0.05003034071203896,
+   "ci_low": 4.712439508858821,
+   "ci_high": 5.508942549224943,
+   "n": 800,
+   "n_clusters": 400
+  },
+  "zmp_mae_m": {
+   "point": 0.04484582396612192,
+   "seed_sd": 0.0009970979260073211,
+   "ci_low": 0.03793093389056351,
+   "ci_high": 0.0527645519686436,
+   "n": 800,
+   "n_clusters": 400
+  },
+  "tip_auroc": {
+   "point": 0.9818480257116621,
+   "seed_sd": 0.0005065769153427282,
+   "ci_low": 0.9727267148391701,
+   "ci_high": 0.9893281096927476,
+   "n": 770,
+   "positive_n": 440,
+   "negative_n": 330,
+   "n_clusters": 396
+  },
+  "tip_rate": 0.5714285714285714,
+  "mass_r2": 1.0,
+  "mass_slope": 0.9999999988099448,
+  "mass_pearson": 0.9999999999999957,
+  "com_r2": 1.0,
+  "com_slope": 1.000000001616487,
+  "com_pearson": 0.9999999999999994,
+  "mass_direction": {
+   "point": 1.0,
+   "seed_sd": 0.0,
+   "ci_low": 1.0,
+   "ci_high": 1.0,
+   "n": 200,
+   "n_clusters": 200
+  },
+  "com_direction": {
+   "point": 1.0,
+   "seed_sd": 0.0,
+   "ci_low": 1.0,
+   "ci_high": 1.0,
+   "n": 200,
+   "n_clusters": 200
+  },
+  "gold_zmp_ordering": {
+   "point": 0.6918238993710691,
+   "seed_sd": 0.010893401305464635,
+   "ci_low": 0.5660377358490566,
+   "ci_high": 0.8113207547169812,
+   "n": 53,
+   "n_clusters": 53
+  },
+  "n_outcome_flip_pairs": 53,
+  "outcome_flip": {
+   "point": 0.7861635220125787,
+   "seed_sd": 0.010893401305464635,
+   "ci_low": 0.6790880503144654,
+   "ci_high": 0.8867924528301887,
+   "n": 53,
+   "n_clusters": 53
+  },
+  "n_outcome_flip_mass": 32,
+  "outcome_flip_mass": {
+   "point": 0.96875,
+   "seed_sd": 0.0,
+   "ci_low": 0.90625,
+   "ci_high": 1.0,
+   "n": 32,
+   "n_clusters": 32
+  },
+  "n_outcome_flip_com": 21,
+  "outcome_flip_com": {
+   "point": 0.5079365079365079,
+   "seed_sd": 0.027492869961410784,
+   "ci_low": 0.30158730158730157,
+   "ci_high": 0.7142857142857143,
+   "n": 21,
+   "n_clusters": 21
+  }
+ },
+ "video mass (p5_obs47)": {
+  "n": 800,
+  "n_pairs": 400,
+  "mass_mae_kg": {
+   "point": 0.0,
+   "seed_sd": 0.0,
+   "ci_low": 0.0,
+   "ci_high": 0.0,
+   "n": 800,
+   "n_clusters": 400
+  },
+  "com_mae_m": {
+   "point": 0.0,
+   "seed_sd": 0.0,
+   "ci_low": 0.0,
+   "ci_high": 0.0,
+   "n": 800,
+   "n_clusters": 400
+  },
+  "roll_mae_deg": {
+   "point": 5.507848298996688,
+   "seed_sd": 0.022977884835806883,
+   "ci_low": 5.096020675145089,
+   "ci_high": 5.9221895613424484,
+   "n": 800,
+   "n_clusters": 400
+  },
+  "zmp_mae_m": {
+   "point": 0.049515356835133084,
+   "seed_sd": 0.0008313550221978416,
+   "ci_low": 0.04250312152170227,
+   "ci_high": 0.0576533108317138,
+   "n": 800,
+   "n_clusters": 400
+  },
+  "tip_auroc": {
+   "point": 0.9745684113865932,
+   "seed_sd": 0.0005592665332968471,
+   "ci_low": 0.9637640782268783,
+   "ci_high": 0.9836202116379669,
+   "n": 770,
+   "positive_n": 440,
+   "negative_n": 330,
+   "n_clusters": 396
+  },
+  "tip_rate": 0.5714285714285714,
+  "mass_r2": 1.0,
+  "mass_slope": 0.9999999988099448,
+  "mass_pearson": 0.9999999999999957,
+  "com_r2": 1.0,
+  "com_slope": 1.000000001616487,
+  "com_pearson": 0.9999999999999994,
+  "mass_direction": {
+   "point": 1.0,
+   "seed_sd": 0.0,
+   "ci_low": 1.0,
+   "ci_high": 1.0,
+   "n": 200,
+   "n_clusters": 200
+  },
+  "com_direction": {
+   "point": 1.0,
+   "seed_sd": 0.0,
+   "ci_low": 1.0,
+   "ci_high": 1.0,
+   "n": 200,
+   "n_clusters": 200
+  },
+  "gold_zmp_ordering": {
+   "point": 0.559748427672956,
+   "seed_sd": 0.010893401305464635,
+   "ci_low": 0.41509433962264153,
+   "ci_high": 0.6981132075471698,
+   "n": 53,
+   "n_clusters": 53
+  },
+  "n_outcome_flip_pairs": 53,
+  "outcome_flip": {
+   "point": 0.7169811320754716,
+   "seed_sd": 0.018867924528301883,
+   "ci_low": 0.5911949685534591,
+   "ci_high": 0.8364779874213837,
+   "n": 53,
+   "n_clusters": 53
+  },
+  "n_outcome_flip_mass": 32,
+  "outcome_flip_mass": {
+   "point": 0.9479166666666666,
+   "seed_sd": 0.018042195912175808,
+   "ci_low": 0.8541666666666666,
+   "ci_high": 1.0,
+   "n": 32,
+   "n_clusters": 32
+  },
+  "n_outcome_flip_com": 21,
+  "outcome_flip_com": {
+   "point": 0.36507936507936506,
+   "seed_sd": 0.027492869961410746,
+   "ci_low": 0.15873015873015872,
+   "ci_high": 0.5714285714285714,
+   "n": 21,
+   "n_clusters": 21
+  }
+ },
+ "train-mean mass": {
+  "n": 800,
+  "n_pairs": 400,
+  "mass_mae_kg": {
+   "point": 0.0,
+   "seed_sd": 0.0,
+   "ci_low": 0.0,
+   "ci_high": 0.0,
+   "n": 800,
+   "n_clusters": 400
+  },
+  "com_mae_m": {
+   "point": 0.0,
+   "seed_sd": 0.0,
+   "ci_low": 0.0,
+   "ci_high": 0.0,
+   "n": 800,
+   "n_clusters": 400
+  },
+  "roll_mae_deg": {
+   "point": 7.564718461533388,
+   "seed_sd": 0.015958135242275795,
+   "ci_low": 6.924846681008736,
+   "ci_high": 8.204443998746077,
+   "n": 800,
+   "n_clusters": 400
+  },
+  "zmp_mae_m": {
+   "point": 0.051750486976234245,
+   "seed_sd": 0.00021004594490717847,
+   "ci_low": 0.0445159128147643,
+   "ci_high": 0.060404318831220744,
+   "n": 800,
+   "n_clusters": 400
+  },
+  "tip_auroc": {
+   "point": 0.9519754361799816,
+   "seed_sd": 0.003764933845084106,
+   "ci_low": 0.9348899661706818,
+   "ci_high": 0.967053845015249,
+   "n": 770,
+   "positive_n": 440,
+   "negative_n": 330,
+   "n_clusters": 396
+  },
+  "tip_rate": 0.5714285714285714,
+  "mass_r2": 1.0,
+  "mass_slope": 0.9999999988099448,
+  "mass_pearson": 0.9999999999999957,
+  "com_r2": 1.0,
+  "com_slope": 1.000000001616487,
+  "com_pearson": 0.9999999999999994,
+  "mass_direction": {
+   "point": 1.0,
+   "seed_sd": 0.0,
+   "ci_low": 1.0,
+   "ci_high": 1.0,
+   "n": 200,
+   "n_clusters": 200
+  },
+  "com_direction": {
+   "point": 1.0,
+   "seed_sd": 0.0,
+   "ci_low": 1.0,
+   "ci_high": 1.0,
+   "n": 200,
+   "n_clusters": 200
+  },
+  "gold_zmp_ordering": {
+   "point": 0.5,
+   "seed_sd": 0.0,
+   "ci_low": 0.5,
+   "ci_high": 0.5,
+   "n": 53,
+   "n_clusters": 53
+  },
+  "n_outcome_flip_pairs": 53,
+  "outcome_flip": {
+   "point": 0.5,
+   "seed_sd": 0.0,
+   "ci_low": 0.5,
+   "ci_high": 0.5,
+   "n": 53,
+   "n_clusters": 53
+  },
+  "n_outcome_flip_mass": 32,
+  "outcome_flip_mass": {
+   "point": 0.5,
+   "seed_sd": 0.0,
+   "ci_low": 0.5,
+   "ci_high": 0.5,
+   "n": 32,
+   "n_clusters": 32
+  },
+  "n_outcome_flip_com": 21,
+  "outcome_flip_com": {
+   "point": 0.5,
+   "seed_sd": 0.0,
+   "ci_low": 0.5,
+   "ci_high": 0.5,
+   "n": 21,
+   "n_clusters": 21
+  }
+ }
+}

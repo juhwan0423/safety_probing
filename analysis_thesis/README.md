@@ -71,10 +71,15 @@ parts `forksafe_v2_band_01..05` cover 18-22, where the payload decides the outco
 | `kinematics_v2.py` | No-video ceiling on ground-truth kinematics |
 | `hypothesis_v2.py` | Forward model conditioned on a payload hypothesis; identification by matching; what-if prediction |
 | `run_v2_final.sh`, `run_v2_band.sh`, `run_v2_obslen.sh` | Full pipelines (features, true-CoM targets, readouts, learning curve, observation length) |
+| `run_v2_obslen_cv.sh` | Observation-length sweep with pair-grouped CV (all runs out of fold) |
+| `payload_value_v2.py` | Value of payload knowledge without video: command, + true mass, + true lateral CoM offset |
+| `early_direction_check.py` | Shows that the signed roll is unpredictable before the turn because the turn direction is not yet visible |
+| `ltx_v2.py`, `run_v2_ltx.sh` | Generated-future audit on a v2 set (real-future readout applied to LTX rollouts of held-out pairs) |
 
 ## Figures
 
 `make_figures_mechanics.py`, `make_figures_cv.py`, `make_figures_early.py`, `make_figures_v1.py`,
-`make_fig_forecast_gallery.py`, `v2/make_figures_v2.py`, `v2/make_fig_v2_dataset.py` write PDF and
+`make_fig_forecast_gallery.py`, `v2/make_figures_v2.py`, `v2/make_fig_v2_dataset.py`,
+`v2/make_fig_v2_information.py`, `v2/make_fig_v2_gallery.py`, `v2/make_fig_v2_early.py` write PDF and
 PNG files to `figures/` using `thesis_style.py`. Result summaries are JSON files under `out/`;
 prediction arrays (`*.npz`) and checkpoints (`*.pt`) are not tracked.

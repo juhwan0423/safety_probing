@@ -1,4 +1,4 @@
-"""Build a Safety Query target cache from corrected dense rows (new file; originals untouched).
+"""Build a Safety Query target cache from corrected dense rows.
 Usage (from the safety_probing root): python analysis_thesis/comfix_build_targets.py <builder args>
 COMFIX_MED5=1 additionally de-spikes the finite-difference ZMP with a 5-sample running median."""
 import os, sys

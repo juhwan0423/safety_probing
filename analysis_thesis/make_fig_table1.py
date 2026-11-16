@@ -1,6 +1,6 @@
 """Paper-split comparison (prediction from the observation / real-future readout / generated future) on the
 true-CoM targets. Reads out/truecom_table1.json (truecom_eval.py). The paper split shares pre-turn segments and
-replicas between train and test, so this figure reproduces the paper's comparison; it is not a generalisation result.
+replicas between train and test, so this figure reproduces the paper's comparison on corrected labels.
 Run:  PYTHONPATH=. ../external/LTX-2/.venv/bin/python make_fig_table1.py
 """
 import json

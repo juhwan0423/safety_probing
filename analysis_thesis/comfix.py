@@ -8,7 +8,7 @@ Finding: the simulator logger's system CoM ignores the payload's lateral CoM off
   3. recomputes ZMP and outward margins from the corrected CoM,
   4. validates logged vs corrected ZMP against the centre of pressure from contact forces.
 
-Read-only on the dataset. `corrected_rows(path)` returns dense-log rows with corrected
+`corrected_rows(path)` returns dense-log rows with corrected
 columns for the target builder.
 """
 from __future__ import annotations

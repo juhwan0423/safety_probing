@@ -1,8 +1,8 @@
 # Thesis-extension analysis (`analysis_thesis/`)
 
-Follow-up experiments for the master's thesis built on the workshop paper
-"Physical Safety Queries Reveal What Video World Models Forget". Everything here is new code;
-the paper's modules under `src/safety_probing/` and the simulator outputs are used read-only.
+Follow-up experiments for the master's thesis, built on the workshop paper
+"Physical Safety Queries Reveal What Video World Models Forget". The scripts reuse the paper's
+modules under `src/safety_probing/`.
 
 Run scripts from this directory unless stated otherwise:
 
@@ -12,22 +12,22 @@ PYTHONPATH=. ../external/LTX-2/.venv/bin/python make_figures_*.py  # figures (ne
 ```
 
 `common.py` reuses the paper's `scripts/build_statistics.py`, so metrics match Table 1 definitions.
-`check_repro.py` reproduces Table 1 from the saved probes; run it before trusting new numbers.
+`check_repro.py` reproduces Table 1 from the saved probes.
 
-## Findings that change how the data may be used
+## Notes on the data
 
 1. **Replicas.** The 810 conditions of ForkSafe-CF v1 are 270 physical configurations run three
    times; the seed is not used by the physics. The paper split spreads replicas across
    train/val/test (`replica_leak.py`). Use the physically disjoint protocols in `psq_cv.py`:
    `config5` (5-fold over configurations) and `logo9` (leave one manoeuvre group out).
-2. **The logged system CoM, ZMP and CoM/ZMP margins are wrong.** The dataset logger pairs PhysX
-   link masses with link poses taken in USD traversal order, so the payload mass is placed at the
-   rear-wheel swivel and the chassis mass at the mast (`sim_probe/probe_mass_properties.py`,
+2. **Stability labels.** The dataset logger pairs PhysX link masses with link poses taken in USD
+   traversal order, so the payload mass is placed at the rear-wheel swivel and the chassis mass
+   at the mast (`sim_probe/probe_mass_properties.py`,
    `com_identify.py`). `truecom.py` rebuilds the CoM from the true link masses and computes a
    multi-body ZMP; against the wheel-load centre of pressure it is within 1.5 cm (longitudinal)
    and 3 cm (lateral), where the logged ZMP is off by 52 cm and 8 cm (`mechanics_true.py`).
-   Targets built with `truecom_build_targets.py` (`*_truecom.pt`) supersede the earlier
-   `comfix` targets. Mass, configured CoM offset, roll and tip-over labels were never affected.
+   All results here use targets built with `truecom_build_targets.py` (`*_truecom.pt`). Mass,
+   configured CoM offset, roll and tip-over labels are unaffected.
 3. **Configured vs physical CoM offset.** The payload CoM offset is set in the scaled local frame
    of the load cube, so a configured 0.25 m is 0.225 m physically.
 4. **Lateral CoM offset is weakly observable.** On v1 the same manoeuvre and mass repeat on a grid
@@ -44,7 +44,7 @@ PYTHONPATH=. ../external/LTX-2/.venv/bin/python make_figures_*.py  # figures (ne
 | `truecom.py` | True rigid-body CoM, multi-body ZMP, outward margins; `corrected_rows()` feeds the target builder |
 | `mechanics_true.py` | Stability arm, static rollover threshold, lateral demand, ZMP-vs-CoP validation per run |
 | `physics_pipeline.py` | Identified payload plugged into the static stability model, compared with the learned readout |
-| `rollover_physics.py`, `analytic_*.py`, `comfix*.py`, `zmp_*.py`, `cop_check.py` | Earlier attempts based on the logged CoM; kept for the record, superseded |
+| `rollover_physics.py`, `analytic_*.py`, `comfix*.py`, `zmp_*.py`, `cop_check.py` | Earlier analyses based on the logged CoM |
 
 ## Prediction experiments (ForkSafe-CF v1)
 

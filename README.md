@@ -1,300 +1,107 @@
-# Safety Probing
+# Physical Safety Query (PSQ)
 
-`safety_probing` is the analysis and frozen-encoder probing workspace for the
-ExoFork-CF lateral tip-over dataset. It treats simulator outputs as read-only inputs.
+PSQ predicts a forklift's hidden payload and its future stability from a short video. The same readout then tests whether a video world model keeps that physical state in the futures it generates.
 
-## Thesis Extension (November 2026)
+[Project page](https://juhwanhan.shb06083.workers.dev/) · Paper: *Physical Safety Queries Reveal What Video World Models Forget*, ECCV 2026 Workshop (oral, Best Paper Award runner-up)
 
-`analysis_thesis/` holds the follow-up study built on this repository; its
-[README](analysis_thesis/README.md) indexes every script, figure and result file.
+![Two runs with the same manoeuvre and payload mass and a different payload centre of mass](analysis_thesis/figures/fig_pair_frames.png)
 
-- **Labels.** The simulator log paired link masses with the wrong link poses.
-  `analysis_thesis/truecom.py` recomputes the system centre of mass, a multi-body ZMP and
-  the stability margins. The corrected ZMP agrees with the wheel-load centre of pressure
-  within 0.015 m (longitudinal) and 0.033 m (lateral).
-- **Evaluation.** In the grid benchmark (v1), runs that share payload and speed move
-  identically before the steering input, so the original split and condition-level folds
-  allow the payload to be looked up. Clean protocols: `psq_cv.py --protocol mos5` on v1,
-  and ForkSafe-CF v2 (`analysis_thesis/v2/`): 800 matched pairs with continuous,
-  non-repeating conditions, a boundary band and a held-out grid.
-- **Tip-over prediction on v2** (pair-grouped cross-validation, 800 pairs). AUROC: planned
-  command only 0.888, observed video only 0.962, command + payload mass read from the video
-  0.969, command + true mass 0.972, command + true mass + true lateral CoM 0.991. The video
-  mass ranks the tipping run higher in 98% of the 89 mass-discordant pairs.
-- **Roll-over criterion.** Turn severity `|v_x * omega_z|` against `g (b - y_c) / h` about
-  the outer fork rollers, with no fitted constant: 96% (v1) and 94% (v2) accuracy
-  (`analysis_thesis/rollover_criterion.py`).
-- **Generated futures.** A readout trained on real futures and applied to LTX-2.3
-  continuations of 140 held-out v2 runs: payload-mass MAE 31 -> 98 kg, tip-over AUROC
-  0.990 -> 0.758 (`analysis_thesis/v2/ltx_v2.py`).
-- **Limits.** One simulated vehicle. The lateral CoM offset is barely recoverable from the
-  2.7 s observation (R2 at most 0.05).
+*Same route, drive command and payload mass. Moving the payload's centre of mass 0.25 m sideways turns a recovery (left, peak roll 3°) into a tip-over (right, peak roll 25°).*
 
-Numbers in the workshop paper come from its original split and the logged ZMP quantity.
-Use the results above for statements about generalisation.
+## Task
 
-## Current Scope
+The input is the first 2.7 s of a fixed-camera video (65 frames at 24 FPS). PSQ predicts, in physical units:
 
-- audit all dataset shards and generate reproducible statistics
-- build split manifests without repeated physical-condition leakage
-- emit pair-level and run-level JSONL manifests for feature extraction
-- freeze the dataset specification and temporal probing protocol in Markdown
-- manage pinned LTX-2.3, Qwen3.6, and V-JEPA checkpoints
-- prepare deterministic CCTV prefix videos for model smoke tests
-- evaluate the released frozen V-JEPA predictor with future-latent retrieval
+| Target | Output |
+|---|---|
+| Hidden payload properties | Payload mass (kg) and lateral centre-of-mass offset (m) |
+| Future trajectory | Roll, velocity, centre of mass, zero-moment point (ZMP) and ZMP stability margin at 10 time points over the next 2.3 s |
+| Outcome | Tip-over probability |
 
-## Quick Start
+A frozen V-JEPA 2.1 encoder turns the video into a 10 × 12 × 12 grid of tokens. A small cross-attention decoder (about 0.6 M trainable parameters) reads the targets from that grid, and every prediction is compared with the simulator log.
+
+For the world-model audit, the readout is trained on LTX-2.3 latents of real futures, frozen, and applied to futures that LTX-2.3 generates from the same 2.7 s prefix. The difference between the two is the physical state lost in generation.
+
+## Results
+
+### Prediction from 2.7 s of video
+
+ForkSafe-CF v2 has 800 matched pairs (1,600 runs) with continuous payload mass, centre-of-mass offset, drive command and steering command. Results use pair-grouped five-fold cross-validation: every run is predicted by models that never saw its pair.
+
+| Quantity | Error | Error when predicting the training mean |
+|---|---:|---:|
+| Payload mass | 27 kg (R² 0.95) | 118 kg |
+| Future roll | 5.5° | 14.1° |
+| Future ZMP margin | 0.051 m | 0.066 m |
+| Tip-over | AUROC 0.962 | |
+
+| Predictor input | Tip-over AUROC | Future roll error |
+|---|---:|---:|
+| Planned command only | 0.888 | 7.1° |
+| Observed video | 0.962 | 5.5° |
+| Planned command + payload mass read from the video | 0.969 | 5.1° |
+| Planned command + true payload mass | 0.972 | 5.0° |
+
+The payload mass read from the video is almost as useful as the true mass. In the 89 pairs that share a command and differ in mass and outcome, it ranks the tipping run higher in 98%.
+
+![Roll predicted from the observation against the simulator for held-out runs](analysis_thesis/figures/fig_v2_roll_forecast_gallery_p5.png)
+
+*Roll predicted from the 2.7 s observation (shaded) against the simulator, for held-out runs at the 10th, 50th, 80th and 95th error percentiles.*
+
+### Real and generated futures
+
+| Readout applied to | Payload mass error | Future roll error | ZMP margin error | Tip-over AUROC |
+|---|---:|---:|---:|---:|
+| Real future | 31 kg | 2.8° | 0.035 m | 0.990 |
+| Future generated by LTX-2.3 | 98 kg | 18.7° | 0.076 m | 0.758 |
+
+Measured on 140 held-out v2 runs. On the workshop benchmark (ForkSafe-CF v1, 1,008 matched pairs) the same audit gave 14.5 → 95.5 kg, 2.25° → 16.16° and AUROC 1.000 → 0.761.
+
+![Simulator future and generated future for the same run](analysis_thesis/figures/fig_real_vs_generated_frames.png)
+
+*Payload of 720 kg with its centre of mass shifted 0.25 m. The simulator tips over (left) and the generated future stays upright (right).*
+
+### Mechanics of the benchmark
+
+- `analysis_thesis/truecom.py` computes the system centre of mass, a multi-body ZMP and the stability margins from rigid-body properties. The ZMP agrees with the wheel-load centre of pressure within 0.015 m (longitudinal) and 0.033 m (lateral).
+- A roll-over criterion with no fitted constant, turn severity `|v ω|` against `g (b − y_c) / h` about the outer fork rollers, classifies 96% of v1 runs and 94% of v2 runs (`analysis_thesis/rollover_criterion.py`).
+
+## Repository
+
+| Path | Contents |
+|---|---|
+| `src/safety_probing/` | Dataset audit, leakage-safe splits, V-JEPA and LTX feature extraction, the query decoder and its training |
+| `analysis_thesis/` | Follow-up study: stability labels, ForkSafe-CF v2, cross-validated prediction, mechanics and figures ([index](analysis_thesis/README.md)) |
+| `configs/` | Dataset roots, model registry, hardware profiles and experiment settings |
+| `docs/` | Dataset card, schema, probing protocols and result summaries |
+| `tests/` | Unit tests |
+
+## Quick start
 
 ```bash
-cd ~/isaac_ws/safety_probing
-uv sync --locked \
-  --extra vision-audit --extra model-prep --extra inference-core
-
+uv sync --locked --extra vision-audit --extra model-prep --extra inference-core
 .venv/bin/safety-probing all --config configs/local_dataset.json
 ```
 
-Without installation:
+Simulator outputs are read from the dataset roots listed in `configs/local_dataset.json`. The command audits every shard, builds the splits and writes the pair and run manifests used by feature extraction.
 
-```bash
-PYTHONPATH=src python3 -m safety_probing all \
-  --config configs/local_dataset.json
-```
-
-For a fast inventory that does not scan every dense CSV row:
-
-```bash
-safety-probing analyze --config configs/local_dataset.json --metadata-only
-```
-
-## Outputs
-
-- `artifacts/splits/leakage_safe_splits.json`: condition-connected probing splits
-- `artifacts/current/dataset_statistics.json`: machine-readable statistics
-- `artifacts/current/manifests/pairs.jsonl`: counterfactual pair manifest
-- `artifacts/current/manifests/runs.jsonl`: run/clip manifest and targets
-- `artifacts/current/manifests/canonical_runs.jsonl`: one deterministic run per physical condition
-- `docs/DATASET_STATISTICS_KO.md`: generated human-readable report
-
-`artifacts/current` is intentionally ignored because it can be regenerated. The split
-manifest is retained because it is part of the experimental protocol.
-
-## Adding Shards
-
-Place or mount `eccv_workshop_grid_part_02` and `part_03` at the paths listed in
-`configs/local_dataset.json`, then rerun `safety-probing all`. Missing roots are reported,
-not treated as empty completed shards.
+The remaining steps (model download, LTX-2.3 rollouts, V-JEPA features, training and evaluating the readouts) are in [docs/PIPELINE.md](docs/PIPELINE.md). The follow-up experiments are indexed in [analysis_thesis/README.md](analysis_thesis/README.md).
 
 ## Documents
 
-- [Dataset Card](docs/DATASET_CARD_KO.md)
-- [Schema Reference](docs/SCHEMA_REFERENCE.md)
-- [Generated Statistics](docs/DATASET_STATISTICS_KO.md)
-- [Probing Protocol](docs/PROBING_PROTOCOL_KO.md)
-- [Model Experiment Plan](docs/MODEL_EXPERIMENT_PLAN_KO.md)
-- [Model Runtime Status](docs/MODEL_RUNTIME_STATUS_KO.md)
-- [DGX Spark Runbook](docs/DGX_SPARK_RUNBOOK_KO.md)
-- [Qwen Direct-Semantic Protocol](docs/qwen_protocol.md)
-- [LTX Prompt Audit](docs/LTX_PROMPT_AUDIT_KO.md)
-- [Summary to J0](docs/Summary_to_J0.md)
-- [Summary to J1](docs/Summary_to_J1.md)
-- [Summary to J2](docs/Summary_to_J2.md)
-- [Physical Safety Query Summary](docs/Summary_to_Safety_Query.md)
-- [LTX Physical Safety Query Protocol](docs/LTX_SAFETY_QUERY_PROTOCOL_KO.md)
-- [LTX Physical Safety Query Summary](docs/Summary_to_LTX_Safety_Query.md)
+- [Pipeline commands](docs/PIPELINE.md)
+- [Dataset card](docs/DATASET_CARD_KO.md), [schema reference](docs/SCHEMA_REFERENCE.md) and [generated statistics](docs/DATASET_STATISTICS_KO.md)
+- [Probing protocol](docs/PROBING_PROTOCOL_KO.md)
+- [Physical Safety Query results](docs/Summary_to_Safety_Query.md)
+- [LTX-2.3 audit protocol](docs/LTX_SAFETY_QUERY_PROTOCOL_KO.md) and [results](docs/Summary_to_LTX_Safety_Query.md)
 
-## Model Preparation
+## Citation
 
-```bash
-.venv/bin/safety-models status --registry configs/model_registry.json
-.venv/bin/safety-models download --registry configs/model_registry.json
-.venv/bin/safety-smoke-inputs
-
-# LTX uses the official repository's separately locked runtime.
-cd external/LTX-2
-uv sync --frozen
-cd ../..
-
-.venv/bin/safety-model-smoke vjepa_2
-.venv/bin/safety-model-smoke vjepa_2_1
-PYTHONPATH=src .venv/bin/python -m safety_probing.vjepa_native --split val
-PYTHONPATH=src external/LTX-2/.venv/bin/python -m safety_probing.ltx_smoke
+```bibtex
+@inproceedings{han2026physical,
+  title     = {Physical Safety Queries Reveal What Video World Models Forget},
+  author    = {Han, Juhwan and Kim, Taehun and Lee, Donghyu and Kim, Sayhee and Jo, Soo-Ho and Youn, Byeng D.},
+  booktitle = {Safe World Models for Trustworthy Embodied AI, ECCV Workshop},
+  year      = {2026}
+}
 ```
-
-Production workloads do not use CPU offload. LTX-2.3 and V-JEPA run on the RTX
-5090; Qwen3.6 runs on the DGX Spark through NVIDIA's ARM64 vLLM container.
-
-```bash
-# Run on the DGX Spark after cloning this repository and downloading Qwen.
-scripts/start_qwen_vllm.sh
-
-# Run on this workstation. Replace the hostname with the DGX Spark address.
-export QWEN_VLLM_SERVER_URL=http://dgx-spark.local:8016
-.venv/bin/safety-qwen-vllm-smoke
-```
-
-Video requests use base64 data URIs, so the client and DGX Spark do not need a
-shared filesystem. See `configs/hardware_profiles.json` for the enforced model
-assignment and the DGX Spark runbook for setup details.
-
-## LTX Shard 01 Batch
-
-The batch runner loads LTX once, generates all main-split validation/test
-rollouts for the local shard, and resumes from per-rollout JSON sidecars.
-The completed 800-rollout `prompt_v1` baseline is preserved at
-`outputs/ltx_v2/part_01`. The active action-aware prompt is still a candidate;
-do not launch another full batch until the oracle prompt smoke is reviewed.
-
-```bash
-# Reproduce the archived prompt_v1 selection without loading the model.
-PYTHONPATH=src external/LTX-2/.venv/bin/python \
-  -m safety_probing.ltx_batch \
-  --experiment configs/experiments/ltx_2_3_continuation_prompt_v1.json \
-  --shard part_01 --split val --split test --dry-run
-
-# Balanced six-rollout pilot for the active prompt candidate.
-PYTHONUNBUFFERED=1 PYTHONPATH=src external/LTX-2/.venv/bin/python \
-  -m safety_probing.ltx_batch \
-  --shard part_01 --split val --split test \
-  --max-per-outcome 2 --seed 17 \
-  --output-root outputs/ltx_prompt_v2_pilot
-```
-
-Outputs are keyed by `split/condition_id/seed`, with a consolidated
-`batch_manifest.jsonl` and `batch_summary.json` under the output root.
-
-The shared CCTV observation contract is 65 frames at 24 FPS (2.7083 seconds).
-LTX uses an internal 121-frame sequence because its temporal VAE requires `8n+1`
-frames; only the matching 55 future frames are scored.
-
-## V-JEPA Three-Stage Protocol
-
-- J0 native: released V-JEPA 2 encoder/predictor frozen, full future mask, paired
-  candidate latent-energy retrieval
-- J1 linear: frozen observed-prefix tokens, fixed mean pooling, linear safety heads
-- J2 transformer: frozen observed-prefix tokens, two-layer temporal Transformer heads
-
-Run the deterministic J0 validation Gold-pair smoke:
-
-```bash
-PYTHONUNBUFFERED=1 PYTHONPATH=src .venv/bin/python \
-  -m safety_probing.vjepa_native \
-  --split val \
-  --output outputs/vjepa_native/smoke_result.json \
-  --latent-output outputs/vjepa_native/smoke_latents.pt
-```
-
-J0 is a paired candidate-retrieval test, not a standalone tip classifier. For each
-query, its observed prefix is held fixed while only the candidate A/B future is
-swapped. J1/J2 provide the standalone safety probabilities used for AUROC and
-calibration.
-
-Run the resumable J0 batch over shard 01 validation and test Gold pairs. The model
-is loaded once for all 27 pairs.
-
-```bash
-mkdir -p run_logs
-set -o pipefail
-PYTHONUNBUFFERED=1 PYTHONPATH=src .venv/bin/python \
-  -m safety_probing.vjepa_native_batch \
-  --shard part_01 \
-  --split val --split test \
-  --save-latents \
-  --output-root outputs/vjepa_native_batch/part_01 \
-  2>&1 | tee run_logs/vjepa_j0_part_01.log
-```
-
-Pair results are written under `split/pair_id/result.json`. Re-running the same
-command skips completed pairs and refreshes `batch_manifest.jsonl` and
-`batch_summary.json`.
-
-Run J1 frozen feature extraction and the three-seed linear probe:
-
-```bash
-PYTHONUNBUFFERED=1 PYTHONPATH=src .venv/bin/python \
-  -m safety_probing.vjepa_features \
-  --shard part_01 --batch-size 8 \
-  --output artifacts/features/vjepa_2_1_part_01_observation.pt
-
-PYTHONUNBUFFERED=1 PYTHONPATH=src .venv/bin/python \
-  -m safety_probing.vjepa_linear_probe \
-  --feature-cache artifacts/features/vjepa_2_1_part_01_observation.pt \
-  --output-root outputs/vjepa_linear_probe/part_01
-```
-
-Shard 01 J1 achieved `0.960 +/- 0.008` test AUROC, while the primary Gold
-same-command pair accuracy was `0.50 +/- 0.10`. See the J1 summary for the
-global-versus-counterfactual interpretation.
-
-Run J2 and its reversed-order/mean-pool-MLP controls from the same frozen cache:
-
-```bash
-PYTHONUNBUFFERED=1 PYTHONPATH=src .venv/bin/python \
-  -m safety_probing.vjepa_transformer_probe \
-  --feature-cache artifacts/features/vjepa_2_1_part_01_observation.pt \
-  --linear-result outputs/vjepa_linear_probe/part_01/result.json \
-  --output-root outputs/vjepa_transformer_probe/part_01
-```
-
-J2 reached `0.972 +/- 0.002` AUROC and `0.667 +/- 0.058` Gold-pair accuracy.
-The smaller mean-pool MLP matched pair accuracy and reached `0.978 +/- 0.003`
-AUROC; reversing temporal tokens did not change J2 pair decisions. The J2
-summary therefore attributes the gain over J1 to nonlinear readout capacity,
-not temporal-order reasoning.
-
-## Physical Safety Query
-
-The physical Safety Query keeps the V-JEPA 2.1 encoder frozen but preserves a
-`10 x 12 x 12` spatiotemporal token grid. A small cross-attention decoder queries
-hidden load mass/CoM, observed and future dynamics, ZMP/CoM margins, five contact
-points, support polygons, and future tip outcome in physical units.
-
-```bash
-PYTHONUNBUFFERED=1 PYTHONPATH=src .venv/bin/python \
-  -m safety_probing.vjepa_spatial_features --shard part_01 --batch-size 4
-
-PYTHONUNBUFFERED=1 PYTHONPATH=src .venv/bin/python \
-  -m safety_probing.safety_query_targets --shard part_01
-
-PYTHONUNBUFFERED=1 PYTHONPATH=src .venv/bin/python \
-  -m safety_probing.safety_query_probe \
-  --output-root outputs/safety_query/part_01
-
-PYTHONUNBUFFERED=1 PYTHONPATH=src .venv/bin/python \
-  -m safety_probing.safety_query_controls \
-  --checkpoint-root outputs/safety_query/part_01
-```
-
-On the exploratory shard 01 split, load mass MAE was `14.44 +/- 1.17 kg`,
-lateral CoM MAE was `0.0331 +/- 0.0055 m`, and future minimum ZMP-margin MAE
-was `0.0457 +/- 0.0053 m`. Zeroing or permuting encoder features collapsed the
-results, while reversing temporal token order did not. See the physical Safety
-Query summary for the full target contract, support-polygon metrics, controls,
-and interpretation limits.
-
-## Full-grid completion
-
-`part_01/02/03` are workload shards of one 1,008-pair grid, not independent
-scientific test shards. After copying part 02/03 into their configured dataset
-roots, begin with the strict integrity check:
-
-```bash
-scripts/run_full_grid_completion.sh preflight
-```
-
-The staged audit, V-JEPA, LTX real-oracle, rollout, and query commands are in
-`docs/FULL_GRID_COMPLETION_RUNBOOK_KO.md`. Every long phase verifies the frozen
-protocol lock before running.
-
-## LTX Physical Safety Query
-
-The LTX experiment trains a 450,075-parameter physical query only on frozen VAE
-latents from real simulator futures, then freezes it and evaluates the 800 saved
-prompt-v1 rollout latents. This keeps the generative evaluation inside the LTX
-latent family without asking an external VLM to judge the videos.
-
-The real-future oracle reached `11.93 kg` mass MAE, `0.0213 m` CoM MAE, and
-`0.9996` tip AUROC. On generated rollouts those became `105.00 kg`, `0.1845 m`,
-and `0.7230`. Mass-pair direction remained `0.800`, but Gold ZMP-risk ordering
-fell to `0.333`, showing that coarse outcome signal did not imply physically
-consistent stability generation. See the LTX Safety Query summary for the full
-oracle/rollout comparison and prompt-v1 limitation.

@@ -8,7 +8,7 @@ link poses and the logged CoM / kinematic ZMP are biased. Wheel loads do not dep
 Model (rigid vehicle + fixed payload, flat ground, before any wheel lifts):
     CoP_x(t) = x_c - (h / g) * a_x(t)        CoP_y(t) = y_c - (h / g) * a_y(t)        (chassis frame)
 with CoP from the normal forces and contact points of the five contact bodies and a(t) the chassis acceleration.
-Per run we estimate (x_c, y_c) and h by least squares over the pre-steering window. Read-only on the dataset.
+Per run we estimate (x_c, y_c) and h by least squares over the pre-steering window.
 Run:  PYTHONPATH=. ../.venv/bin/python com_identify.py [--manifest path] [--out out/com_identified_v1.json]
 """
 from __future__ import annotations

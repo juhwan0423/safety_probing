@@ -1,5 +1,5 @@
 """Build a Safety Query target cache whose system CoM, ZMP and outward margins come from the true rigid-body CoM
-(truecom.py) instead of the logger's mis-paired CoM. New file; originals untouched.
+(truecom.py) instead of the logger's mis-paired CoM.
 Usage (from the safety_probing root): python analysis_thesis/truecom_build_targets.py <builder args>
 Environment: COMFIX_MANIFEST=<canonical_runs.jsonl> for datasets other than v1 (run -> payload lookup)."""
 import os, sys

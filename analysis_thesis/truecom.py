@@ -17,7 +17,6 @@ API
     com_body(mass, offset)               -> true CoM in the chassis frame
     compute(rows, mass, offset)          -> dict with the true CoM trajectory, ZMP, margins and the contact-force CoP
     corrected_rows(path, med5=True)      -> dense rows with corrected CoM / ZMP / margin columns (drop-in for the target builder)
-Read-only on the dataset.
 """
 from __future__ import annotations
 

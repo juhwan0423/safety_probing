@@ -31,3 +31,8 @@ artifacts/v2_test/
 analysis_thesis/out/*.npz
 analysis_thesis/out/*.npy
 analysis_thesis/out/*.pt
+
+# Local notes and superseded outputs that stay out of the repository.
+docs/Review_1_0714.md
+analysis_thesis/figures/superseded/
+analysis_thesis/out/*_WRONG_EDGE_*

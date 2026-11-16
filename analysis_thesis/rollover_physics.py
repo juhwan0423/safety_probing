@@ -7,8 +7,7 @@ Per run (corrected CoM, see comfix.py), in the chassis frame just before the ste
 Static criterion : wheels on the inner side unload when  a_perp * h > g * d.
 Rocking model    : rho^2 * phi'' = a_perp (h cos phi + d sin phi) - g (d cos phi - h sin phi),  phi >= 0,
                    with rho^2 = k^2 + h^2 + d^2 and a single radius of gyration k fitted on the training split.
-The measured v(t), omega(t) of the same run drive the model, so this is an explanatory model (privileged future),
-not a predictor. Read-only on the dataset.
+The measured v(t), omega(t) of the same run drive the model, so it explains the outcome from the logged motion.
 """
 from __future__ import annotations
 

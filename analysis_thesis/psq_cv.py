@@ -6,7 +6,7 @@
                        the same pre-turn video. Here every route that shares a pre-turn segment is in the same fold.
   --protocol logo9   : leave-one-maneuver-group-out (speed x steering, both turn directions)   [shares pre-turn segments]
   --protocol config5 : 5-fold over the 270 physical configurations                             [shares pre-turn segments]
-  --variant full | spatial_mean | command (adds the planned speed/steer command as an extra memory token)   [full only for now]
+  --variant full | spatial_mean | command (adds the planned speed/steer command as an extra memory token)
 Validation for early stopping = a config-grouped 15% of the non-test configurations. Paper training loop reused unchanged.
 """
 import sys, json, argparse, numpy as np, torch

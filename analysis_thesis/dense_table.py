@@ -1,4 +1,4 @@
-"""Per-condition physical table from dense logs (read-only): event times, initial inertial
+"""Per-condition physical table from dense logs: event times, initial inertial
 parameters, lateral-acceleration demand in the observation window and over the full run."""
 import json, csv, math, numpy as np
 from common import Context

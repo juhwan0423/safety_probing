@@ -18,7 +18,7 @@ else:
     T1 = json.load(open("out/comfix_table1.json"))["comfix_med5"]
 PAPER, PAPER_BASE = T1["vjepa_prefix"], T1["train_mean"]
 first = lambda *names: json.load(open(next(f"out/cv_{n}.json" for n in names if os.path.exists(f"out/cv_{n}.json"))))
-# NOTE: config5 and logo9 share pre-turn segments between train and test (see psq_cv.py); kept only as the "leaky" reference.
+# config5 and logo9 share pre-turn segments between train and test (see psq_cv.py); shown as the reference protocols.
 C5, L9 = first("config5_full_tc_obs65", "config5_full"), first("logo9_full_tc_obs65", "logo9_full")
 MOS = json.load(open("out/cv_mos5_full_tc_obs65.json")) if os.path.exists("out/cv_mos5_full_tc_obs65.json") else None
 pt = lambda d, k: d[k]["point"]

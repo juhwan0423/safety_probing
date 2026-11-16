@@ -11,7 +11,7 @@ The demand is the turn severity |v_x * omega_z| (chassis speed times yaw rate, 5
   - over 2.0-3.6 s (the definition used in mechanics_true.py)
 Compared with the severity alone and with the earlier threshold from the support triangle (arm to the edge between the
 outer front roller and the rear wheel), whose value rises with payload mass, opposite to the simulated trend.
-Both the severity and the payload are privileged quantities: this is a mechanics check, not a prediction.
+Both the severity and the payload are taken from the simulator log, so this checks the mechanics of the benchmark.
 Run from analysis_thesis/:  PYTHONPATH=. ../.venv/bin/python rollover_criterion.py
 """
 import csv, json, os

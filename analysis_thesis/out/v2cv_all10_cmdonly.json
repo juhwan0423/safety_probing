@@ -1,0 +1,115 @@
+{
+ "n": 1600,
+ "n_pairs": 800,
+ "mass_mae_kg": {
+  "point": 118.63767488161723,
+  "seed_sd": 0.1269061861923307,
+  "ci_low": 114.68277170912425,
+  "ci_high": 122.66435310514768,
+  "n": 1600,
+  "n_clusters": 800
+ },
+ "com_mae_m": {
+  "point": 0.12262314888928812,
+  "seed_sd": 0.00034233019738776717,
+  "ci_low": 0.11860455297241605,
+  "ci_high": 0.12677152699826727,
+  "n": 1600,
+  "n_clusters": 800
+ },
+ "roll_mae_deg": {
+  "point": 7.361770741358399,
+  "seed_sd": 0.03207106654103009,
+  "ci_low": 7.00022874647143,
+  "ci_high": 7.743767887132739,
+  "n": 1600,
+  "n_clusters": 800
+ },
+ "zmp_mae_m": {
+  "point": 0.05796575572458096,
+  "seed_sd": 0.0010055569222099728,
+  "ci_low": 0.0515741542723287,
+  "ci_high": 0.0646846357152972,
+  "n": 1600,
+  "n_clusters": 800
+ },
+ "tip_auroc": {
+  "point": 0.8878524401130784,
+  "seed_sd": 0.0018877390034761536,
+  "ci_low": 0.8680723144337467,
+  "ci_high": 0.9066015576618093,
+  "n": 1512,
+  "positive_n": 940,
+  "negative_n": 572,
+  "n_clusters": 792
+ },
+ "tip_rate": 0.6216931216931217,
+ "mass_r2": -0.014266133308410645,
+ "mass_slope": -0.004717382019919539,
+ "mass_pearson": -0.07546962165835287,
+ "com_r2": -0.012257814407348633,
+ "com_slope": -0.0028937663852957687,
+ "com_pearson": -0.03925716220362973,
+ "mass_direction": {
+  "point": 0.5,
+  "seed_sd": 0.0,
+  "ci_low": 0.5,
+  "ci_high": 0.5,
+  "n": 400,
+  "n_clusters": 400
+ },
+ "com_direction": {
+  "point": 0.5,
+  "seed_sd": 0.0,
+  "ci_low": 0.5,
+  "ci_high": 0.5,
+  "n": 400,
+  "n_clusters": 400
+ },
+ "gold_zmp_ordering": {
+  "point": 0.5,
+  "seed_sd": 0.0,
+  "ci_low": 0.5,
+  "ci_high": 0.5,
+  "n": 137,
+  "n_clusters": 137
+ },
+ "n_outcome_flip_pairs": 137,
+ "outcome_flip": {
+  "point": 0.5,
+  "seed_sd": 0.0,
+  "ci_low": 0.5,
+  "ci_high": 0.5,
+  "n": 137,
+  "n_clusters": 137
+ },
+ "n_outcome_flip_mass": 89,
+ "outcome_flip_mass": {
+  "point": 0.5,
+  "seed_sd": 0.0,
+  "ci_low": 0.5,
+  "ci_high": 0.5,
+  "n": 89,
+  "n_clusters": 89
+ },
+ "n_outcome_flip_com": 48,
+ "outcome_flip_com": {
+  "point": 0.5,
+  "seed_sd": 0.0,
+  "ci_low": 0.5,
+  "ci_high": 0.5,
+  "n": 48,
+  "n_clusters": 48
+ },
+ "train_mean_baseline": {
+  "mass_mae_kg": 117.75187647819519,
+  "com_mae_m": 0.12176093879410473,
+  "zmp_mae_m": 0.06638169627869502,
+  "roll_mae_deg": 14.068660820126533
+ },
+ "counts": {
+  "runs": 1600,
+  "pairs": 800,
+  "folds": 5
+ }
+}

@@ -13,6 +13,7 @@ ap = argparse.ArgumentParser()
 ap.add_argument("--name", required=True); ap.add_argument("--features", required=True); ap.add_argument("--targets", required=True); ap.add_argument("--manifest-dir", required=True)
 ap.add_argument("--variant", default="full"); ap.add_argument("--with-command", action="store_true"); ap.add_argument("--folds", type=int, default=5)
 ap.add_argument("--seeds", default="17,29,43"); ap.add_argument("--out", default="analysis_thesis/out")
+ap.add_argument("--com-target", default="signed", choices=("signed", "outside"), help="outside: the lateral CoM target is the offset towards the outside of the planned turn")
 args = ap.parse_args()
 c = ContextV2(args.targets, args.manifest_dir)
 cache = torch.load(ROOT / args.features, map_location="cpu", weights_only=False)
@@ -21,6 +22,9 @@ features, targets = cache["features"], c.targets
 if args.variant == "spatial_mean": features = features.float().mean((2, 3), keepdim=True).half()
 cmd = np.array([[c.man[i]["drive_velocity_command"], c.man[i]["steering_position_command"]] for i in c.ids], np.float32)
 z = torch.tensor((cmd - cmd.mean(0)) / (cmd.std(0) + 1e-6))          # command standardisation uses no labels
+if args.com_target == "outside":       # c.tnp shares memory with these tensors, so the metrics then refer to the outside offset as well
+    targets["static"][:, 1] *= torch.tensor(np.sign(cmd[:, 1]), dtype=targets["static"].dtype)
+    assert np.allclose(c.tnp["static"][:, 1], targets["static"][:, 1].numpy())
 if args.variant == "command_only":
     features = z[:, None, None, None, :].expand(-1, 10, 1, 1, -1).contiguous().half()
 elif args.with_command:

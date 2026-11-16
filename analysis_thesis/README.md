@@ -53,6 +53,7 @@ PYTHONPATH=. ../external/LTX-2/.venv/bin/python make_figures_*.py  # figures (ne
 | `psq_cv.py` | Readout with physically disjoint folds; `--with-command` appends the planned drive/steering command, `--variant command_only` uses no video |
 | `run_v1_truecom_jobs.sh` | Job runner: unseen manoeuvre, unseen payload-manoeuvre combination, observation lengths 1.0-2.71 s |
 | `run_truecom_paper_split.sh`, `truecom_eval.py` | Paper split (observed video, real-future oracle, generated future) on the true-CoM targets |
+| `rollover_criterion.py` | Roll-over about the outer fork-roller line: turn severity against g (b - y_c) / h with no fitted constant, compared with the support-triangle threshold |
 | `pair_outcome_flip.py` | Matched pairs with the same command and different outcomes: does the tipped member get the higher score? |
 | `psq_heldout.py`, `kinematics_*.py`, `psq_ablation.py`, `baseline_physical.py` | Held-out levels, no-video kinematics ceiling, readout ablations, simple baselines |
 | `lead_time.py`, `pair_effect_size.py`, `replica_leak.py`, `dense_table.py` | Lead time before support loss, realised motion difference within pairs, replica structure |
@@ -73,13 +74,18 @@ parts `forksafe_v2_band_01..05` cover 18-22, where the payload decides the outco
 | `run_v2_final.sh`, `run_v2_band.sh`, `run_v2_obslen.sh` | Full pipelines (features, true-CoM targets, readouts, learning curve, observation length) |
 | `run_v2_obslen_cv.sh` | Observation-length sweep with pair-grouped CV (all runs out of fold) |
 | `payload_value_v2.py` | Value of payload knowledge without video: command, + true mass, + true lateral CoM offset |
+| `physics_stage2_v2.py` | Physics-based second stage: saturating severity law over the roller-line threshold, compared with the learned stage |
+| `build_v2_sweep_config.py`, `run_v2_generation_sweep.sh`, `run_v2_sweep.sh` | Boundary sweep (regular grid over payload mass / lateral CoM offset and drive command): configs, generation, analysis pipeline |
+| `merge_sets.py`, `sweep_eval_v2.py` | Evaluate readouts trained on one set on a held-out set; boundary map, replicates, critical drive command per payload |
+| `refresh_v2cv_eval.py` | Re-evaluate saved CV predictions to add new metrics to the result files |
 | `early_direction_check.py` | Shows that the signed roll is unpredictable before the turn because the turn direction is not yet visible |
 | `ltx_v2.py`, `run_v2_ltx.sh` | Generated-future audit on a v2 set (real-future readout applied to LTX rollouts of held-out pairs) |
 
 ## Figures
 
-`make_figures_mechanics.py`, `make_figures_cv.py`, `make_figures_early.py`, `make_figures_v1.py`,
+`make_figures_mechanics.py`, `make_fig_roller_line.py`, `make_figures_cv.py`, `make_figures_early.py`, `make_figures_v1.py`,
 `make_fig_forecast_gallery.py`, `v2/make_figures_v2.py`, `v2/make_fig_v2_dataset.py`,
-`v2/make_fig_v2_information.py`, `v2/make_fig_v2_gallery.py`, `v2/make_fig_v2_early.py` write PDF and
+`v2/make_fig_v2_information.py`, `v2/make_fig_v2_gallery.py`, `v2/make_fig_v2_early.py`,
+`v2/make_fig_v2_early_cv.py`, `v2/make_fig_v2_sweep.py` write PDF and
 PNG files to `figures/` using `thesis_style.py`. Result summaries are JSON files under `out/`;
 prediction arrays (`*.npz`) and checkpoints (`*.pt`) are not tracked.

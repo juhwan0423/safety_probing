@@ -1,0 +1,200 @@
+{
+ "n_test": 140,
+ "mass_mae_kg": {
+  "true mass": 0.0,
+  "observed video (V-JEPA)": 31.234333038330078,
+  "real future (LTX latents)": 25.992839813232422,
+  "generated future (LTX rollouts)": 90.43046569824219,
+  "no mass (train mean)": 113.72000885009766
+ },
+ "true mass": {
+  "roll_mae_deg": {
+   "point": 3.838662445658729,
+   "seed_sd": 0.13748163509960193,
+   "ci_low": 3.1796649975961158,
+   "ci_high": 4.5397652403428435,
+   "n": 140,
+   "n_clusters": 70
+  },
+  "tip_auroc": {
+   "point": 0.9906309471526863,
+   "seed_sd": 0.0009901734195922,
+   "ci_low": 0.9761677837545537,
+   "ci_high": 0.9989919076021625,
+   "n": 135,
+   "positive_n": 66,
+   "negative_n": 69,
+   "n_clusters": 70
+  },
+  "outcome_flip": {
+   "point": 0.8333333333333334,
+   "seed_sd": 0.0,
+   "ci_low": 0.6666666666666666,
+   "ci_high": 1.0,
+   "n": 6,
+   "n_clusters": 6
+  },
+  "outcome_flip_mass": {
+   "point": 1.0,
+   "seed_sd": 0.0,
+   "ci_low": 1.0,
+   "ci_high": 1.0,
+   "n": 4,
+   "n_clusters": 4
+  },
+  "n_outcome_flip_mass": 4,
+  "accuracy": 0.9481481481481482
+ },
+ "observed video (V-JEPA)": {
+  "roll_mae_deg": {
+   "point": 3.77182404029937,
+   "seed_sd": 0.17315386520595644,
+   "ci_low": 3.079309259319589,
+   "ci_high": 4.4800648404870715,
+   "n": 140,
+   "n_clusters": 70
+  },
+  "tip_auroc": {
+   "point": 0.9866783779827258,
+   "seed_sd": 0.001462083469143442,
+   "ci_low": 0.9674480648622373,
+   "ci_high": 0.9982433141605268,
+   "n": 135,
+   "positive_n": 66,
+   "negative_n": 69,
+   "n_clusters": 70
+  },
+  "outcome_flip": {
+   "point": 0.8333333333333334,
+   "seed_sd": 0.0,
+   "ci_low": 0.5,
+   "ci_high": 1.0,
+   "n": 6,
+   "n_clusters": 6
+  },
+  "outcome_flip_mass": {
+   "point": 1.0,
+   "seed_sd": 0.0,
+   "ci_low": 1.0,
+   "ci_high": 1.0,
+   "n": 4,
+   "n_clusters": 4
+  },
+  "n_outcome_flip_mass": 4,
+  "accuracy": 0.9407407407407408
+ },
+ "real future (LTX latents)": {
+  "roll_mae_deg": {
+   "point": 3.824826428890228,
+   "seed_sd": 0.21402670609238325,
+   "ci_low": 3.1566016319819856,
+   "ci_high": 4.521207047246751,
+   "n": 140,
+   "n_clusters": 70
+  },
+  "tip_auroc": {
+   "point": 0.9889474454691847,
+   "seed_sd": 0.0011268338690045814,
+   "ci_low": 0.9718607354746512,
+   "ci_high": 0.9987516634599968,
+   "n": 135,
+   "positive_n": 66,
+   "negative_n": 69,
+   "n_clusters": 70
+  },
+  "outcome_flip": {
+   "point": 0.6666666666666666,
+   "seed_sd": 0.0,
+   "ci_low": 0.3333333333333333,
+   "ci_high": 1.0,
+   "n": 6,
+   "n_clusters": 6
+  },
+  "outcome_flip_mass": {
+   "point": 1.0,
+   "seed_sd": 0.0,
+   "ci_low": 1.0,
+   "ci_high": 1.0,
+   "n": 4,
+   "n_clusters": 4
+  },
+  "n_outcome_flip_mass": 4,
+  "accuracy": 0.9555555555555556
+ },
+ "generated future (LTX rollouts)": {
+  "roll_mae_deg": {
+   "point": 4.730131810846783,
+   "seed_sd": 0.1220328107735816,
+   "ci_low": 3.7665685897952033,
+   "ci_high": 5.766604180412634,
+   "n": 140,
+   "n_clusters": 70
+  },
+  "tip_auroc": {
+   "point": 0.9780412823891084,
+   "seed_sd": 0.001439929408059251,
+   "ci_low": 0.9456334840761356,
+   "ci_high": 0.997772788452613,
+   "n": 135,
+   "positive_n": 66,
+   "negative_n": 69,
+   "n_clusters": 70
+  },
+  "outcome_flip": {
+   "point": 0.7777777777777778,
+   "seed_sd": 0.09622504486493767,
+   "ci_low": 0.4444444444444444,
+   "ci_high": 1.0,
+   "n": 6,
+   "n_clusters": 6
+  },
+  "outcome_flip_mass": {
+   "point": 0.9166666666666666,
+   "seed_sd": 0.14433756729740646,
+   "ci_low": 0.6666666666666666,
+   "ci_high": 1.0,
+   "n": 4,
+   "n_clusters": 4
+  },
+  "n_outcome_flip_mass": 4,
+  "accuracy": 0.9111111111111111
+ },
+ "no mass (train mean)": {
+  "roll_mae_deg": {
+   "point": 5.4200779611723755,
+   "seed_sd": 0.1547561627416704,
+   "ci_low": 4.315945423906758,
+   "ci_high": 6.64971718361548,
+   "n": 140,
+   "n_clusters": 70
+  },
+  "tip_auroc": {
+   "point": 0.9746010832967356,
+   "seed_sd": 0.000670849904107169,
+   "ci_low": 0.9382388420414981,
+   "ci_high": 0.9966525924228736,
+   "n": 135,
+   "positive_n": 66,
+   "negative_n": 69,
+   "n_clusters": 70
+  },
+  "outcome_flip": {
+   "point": 0.5,
+   "seed_sd": 0.0,
+   "ci_low": 0.5,
+   "ci_high": 0.5,
+   "n": 6,
+   "n_clusters": 6
+  },
+  "outcome_flip_mass": {
+   "point": 0.5,
+   "seed_sd": 0.0,
+   "ci_low": 0.5,
+   "ci_high": 0.5,
+   "n": 4,
+   "n_clusters": 4
+  },
+  "n_outcome_flip_mass": 4,
+  "accuracy": 0.9111111111111111
+ }
+}

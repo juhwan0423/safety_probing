@@ -28,7 +28,7 @@ sw = np.array([m.get("source_set") == args.sweep_name for m in man]); p5 = ~sw; 
 mass = t["static"][:, 0].astype(np.float32); offset = np.array([m["load_com_offset_local_xyz_m"][1] for m in man], np.float32)
 cmd = np.array([[m["drive_velocity_command"], m["steering_position_command"]] for m in man], np.float32); drive = np.abs(cmd[:, 0])
 tipk = t["future_tip_mask"].astype(bool); tipv = t["future_tip"].astype(bool)
-part = np.array([Path(m["dataset_root"]).name for m in man]); rep = np.array([m["route_id"].endswith("_rep") for m in man])
+part = np.array([Path(m["dataset_root"]).name for m in man]); rep = np.array([m["route_id"].endswith("_rep") for m in man]) & (np.abs(mass - 480) < 1)      # only the 480 kg run on the "_rep" route is a replicate (the 720 kg run on it is unique)
 massmap = sw & (part == "forksafe_v2_sweep_01"); commap = sw & ((part == "forksafe_v2_sweep_02") | (massmap & (np.abs(mass - 480) < 1) & (drive >= 17.5) & (drive <= 22.5) & ~rep))
 print(f"sweep runs {sw.sum()} (mass map {massmap.sum()}, CoM map incl. the 480 kg centre runs {commap.sum()}); outcomes known {tipk[sw].sum()}, tip-over {tipv[sw & tipk].sum()}", flush=True)
 res = {"n_sweep": int(sw.sum())}

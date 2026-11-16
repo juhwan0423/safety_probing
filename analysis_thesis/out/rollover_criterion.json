@@ -107,6 +107,60 @@
    "best_accuracy": 0.9636363636363636
   }
  },
+ "v2 band": {
+  "n": 742,
+  "tip_rate": 0.6738544474393531,
+  "threshold_range": [
+   2.4706310590973715,
+   3.473593150919245
+  ],
+  "y_out_range": [
+   -0.07008390357879692,
+   0.07226951420117933
+  ],
+  "pulse_2.0-3.0s": {
+   "severity_alone": {
+    "point": 0.8996611570247934,
+    "ci_low": 0.8735031112473081,
+    "ci_high": 0.9247702157069532
+   },
+   "over_triangle_threshold": {
+    "point": 0.8906198347107438,
+    "ci_low": 0.8633970726299953,
+    "ci_high": 0.9160495403695131
+   },
+   "over_roller_line_threshold": {
+    "point": 0.9553884297520662,
+    "ci_low": 0.9398847152987913,
+    "ci_high": 0.9695216886360547
+   },
+   "over_roller_line_no_lateral_com": 0.9261487603305785,
+   "accuracy_at_ratio_1": 0.8881401617250674,
+   "best_ratio": 0.9608508532215504,
+   "best_accuracy": 0.9002695417789758
+  },
+  "window_2.0-3.6s": {
+   "severity_alone": {
+    "point": 0.9088760330578513,
+    "ci_low": 0.8842430891914028,
+    "ci_high": 0.9319550504077789
+   },
+   "over_triangle_threshold": {
+    "point": 0.9013636363636364,
+    "ci_low": 0.8746873535401976,
+    "ci_high": 0.925307546186049
+   },
+   "over_roller_line_threshold": {
+    "point": 0.9704876033057851,
+    "ci_low": 0.9560817474484086,
+    "ci_high": 0.9818893642410662
+   },
+   "over_roller_line_no_lateral_com": 0.9318595041322314,
+   "accuracy_at_ratio_1": 0.9285714285714286,
+   "best_ratio": 0.9714318742916626,
+   "best_accuracy": 0.9366576819407008
+  }
+ },
  "v2 sweep": {
   "n": 182,
   "tip_rate": 0.5879120879120879,

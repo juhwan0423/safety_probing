@@ -3,6 +3,36 @@
 `safety_probing` is the analysis and frozen-encoder probing workspace for the
 ExoFork-CF lateral tip-over dataset. It treats simulator outputs as read-only inputs.
 
+## Thesis Extension (November 2026)
+
+`analysis_thesis/` holds the follow-up study built on this repository; its
+[README](analysis_thesis/README.md) indexes every script, figure and result file.
+
+- **Labels.** The simulator log paired link masses with the wrong link poses.
+  `analysis_thesis/truecom.py` recomputes the system centre of mass, a multi-body ZMP and
+  the stability margins. The corrected ZMP agrees with the wheel-load centre of pressure
+  within 0.015 m (longitudinal) and 0.033 m (lateral).
+- **Evaluation.** In the grid benchmark (v1), runs that share payload and speed move
+  identically before the steering input, so the original split and condition-level folds
+  allow the payload to be looked up. Clean protocols: `psq_cv.py --protocol mos5` on v1,
+  and ForkSafe-CF v2 (`analysis_thesis/v2/`): 800 matched pairs with continuous,
+  non-repeating conditions, a boundary band and a held-out grid.
+- **Tip-over prediction on v2** (pair-grouped cross-validation, 800 pairs). AUROC: planned
+  command only 0.888, observed video only 0.962, command + payload mass read from the video
+  0.969, command + true mass 0.972, command + true mass + true lateral CoM 0.991. The video
+  mass ranks the tipping run higher in 98% of the 89 mass-discordant pairs.
+- **Roll-over criterion.** Turn severity `|v_x * omega_z|` against `g (b - y_c) / h` about
+  the outer fork rollers, with no fitted constant: 96% (v1) and 94% (v2) accuracy
+  (`analysis_thesis/rollover_criterion.py`).
+- **Generated futures.** A readout trained on real futures and applied to LTX-2.3
+  continuations of 140 held-out v2 runs: payload-mass MAE 31 -> 98 kg, tip-over AUROC
+  0.990 -> 0.758 (`analysis_thesis/v2/ltx_v2.py`).
+- **Limits.** One simulated vehicle. The lateral CoM offset is barely recoverable from the
+  2.7 s observation (R2 at most 0.05).
+
+Numbers in the workshop paper come from its original split and the logged ZMP quantity.
+Use the results above for statements about generalisation.
+
 ## Current Scope
 
 - audit all dataset shards and generate reproducible statistics

@@ -1,0 +1,498 @@
+{
+ "n_sweep": 194,
+ "replicates": [
+  {
+   "drive": 16.0,
+   "same_outcome": true,
+   "max_future_roll_diff_deg": 0.0,
+   "max_roll_a": 1.2813824826303657,
+   "max_roll_b": 1.2813824826303657
+  },
+  {
+   "drive": 17.0,
+   "same_outcome": true,
+   "max_future_roll_diff_deg": 0.0,
+   "max_roll_a": 3.271128134098646,
+   "max_roll_b": 3.271128134098646
+  },
+  {
+   "drive": 17.5,
+   "same_outcome": true,
+   "max_future_roll_diff_deg": 0.0,
+   "max_roll_a": 4.672743102245479,
+   "max_roll_b": 4.672743102245479
+  },
+  {
+   "drive": 18.0,
+   "same_outcome": true,
+   "max_future_roll_diff_deg": 0.0,
+   "max_roll_a": 5.4749970527275975,
+   "max_roll_b": 5.4749970527275975
+  },
+  {
+   "drive": 18.5,
+   "same_outcome": true,
+   "max_future_roll_diff_deg": 0.0,
+   "max_roll_a": 7.112181576901084,
+   "max_roll_b": 7.112181576901084
+  },
+  {
+   "drive": 19.0,
+   "same_outcome": true,
+   "max_future_roll_diff_deg": 0.0,
+   "max_roll_a": 9.836707130899423,
+   "max_roll_b": 9.836707130899423
+  },
+  {
+   "drive": 19.5,
+   "same_outcome": true,
+   "max_future_roll_diff_deg": 0.0,
+   "max_roll_a": 26.966800167414252,
+   "max_roll_b": 26.966800167414252
+  },
+  {
+   "drive": 20.0,
+   "same_outcome": true,
+   "max_future_roll_diff_deg": 0.0,
+   "max_roll_a": 32.21602516093419,
+   "max_roll_b": 32.21602516093419
+  },
+  {
+   "drive": 20.5,
+   "same_outcome": true,
+   "max_future_roll_diff_deg": 0.0,
+   "max_roll_a": 41.67701036743013,
+   "max_roll_b": 41.67701036743013
+  },
+  {
+   "drive": 21.0,
+   "same_outcome": true,
+   "max_future_roll_diff_deg": 0.0,
+   "max_roll_a": 61.95137304975345,
+   "max_roll_b": 61.95137304975345
+  },
+  {
+   "drive": 21.5,
+   "same_outcome": true,
+   "max_future_roll_diff_deg": 0.0,
+   "max_roll_a": 77.15684155371262,
+   "max_roll_b": 77.15684155371262
+  },
+  {
+   "drive": 22.0,
+   "same_outcome": true,
+   "max_future_roll_diff_deg": 0.0,
+   "max_roll_a": 90.40956287984788,
+   "max_roll_b": 90.40956287984788
+  },
+  {
+   "drive": 22.5,
+   "same_outcome": true,
+   "max_future_roll_diff_deg": 0.0,
+   "max_roll_a": 90.6691046936089,
+   "max_roll_b": 90.6691046936089
+  },
+  {
+   "drive": 23.0,
+   "same_outcome": true,
+   "max_future_roll_diff_deg": 0.0,
+   "max_roll_a": 90.42967265599853,
+   "max_roll_b": 90.42967265599853
+  },
+  {
+   "drive": 24.0,
+   "same_outcome": true,
+   "max_future_roll_diff_deg": 0.0,
+   "max_roll_a": 91.97367453113989,
+   "max_roll_b": 91.97367453113989
+  }
+ ],
+ "critical_drive_by_mass": {
+  "240": 20.5,
+  "300": 21.25,
+  "360": 19.75,
+  "420": 18.75,
+  "480": 18.75,
+  "540": 18.75,
+  "600": 19.75,
+  "660": 20.75,
+  "720": 23.5
+ },
+ "critical_drive_by_offset": {
+  "-0.250": 19.75,
+  "-0.125": 19.25,
+  "+0.000": 18.75,
+  "+0.125": 17.75,
+  "+0.250": 17.25
+ },
+ "readouts": {
+  "video 2.71 s": {
+   "mass_mae_kg": {
+    "point": 34.34873107700413,
+    "seed_sd": 4.940154889287926,
+    "ci_low": 29.17702701280207,
+    "ci_high": 40.13417450619727,
+    "n": 194,
+    "n_clusters": 97
+   },
+   "mass_r2": 0.9060766696929932,
+   "roll_mae_deg": {
+    "point": 6.171942342843387,
+    "seed_sd": 0.14176986348284176,
+    "ci_low": 5.471980480906071,
+    "ci_high": 6.948222104485092,
+    "n": 194,
+    "n_clusters": 97
+   },
+   "tip_auroc": {
+    "point": 0.9569678089304258,
+    "seed_sd": 0.0063555473980262435,
+    "ci_low": 0.9274798144929537,
+    "ci_high": 0.9803169771983266,
+    "n": 182,
+    "positive_n": 107,
+    "negative_n": 75,
+    "n_clusters": 97
+   },
+   "same_command_mass_map": {
+    "point": 0.9655172413793104,
+    "ci_low": 0.9230645161290323,
+    "ci_high": 1.0,
+    "n_pairs": 145,
+    "n_levels": 9
+   },
+   "same_command_com_map": {
+    "point": 0.25,
+    "ci_low": 0.07142857142857142,
+    "ci_high": 0.3888888888888889,
+    "n_pairs": 16,
+    "n_levels": 5
+   }
+  },
+  "video 2.71 s + command": {
+   "mass_mae_kg": {
+    "point": 30.4741148801194,
+    "seed_sd": 3.2601569833201416,
+    "ci_low": 26.63308384885493,
+    "ci_high": 34.80612745186717,
+    "n": 194,
+    "n_clusters": 97
+   },
+   "mass_r2": 0.9369266033172607,
+   "roll_mae_deg": {
+    "point": 5.1819804389861845,
+    "seed_sd": 0.33416860743211757,
+    "ci_low": 4.553322506247926,
+    "ci_high": 5.886635251327888,
+    "n": 194,
+    "n_clusters": 97
+   },
+   "tip_auroc": {
+    "point": 0.9586708203530634,
+    "seed_sd": 0.009283558789036408,
+    "ci_low": 0.9292069798268703,
+    "ci_high": 0.9811559364470324,
+    "n": 182,
+    "positive_n": 107,
+    "negative_n": 75,
+    "n_clusters": 97
+   },
+   "same_command_mass_map": {
+    "point": 0.9241379310344827,
+    "ci_low": 0.8985507246376812,
+    "ci_high": 0.9553571428571429,
+    "n_pairs": 145,
+    "n_levels": 9
+   },
+   "same_command_com_map": {
+    "point": 0.5,
+    "ci_low": 0.25,
+    "ci_high": 0.6875,
+    "n_pairs": 16,
+    "n_levels": 5
+   }
+  },
+  "video 1.96 s": {
+   "mass_mae_kg": {
+    "point": 47.24744119021491,
+    "seed_sd": 3.66260115900102,
+    "ci_low": 41.410392985393095,
+    "ci_high": 53.61397548164288,
+    "n": 194,
+    "n_clusters": 97
+   },
+   "mass_r2": 0.8187823295593262,
+   "roll_mae_deg": {
+    "point": 17.20202327733187,
+    "seed_sd": 2.0923335643386483,
+    "ci_low": 14.256643292608947,
+    "ci_high": 20.301930472187152,
+    "n": 194,
+    "n_clusters": 97
+   },
+   "tip_auroc": {
+    "point": 0.9042990654205608,
+    "seed_sd": 0.008099688473520281,
+    "ci_low": 0.8528248134704577,
+    "ci_high": 0.9462213008321737,
+    "n": 182,
+    "positive_n": 107,
+    "negative_n": 75,
+    "n_clusters": 97
+   },
+   "same_command_mass_map": {
+    "point": 0.7310344827586207,
+    "ci_low": 0.5705105633802816,
+    "ci_high": 0.9052631578947369,
+    "n_pairs": 145,
+    "n_levels": 9
+   },
+   "same_command_com_map": {
+    "point": 0.1875,
+    "ci_low": 0.06666666666666667,
+    "ci_high": 0.2777777777777778,
+    "n_pairs": 16,
+    "n_levels": 5
+   }
+  },
+  "video 1.96 s + command": {
+   "mass_mae_kg": {
+    "point": 55.971502769443994,
+    "seed_sd": 3.1227603505740764,
+    "ci_low": 49.828634660596286,
+    "ci_high": 62.910190637332875,
+    "n": 194,
+    "n_clusters": 97
+   },
+   "mass_r2": 0.7354152202606201,
+   "roll_mae_deg": {
+    "point": 6.144959044702273,
+    "seed_sd": 0.6235910581326021,
+    "ci_low": 5.29630896466909,
+    "ci_high": 7.1140932216922845,
+    "n": 194,
+    "n_clusters": 97
+   },
+   "tip_auroc": {
+    "point": 0.9145171339563863,
+    "seed_sd": 0.011504736585753354,
+    "ci_low": 0.8655242678548037,
+    "ci_high": 0.9526944269748306,
+    "n": 182,
+    "positive_n": 107,
+    "negative_n": 75,
+    "n_clusters": 97
+   },
+   "same_command_mass_map": {
+    "point": 0.7724137931034483,
+    "ci_low": 0.6810785939313547,
+    "ci_high": 0.8828125,
+    "n_pairs": 145,
+    "n_levels": 9
+   },
+   "same_command_com_map": {
+    "point": 0.25,
+    "ci_low": 0.0625,
+    "ci_high": 0.4666666666666667,
+    "n_pairs": 16,
+    "n_levels": 5
+   }
+  },
+  "command only": {
+   "mass_mae_kg": {
+    "point": 96.64154388322864,
+    "seed_sd": 1.2263106278787872,
+    "ci_low": 87.13353568008264,
+    "ci_high": 105.70577442916397,
+    "n": 194,
+    "n_clusters": 97
+   },
+   "mass_r2": -0.0026433467864990234,
+   "roll_mae_deg": {
+    "point": 6.282452774457506,
+    "seed_sd": 0.35572227709185666,
+    "ci_low": 5.392203468233858,
+    "ci_high": 7.242955363706214,
+    "n": 194,
+    "n_clusters": 97
+   },
+   "tip_auroc": {
+    "point": 0.8953894080996885,
+    "seed_sd": 0.00010791593816628649,
+    "ci_low": 0.841918387168201,
+    "ci_high": 0.9389561883311881,
+    "n": 182,
+    "positive_n": 107,
+    "negative_n": 75,
+    "n_clusters": 97
+   },
+   "same_command_mass_map": {
+    "point": 0.503448275862069,
+    "ci_low": 0.47039473684210525,
+    "ci_high": 0.5370545073375261,
+    "n_pairs": 145,
+    "n_levels": 9
+   },
+   "same_command_com_map": {
+    "point": 0.5,
+    "ci_low": 0.5,
+    "ci_high": 0.5,
+    "n_pairs": 16,
+    "n_levels": 5
+   }
+  }
+ },
+ "two_stage": {
+  "true mass": {
+   "roll_mae_deg": {
+    "point": 3.04482705113814,
+    "seed_sd": 0.07074024453062794,
+    "ci_low": 2.52185985048612,
+    "ci_high": 3.632348032612161,
+    "n": 194,
+    "n_clusters": 97
+   },
+   "tip_auroc": {
+    "point": 0.9767185877466251,
+    "seed_sd": 0.0005619002807256024,
+    "ci_low": 0.9587458406613688,
+    "ci_high": 0.9910222434471879,
+    "n": 182,
+    "positive_n": 107,
+    "negative_n": 75,
+    "n_clusters": 97
+   },
+   "accuracy": 0.9230769230769231,
+   "same_command_mass_map": {
+    "point": 0.9724137931034482,
+    "ci_low": 0.9266021316783594,
+    "ci_high": 1.0,
+    "n_pairs": 145,
+    "n_levels": 9
+   }
+  },
+  "no mass (train mean)": {
+   "roll_mae_deg": {
+    "point": 6.435656568643563,
+    "seed_sd": 0.06857767164540052,
+    "ci_low": 5.616978528382853,
+    "ci_high": 7.270675794000885,
+    "n": 194,
+    "n_clusters": 97
+   },
+   "tip_auroc": {
+    "point": 0.8950778816199376,
+    "seed_sd": 0.0,
+    "ci_low": 0.8417094783570757,
+    "ci_high": 0.9388926111174806,
+    "n": 182,
+    "positive_n": 107,
+    "negative_n": 75,
+    "n_clusters": 97
+   },
+   "accuracy": 0.8241758241758241,
+   "same_command_mass_map": {
+    "point": 0.5,
+    "ci_low": 0.5,
+    "ci_high": 0.5,
+    "n_pairs": 145,
+    "n_levels": 9
+   }
+  },
+  "mass from video 1.96 s": {
+   "roll_mae_deg": {
+    "point": 3.805126238770501,
+    "seed_sd": 0.0716669101334252,
+    "ci_low": 3.238586192899143,
+    "ci_high": 4.445922623098511,
+    "n": 194,
+    "n_clusters": 97
+   },
+   "tip_auroc": {
+    "point": 0.9565109034267912,
+    "seed_sd": 0.00037383177570093906,
+    "ci_low": 0.9271767911278255,
+    "ci_high": 0.9794086742473371,
+    "n": 182,
+    "positive_n": 107,
+    "negative_n": 75,
+    "n_clusters": 97
+   },
+   "accuracy": 0.8901098901098901,
+   "same_command_mass_map": {
+    "point": 0.896551724137931,
+    "ci_low": 0.8380234107346783,
+    "ci_high": 0.9588235294117647,
+    "n_pairs": 145,
+    "n_levels": 9
+   }
+  },
+  "mass from video 2.71 s": {
+   "roll_mae_deg": {
+    "point": 3.3778443302075885,
+    "seed_sd": 0.06504251515701463,
+    "ci_low": 2.8647841388693793,
+    "ci_high": 3.931836703788374,
+    "n": 194,
+    "n_clusters": 97
+   },
+   "tip_auroc": {
+    "point": 0.963779854620976,
+    "seed_sd": 0.00019034582325881588,
+    "ci_low": 0.9391863731366873,
+    "ci_high": 0.9825797987054784,
+    "n": 182,
+    "positive_n": 107,
+    "negative_n": 75,
+    "n_clusters": 97
+   },
+   "accuracy": 0.8956043956043956,
+   "same_command_mass_map": {
+    "point": 0.9241379310344827,
+    "ci_low": 0.845575289975145,
+    "ci_high": 0.9810200520525257,
+    "n_pairs": 145,
+    "n_levels": 9
+   }
+  }
+ },
+ "critical_drive_prediction": {
+  "true mass": {
+   "mae": 0.4860674189929469,
+   "bias": 0.22519858172729385,
+   "within_half_level": 0.7
+  },
+  "no mass (train mean)": {
+   "mae": 1.4999985408568568,
+   "bias": -1.4999985408568568,
+   "within_half_level": 0.4
+  },
+  "mass from video 1.96 s": {
+   "mae": 0.7387566415927047,
+   "bias": -0.19313409525368067,
+   "within_half_level": 0.56
+  },
+  "mass from video 2.71 s": {
+   "mae": 0.7732800106060244,
+   "bias": 0.27410417206574295,
+   "within_half_level": 0.49333333333333335
+  },
+  "command only (readout)": {
+   "mae": 1.1197449654340743,
+   "bias": -0.398724827170372,
+   "within_half_level": 0.2,
+   "critical_drive": 19.651275172829628
+  }
+ },
+ "critical_drive_model_true_mass": {
+  "240": 22.346826828212468,
+  "300": 20.747724034725252,
+  "360": 19.400052881924967,
+  "420": 18.660897408586894,
+  "480": 18.56849074421731,
+  "540": 18.971092391147096,
+  "600": 19.871874000794662,
+  "660": 21.61653678344698,
+  "720": 24.0
+ }
+}

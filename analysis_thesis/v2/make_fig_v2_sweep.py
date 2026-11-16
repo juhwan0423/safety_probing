@@ -23,10 +23,10 @@ sel = massmap & known & ~rep
 for s, col, mk, lab in ((sel & ~tip, ts.REC, "o", "recovered"), (sel & tip, ts.TIP, "^", "tip-over")):
     ax[0].scatter(drive[s], mass[s], s=13, color=col, marker=mk, linewidths=0, label=lab, zorder=3)
 ax[0].contour(GD, GM, pmap, levels=[0.5], colors=[ts.INK], linewidths=1.2)
-crit_nomass = float(np.unique(np.round(Z["crit_pred|no mass (train mean)"], 3))[0]) if "crit_pred|no mass (train mean)" in Z.files else None
+crit_nomass = float(Z["crit_cmdonly"]) if "crit_cmdonly" in Z.files and np.isfinite(Z["crit_cmdonly"]) else None      # the command-only readout: one critical command for every payload
 if crit_nomass is not None: ax[0].axvline(crit_nomass, color=ts.BASE, ls="--", lw=1.0)
 ax[0].plot([], [], color=ts.INK, lw=1.2, label="predicted, mass known"); ax[0].plot([], [], color=ts.BASE, ls="--", lw=1.0, label="predicted, mass unknown")
-ax[0].set_xlabel("drive command"); ax[0].set_ylabel("payload mass (kg)"); ax[0].set_title("outcome by payload mass", fontsize=9); ts.panel(ax[0], "a")
+ax[0].set_xlim(15.6, 24.4); ax[0].set_ylim(212, 748); ax[0].set_xlabel("drive command"); ax[0].set_ylabel("payload mass (kg)"); ax[0].set_title("outcome by payload mass", fontsize=9); ts.panel(ax[0], "a")
 sel = commap & known
 for s, col, mk in ((sel & ~tip, ts.REC, "o"), (sel & tip, ts.TIP, "^")):
     ax[1].scatter(drive[s], 90.0 * offset[s], s=13, color=col, marker=mk, linewidths=0, zorder=3)      # left turn: +offset is the outside; physical shift = 0.9 x configured

@@ -153,9 +153,15 @@ for k, ms in MASS_IN.items():
     CP[k] = pc
     adv[k] = dict(mae=float(np.abs(pc - true_c).mean()), bias=float((pc - true_c).mean()), within_half_level=float((np.abs(pc - true_c) <= 0.5).mean()))
     print(f"CRITICAL {k:26s} |predicted - true critical drive command|: mean {adv[k]['mae']:.2f}, bias {adv[k]['bias']:+.2f}, within 0.5: {adv[k]['within_half_level']:.2f}", flush=True)
+crit_cmd = float("nan")
+if "command only" in PRED:                    # a readout that sees only the planned command has one critical drive command for every payload
+    sc = PRED["command only"]["tip_score"].mean(0); dl = np.array(sorted(set(drive[massmap].tolist()))); sv = np.array([sc[massmap & (drive == d)].mean() for d in dl]); j = np.flatnonzero(sv > 0)
+    crit_cmd = float(dl[-1]) if len(j) == 0 else (float(dl[0]) if j[0] == 0 else float(dl[j[0] - 1] + (0 - sv[j[0] - 1]) / (sv[j[0]] - sv[j[0] - 1]) * (dl[j[0]] - dl[j[0] - 1])))
+    adv["command only (readout)"] = dict(mae=float(np.abs(crit_cmd - true_c).mean()), bias=float((crit_cmd - true_c).mean()), within_half_level=float((np.abs(crit_cmd - true_c) <= 0.5).mean()), critical_drive=crit_cmd)
+    print(f"CRITICAL command only (readout)    critical drive command {crit_cmd:.2f} for every payload: mean |error| {adv['command only (readout)']['mae']:.2f}, within 0.5: {adv['command only (readout)']['within_half_level']:.2f}", flush=True)
 res["critical_drive_prediction"] = adv; res["critical_drive_model_true_mass"] = {str(int(m)): crit_from_map(m) for m in CRIT}
 json.dump(res, open(OUT / f"v2_sweep_eval{args.tag}.json", "w"), indent=1)
 np.savez(OUT / f"v2_sweep_eval{args.tag}.npz", ids=np.array(c.ids)[SW], mass=mass[SW], offset=offset[SW], drive=drive[SW], tip=tipv[SW], known=tipk[SW], massmap=massmap[SW], commap=commap[SW], rep=rep[SW],
-         GM=GM, GD=GD, pmap=pmap, crit_true=true_c, **{f"crit_pred|{k}": v for k, v in CP.items()}, **{f"mass_in|{k}": v for k, v in MASS_IN.items()}, **{f"score|{k}": np.stack(S2[k]["score"]).mean(0) for k in MASS_IN},
+         GM=GM, GD=GD, pmap=pmap, crit_true=true_c, crit_cmdonly=crit_cmd, **{f"crit_pred|{k}": v for k, v in CP.items()}, **{f"mass_in|{k}": v for k, v in MASS_IN.items()}, **{f"score|{k}": np.stack(S2[k]["score"]).mean(0) for k in MASS_IN},
          **{f"readout_score|{k}": P["tip_score"][:, SW].mean(0) for k, P in PRED.items()}, **{f"readout_mass|{k}": P["static"][:, SW, 0].mean(0) for k, P in PRED.items()})
 print("wrote", OUT / f"v2_sweep_eval{args.tag}.json")

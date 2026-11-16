@@ -13,14 +13,14 @@ import thesis_style as ts
 from thesis_style import plt
 from matplotlib.patches import Patch
 
-sets = sys.argv[1:] or ["p5", "band5"]; LABEL = {"p5": "full range\n(drive 15-25)", "band5": "boundary band\n(drive 18-22)", "all10": "both"}
+sets = sys.argv[1:] or ["p5", "band5"]; LABEL = {"p5": "full range\n(drive 15-25)", "band5": "boundary band\n(drive 18-22)", "all10": "all 800 pairs"}
 ts.apply()
 ROWS = [("planned command only", ts.BASE, lambda PV, V, PL, n: PV["command"]), ("video only", ts.GEN, lambda PV, V, PL, n: V),
         ("command + mass read from the video", ts.REAL, lambda PV, V, PL, n: PL[f"video mass ({n})"]), ("command + true mass", "#5C6B7A", lambda PV, V, PL, n: PV["command+mass"]),
         ("command + true mass + true CoM offset", ts.INK, lambda PV, V, PL, n: PV["command+mass+com"])]
 DATA = {n: (json.load(open(f"out/v2_payload_value_{n}_cv.json")), json.load(open(f"out/v2cv_{n}.json")), json.load(open(f"out/v2_plugin_mass_{n}.json"))) for n in sets}
 panels = [("tip_auroc", "tip-over AUROC", (0.7, 1.05), "{:.3f}"), ("roll_mae_deg", "future roll MAE (deg)", (0, 9.4), "{:.1f}"), ("outcome_flip_mass", "pairs differing in mass:\nwhich run tips?", (0.4, 1.09), "{:.2f}")]
-fig, axes = plt.subplots(1, 3, figsize=(8.2, 3.1)); w = 0.16
+fig, axes = plt.subplots(1, 3, figsize=(9.2, 3.1)); w = 0.16
 for a, (key, title, ylim, fmt) in zip(axes, panels):
     for gi, n in enumerate(sets):
         PV, V, PL = DATA[n]
